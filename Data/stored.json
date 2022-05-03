@@ -2,45 +2,53 @@
     "Users": [
         {
             "id": 52,
-            "username": "first",
-            "hashed": [
-                "first hash",
-                "second hash"
-            ],
-            "last_Change": "",
-            "last_login": ""
+            "data": {
+                "username": "first",
+                "password": [
+                    "first hash",
+                    "second hash"
+                ],
+                "Apps": [
+                    "instagram",
+                    "facebook",
+                    "haha"
+                ],
+                "state": "disabled/enabled"
+            }
         },
         {
-            "id": 42,
-            "username": "first",
-            "hashed": [
-                "first hash",
-                "second hash"
-            ],
-            "last_Change": "",
-            "last_login": ""
-        },
-        {
-            "id": 32,
-            "username": "first",
-            "hashed": [
-                "first hash",
-                "second hash"
-            ],
-            "last_Change": "",
-            "last_login": ""
+            "id": 52,
+            "data": {
+                "username": "first",
+                "password": [
+                    "first hash",
+                    "second hash"
+                ],
+                "Apps": [
+                    "instagram",
+                    "facebook",
+                    "haha"
+                ],
+                "state": "disabled/enabled"
+            }
         }
     ],
     "Admins": [
         {
-            "id": 22,
-            "username": "first",
-            "hashed": [
-                "first hash",
-                "second hash"
-            ],
-            "last_Change": "",
-            "last_login": ""
+            "id": 52,
+            "data": {
+                "username": "admin",
+                "password": [
+                    "first hashed password",
+                    "second hashed password"
+                ],
+                "Apps": [
+                    "instagram",
+                    "facebook",
+                    "haha"
+                ],
+                "state": "disabled/enabled"
+            }
         }
     ]
 }
