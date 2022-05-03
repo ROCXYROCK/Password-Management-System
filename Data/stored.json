@@ -1,0 +1,46 @@
+{
+    "Users": [
+        {
+            "id": 52,
+            "username": "first",
+            "hashed": [
+                "first hash",
+                "second hash"
+            ],
+            "last_Change": "",
+            "last_login": ""
+        },
+        {
+            "id": 42,
+            "username": "first",
+            "hashed": [
+                "first hash",
+                "second hash"
+            ],
+            "last_Change": "",
+            "last_login": ""
+        },
+        {
+            "id": 32,
+            "username": "first",
+            "hashed": [
+                "first hash",
+                "second hash"
+            ],
+            "last_Change": "",
+            "last_login": ""
+        }
+    ],
+    "Admins": [
+        {
+            "id": 22,
+            "username": "first",
+            "hashed": [
+                "first hash",
+                "second hash"
+            ],
+            "last_Change": "",
+            "last_login": ""
+        }
+    ]
+}
