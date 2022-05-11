@@ -1,9 +1,8 @@
 {
     "Users": [
         {
-            "id": 52,
+            "id": "first",
             "data": {
-                "username": "first",
                 "password": [
                     "first hash",
                     "second hash"
@@ -13,13 +12,14 @@
                     "facebook",
                     "haha"
                 ],
-                "state": "disabled/enabled"
+                "state": "disabled/enabled",
+                "last_log":"Datum",
+                "last_changed":"Datum"
             }
         },
         {
-            "id": 52,
+            "id": "first",
             "data": {
-                "username": "first",
                 "password": [
                     "first hash",
                     "second hash"
@@ -29,25 +29,28 @@
                     "facebook",
                     "haha"
                 ],
-                "state": "disabled/enabled"
+                "state": "disabled/enabled",
+                "last_log":"Datum",
+                "last_changed":"Datum"
             }
         }
     ],
     "Admins": [
         {
-            "id": 52,
+            "id": "first",
             "data": {
-                "username": "admin",
                 "password": [
-                    "first hashed password",
-                    "second hashed password"
+                    "first hash",
+                    "second hash"
                 ],
                 "Apps": [
                     "instagram",
                     "facebook",
                     "haha"
                 ],
-                "state": "disabled/enabled"
+                "state": "disabled/enabled",
+                "last_log":"Datum",
+                "last_changed":"Datum"
             }
         }
     ]
