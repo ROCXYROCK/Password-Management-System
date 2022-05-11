@@ -1,15 +1,10 @@
-from crypt import methods
 from flask import Flask, request, jsonify, url_for
 import json
 import os
 
 #os.path.dirname(os.path.realpath(__file__))# it gives you the current file path
 
-App= Flask(__name__)
-
-
-
-
+App = Flask(__name__)
 
 @App.route("/register/user",methods=["PUT"])
 def register():
