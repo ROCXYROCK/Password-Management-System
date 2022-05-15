@@ -22,5 +22,3 @@ def PSW_Check(password: str, encrypted : str):
     
     return bcrypt.checkpw(password,hash)
 
-hashed = hash_psw("haha")
-
