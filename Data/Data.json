@@ -1,57 +1,16 @@
 {
-    "Users": [
-        {
-            "id": "first",
-            "data": {
-                "password": [
-                    "first hash",
-                    "second hash"
-                ],
-                "Apps": [
-                    "instagram",
-                    "facebook",
-                    "haha"
-                ],
-                "state": 0,
-                "last_log":"Datum",
-                "last_changed":"Datum"
-            }
-        },
-        {
-            "id": "first",
-            "data": {
-                "password": [
-                    "first hash",
-                    "second hash"
-                ],
-                "Apps": [
-                    "instagram",
-                    "facebook",
-                    "haha"
-                ],
-                "state": 0,
-                "last_log":"Datum",
-                "last_changed":"Datum"
-            }
-        }
-    ],
-    "Admins": [
-        {
-            "id": "first",
-            "data": {
-                "password": [
-                    "first hash",
-                    "second hash"
-                ],
-                "Apps": [
-                    "instagram",
-                    "facebook",
-                    "haha"
-                ],
-                "state": 1,
-                "last_log":"Datum",
-                "last_changed":"Datum"
-            }
-        }
-    ]
+  "username": {
+    "password": ["first hash", "second hash"],
+    "enabled": false,
+    "admin": false,
+    "last_log": "Datum",
+    "last_changed": "Datum"
+  },
+  "username2": {
+    "password": ["first hash", "second hash"],
+    "enabled": false,
+    "admin": false,
+    "last_log": "Datum",
+    "last_changed": "Datum"
+  }
 }

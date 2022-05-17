@@ -1,3 +1,12 @@
+"""
+Author: Abdulhamid Hijli
+Project: password-management-system
+Date: 15.05.2022
+Discription:
+This Module is created to handle password problems. It checks the password according to the password policy and checks 
+if the password is pwned. For that it interact with the API of the Haveibeenpwned.com to check the password. The password policy
+will be read from the Policy.json file in the Data folder and checks what is required for a secure password
+"""
 import requests,json,string,os
 from Encryption import SHA1
 
@@ -104,6 +113,12 @@ def pwned(password:str):
 
 # checking if password is containing the required cases.
 def policy(password):
+    """
+    This function checks the password according to the policy, if the password conatain all required cases. The function has
+    sub-functions to make the code more readable und easy to understand. The function returns True, if the password is containing
+    all required cases, else it returns False.
+    """
+    
     a = False
     if islower(password):
         a = True
@@ -130,6 +145,12 @@ def policy(password):
 
 # check function which will be called by another modules
 def check(password):
+    """
+    This function is the main function of this module. this function will be requested from the other modules to check
+    password validation. If the password is not pwned and contain the policy requirement, the function returns True, 
+    else it returns False.
+    """
+    #check if password is valid
     if policy(password) and pwned(password):
         return True
     return False
