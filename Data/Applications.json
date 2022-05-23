@@ -13,18 +13,18 @@
       "last_changed": "Date"
     }
   },
-  "user2":{
+  "user2": {
     "reddit": {
-        "username": "user1234",
-        "password": "password1234",
-        "last_login": "Date",
-        "last_changed": "Date"
-      },
-      "HS-Offenburg": {
-        "username": "user1234",
-        "password": "password1234",
-        "last_login": "Date",
-        "last_changed": "Date"
-      }
+      "username": "user1234",
+      "password": "password1234",
+      "last_login": "Date",
+      "last_changed": "Date"
+    },
+    "HS-Offenburg": {
+      "username": "user1234",
+      "password": "password1234",
+      "last_login": "Date",
+      "last_changed": "Date"
+    }
   }
 }
