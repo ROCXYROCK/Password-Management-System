@@ -3,5 +3,6 @@
     "upper" : 1,
     "lower":1,
     "punctuation":1,
-    "numeric":1
+    "numeric":1,
+    "lastchange":""
 }
