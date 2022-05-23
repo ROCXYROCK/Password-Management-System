@@ -1,16 +1,23 @@
 {
-  "username": {
-    "password": ["first hash", "second hash"],
-    "enabled": false,
+  "abdullah": {
+    "password": "$2b$12$.2I5Mg9psSokPDseJFuEQuyYju9nu8yQt.Ixl5GFL6lI3ssfbNhzW",
+    "enabled": true,
     "admin": false,
-    "last_log": "Datum",
-    "last_changed": "Datum"
+    "last_log": "2022-05-23 20:43:40.512558",
+    "last_changed": "2022-05-23 20:43:40.512568"
   },
-  "username2": {
-    "password": ["first hash", "second hash"],
-    "enabled": false,
-    "admin": false,
-    "last_log": "Datum",
-    "last_changed": "Datum"
+  "abdul": {
+    "password": "$2b$12$Tl7EKMVUDGlyu1a/lRbhHuC07Fv90M516Bd4WYXKWuvYbh5JJEGNG",
+    "enabled": true,
+    "admin": true,
+    "last_log": "2022-05-23 21:26:15.926948",
+    "last_changed": "2022-05-23 21:26:15.926973"
+  },
+  "admin": {
+    "password": "$2b$12$GVpBJk46YTEgmnZJCTdhXOCR61ikCJ.FU/td7DQGoRSACFZneQtKG",
+    "enabled": true,
+    "admin": true,
+    "last_log": "2022-05-23 21:27:55.909428",
+    "last_changed": "2022-05-23 21:27:55.909454"
   }
 }
