@@ -8,7 +8,6 @@ if the password is pwned. For that it interact with the API of the Haveibeenpwne
 will be read from the Policy.json file in the Data folder and checks what is required for a secure password
 """
 import requests,json,string,os
-from Encryption import SHA1
 
 Policy_File = os.path.dirname(os.path.realpath(__file__))
 
@@ -16,6 +15,7 @@ Policy_File = os.path.dirname(os.path.realpath(__file__))
 with open(Policy_File+"/../Data/Policy.json","r") as File:
     Req = json.loads(File.read())
     File.close()
+    
 #checking if enough uppercases.
 def isupper(password:str):
     """
@@ -84,15 +84,13 @@ def length(password:str):
     return False
 
 
-def pwned(password:str):
+def pwned(hashed:str):
     """
     This is a function of this module which checks password if it's pwned or not. It communicates with the haveibeenpwned.com through
     the HIBP API, it recieve per HTTP Request a list of hashed passwords which have the same first 5 characters of the given password.
     The script search in this list for the hash of the given password, if this is in the list, the system will return False.
     """
-    #hashing password
-    hashed = SHA1(password).upper()
-    
+        
     #send request
     pwned_list = requests.get("https://api.pwnedpasswords.com/range/"+hashed[:5]).text
 
@@ -112,7 +110,7 @@ def pwned(password:str):
 
 
 # checking if password is containing the required cases.
-def policy(password):
+def policy(password:str):
     """
     This function checks the password according to the policy, if the password conatain all required cases. The function has
     sub-functions to make the code more readable und easy to understand. The function returns True, if the password is containing
@@ -144,13 +142,13 @@ def policy(password):
     return False
 
 # check function which will be called by another modules
-def check(password):
+def check(password:str,hashed:str):
     """
     This function is the main function of this module. this function will be requested from the other modules to check
     password validation. If the password is not pwned and contain the policy requirement, the function returns True, 
     else it returns False.
     """
     #check if password is valid
-    if policy(password) and pwned(password):
+    if policy(password) and pwned(hashed):
         return True
     return False
