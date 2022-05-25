@@ -9,7 +9,6 @@ and by calling the generate function. The module will be called and returns a se
 
 from string import ascii_lowercase,ascii_uppercase,digits,punctuation
 from random import shuffle,sample
-from password import check
 
 def generate(length:int):
 
@@ -31,9 +30,6 @@ def generate(length:int):
     #convert the choice to string
     password = "".join(temp)
     
-    #if the generated password doesn't equal the policies then generate another one.
-    if not check(password):
-        generate(length)
     return password
 
     
