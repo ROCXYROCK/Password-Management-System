@@ -1,4 +1,5 @@
 import os,json
+from unittest import expectedFailure
 
 
 current_file = os.path.dirname(os.path.realpath(__file__))
@@ -21,6 +22,7 @@ def write_file(file:str,Data):
 
 
 def get_user(username:str):
+    
     try:
         # read data 
         Read = read_file(Data_File)
@@ -36,7 +38,6 @@ def get_user(username:str):
 def set_user(user:dict):
     
         try:
-            
             #read the data from the file
             Read = read_file(Data_File)
             Data =json.loads(Read)
@@ -50,9 +51,37 @@ def set_user(user:dict):
         except:
             return False
 
+def set_history(username:str,hash:str):
+    try:
+        Read = read_file(History_File)
+        Data =json.loads(Read)
+        
+        history = Data[username]
+        history.append(hash)
+        
+        Data[username] = (history)
+        write_file(History_File,Data)
+        return True
+    except:
+        Read = read_file(History_File)
+        Data =json.loads(Read)
+        
+        history = []
+        history.append(hash)
+        
+        Data[username] = (history)
+        write_file(History_File,Data)
+        return True
 
 
-# def set_history(username,hash)
+def get_history(username:str):
+    try:
+        Read = read_file(History_File)
+        Data =json.loads(Read)
+        
+        return Data[username]
+    except:
+        return False
 
 
 
