@@ -1,23 +1,10 @@
 {
-  "abdullah": {
-    "password": "$2b$12$.2I5Mg9psSokPDseJFuEQuyYju9nu8yQt.Ixl5GFL6lI3ssfbNhzW",
+  "amin": {
+    "password": "$2b$12$i0PQ3K0xIOcFoA/PY0zMLu6esmfirlA2layXP/Rh8kABZNAaYE25K",
     "enabled": true,
     "admin": false,
-    "last_log": "2022-05-23 20:43:40.512558",
-    "last_changed": "2022-05-23 20:43:40.512568"
-  },
-  "abdul": {
-    "password": "$2b$12$Tl7EKMVUDGlyu1a/lRbhHuC07Fv90M516Bd4WYXKWuvYbh5JJEGNG",
-    "enabled": true,
-    "admin": true,
-    "last_log": "2022-05-23 21:26:15.926948",
-    "last_changed": "2022-05-23 21:26:15.926973"
-  },
-  "admin": {
-    "password": "$2b$12$GVpBJk46YTEgmnZJCTdhXOCR61ikCJ.FU/td7DQGoRSACFZneQtKG",
-    "enabled": true,
-    "admin": true,
-    "last_log": "2022-05-23 21:27:55.909428",
-    "last_changed": "2022-05-23 21:27:55.909454"
+    "expiration": "2022-07-10 17:17:12.321194",
+    "last_login": "2022-06-11 17:22:06.139017",
+    "last_changed": "2022-06-11 17:14:35.321194"
   }
 }
