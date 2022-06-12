@@ -3,7 +3,7 @@ import hashlib
 
 
 #hash password with sha-1 algorithm
-def SHA1(password:str): 
+def hash_to_sha1(password:str): 
     """
     This function uses the sha-1 hashing algorithm to hash the password. It will be used to communicate with the HIBP-API to check if a password is pwned or not.
 
@@ -13,6 +13,8 @@ def SHA1(password:str):
     Returns:
         str: hashed password as hex chars
     """
+    if type(password) != str:
+        return False
     password = password.encode() 
     hash = hashlib.new('sha1') 
     
@@ -22,7 +24,7 @@ def SHA1(password:str):
 
 
 #hash password with bcrypt algorithm 
-def hash_psw(password:str):
+def hash_to_bcrypt(password:str):
     """
     this function is responsible for hashing password using a secure hash method. This method is slow, that can prevent a brute force attack, because it takes long time to be hashed
 
@@ -33,6 +35,9 @@ def hash_psw(password:str):
     Returns:
         str: hash
     """
+    if type(password)!= str:
+        return False
+    
     password = password.encode()
     salt = bcrypt.gensalt(12)
     
@@ -42,14 +47,14 @@ def hash_psw(password:str):
 
 
 #check if password belong to hash
-def PSW_Check(password:str, hashed:str):
+def password_hash_check(password:str, hashed:str):
     
     """
     This function is used to check if a password belong to hash. The hash should be encrypted with the bcrypt algorithm and the password will be in plaintext
 
     Args:
     password (str): The password is plain text which should be a string.
-    hashed (str): The hash should by an encrypted text using the 
+    hashed (str): The hash should be an encrypted text using the bcrypt hash method
     
     Returns:
         _type_: _description_
