@@ -1,4 +1,13 @@
 {
-  "username": ["hash_1", "hash_2", "hash_3"],
-  "username2": []
+  "password": {
+    "amin": ["$2b$12$bZklyhqIvlBxDhW/Mw8wQuLoJihOsuRjN/0TSwmRPvpCVZjz7wPcu"],
+    "addmin": ["$2b$12$orwLD1e6E9FUwlq1GdfbeeRMCPnOSjH5UlCFwK/sZEQAAUacfCQ62"],
+    "admino": ["$2b$12$r8JMft9.uBZgfCH/5C9yHOkn3wf8yS31EGkM3SLqjqjp/bSu3qPKq"]
+  },
+  "login":{
+    "amin":["first","lolo","sui","sooo","lan","was","haha","wo","ich","will","weg","denn","kein","bock","mehr","huhu","last"]
+  },
+  "change":{
+    "amin":["2022-06-11 17:14:35.321194"]
+  }
 }
