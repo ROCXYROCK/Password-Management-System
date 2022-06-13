@@ -6,16 +6,16 @@ from Encryption import hash_to_sha1,hash_to_bcrypt,password_hash_check
 
 
 class Time:
-    def time_now():
+    def time_now() -> str:
         return str(datetime.utcnow())
 
-    def expiration_update(time_str:str):
+    def expiration_update(time_str:str) -> str:
         time = datetime.fromisoformat(time_str)
         time = time + relativedelta(months=3)
         return str(time)
     
 class Password:
-    def __init__(self,length:int,punctuation:int,numeric:int,lower:int,upper:int,lastchange:str):
+    def __init__(self,length:int,punctuation:int,numeric:int,lower:int,upper:int,lastchange:str) -> None:
         self.__length : int = length
         self.__punctuation : int = punctuation
         self.__numeric : int = numeric
