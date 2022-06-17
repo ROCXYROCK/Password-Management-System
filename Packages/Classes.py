@@ -15,8 +15,9 @@ class Time:
         return str(time)
     
 class Password:
-    def __init__(self,length:int,punctuation:int,numeric:int,lower:int,upper:int,lastchange:str) -> None:
+    def __init__(self,length:int,maxlength:int,punctuation:int,numeric:int,lower:int,upper:int,lastchange:str) -> None:
         self.__length : int = length
+        self.__maxlength : int = maxlength
         self.__punctuation : int = punctuation
         self.__numeric : int = numeric
         self.__lower : int  = lower
@@ -42,7 +43,7 @@ class Password:
     def pwned(self,password:str) -> bool:
         
         hashed  = hash_to_sha1(password = password).upper()
-        pwned_list = requests.get("https://api.pwnedpasswords.com/range/"+hashed[:5]).text
+        pwned_list = requests.get(url="https://api.pwnedpasswords.com/range/"+hashed[:5]).text
 
         
         pwned_list = pwned_list.split("\n")
@@ -108,19 +109,22 @@ class Password:
             if i =="\"" or i =="'":
                 return False
         
-        if counter >= self.__punctuation:
-            return True
+        if counter < self.__punctuation:
+            return False
         
-        return False
+        return True
     
     def length(self,password:str) -> bool:
         """
         This is a sub-function of the function policy(). it checks if the lenght of the given password is equal to the required length 
         or not. If the length is enough the fuction will returns True, else it will returns False.
         """
-        if password.__len__() >= self.__length:
-            return True
-        return False
+        if password.__len__() < self.__length:
+            return False
+        
+        if password.__len__() > self.__maxlength:
+            return False
+        return True
 
     def policy(self,password:str) -> bool:
         """
@@ -144,6 +148,12 @@ class Password:
             return False
         return True
     
+    def check_policy(self):
+        sum_of = self.__lower + self.__numeric + self.__punctuation + self.__upper
+        if sum_of > self.__length:
+            return False
+        return True
+    
     def check(self,password:str) -> bool:
         """
         This function is the main function of this module. this function will be requested from the other modules to check
@@ -160,7 +170,8 @@ class Password:
         This is a function to generate a secure password, it gets the length and returns the password as a string. The password will be 
         generated according to the password policy.
         """
-
+        if length < self.__length or length > self.__maxlength:
+            return False
         #set a list of all possible characters
         all = list(string.ascii_lowercase+string.ascii_uppercase+string.digits+string.punctuation)
         
@@ -186,10 +197,31 @@ class User:
         self.__enabled : bool = enabled
         self.__admin : bool = admin
     
-    def get_user(self) -> dict:# i wanted to use object.__dict__ to get these parameter without an extra fuction, but after making my attribute private i will get with __dict__ them w
+    def get_user(self) -> dict:
         return {"username":self.__username,"password":self.__password,
                 "enabled":self.__enabled,"admin":self.__admin,"expiration":self.__expiration,
                 "last_login":self.__lastlogin,"last_changed":self.__lastchanged}
+    
+    def get_password(self) -> str:
+        return self.__password
+    
+    def get_username(self) -> str:
+        return self.__username
+    
+    def get_expiration(self) -> str:
+        return self.__expiration
+    
+    def get_lastlogin(self) -> str:
+        return self.__lastlogin
+    
+    def get_lastchanged(self) -> str:
+        return self.__lastchanged
+    
+    def get_enabled(self) -> bool:
+        return self.__enabled
+    
+    def get_admin_status(self) -> bool:
+        return self.__admin
         
     def set_enabled(self,status:bool) -> bool:
         try:
@@ -204,16 +236,7 @@ class User:
             return True
         except:
             return False
-    
-    def get_password(self) -> str:
-        return self.__password
-    
-    def get_username(self) -> str:
-        return self.__username
-    
-    def get_expiration(self) -> str:
-        return self.__expiration
-    
+        
     def set_expiration(self,expiration:str) -> bool:
         try:
             self.__expiration = expiration
@@ -239,7 +262,7 @@ class User:
 
         self.__lastlogin = Time.time_now()
         
-        password_object = Password(length=policy["length"],punctuation=policy["punctuation"],
+        password_object = Password(length=policy["length"],punctuation=policy["punctuation"], maxlength=policy["maxlength"],
                             numeric=policy["numeric"],lower=policy["lower"],
                             upper=policy["upper"], lastchange=policy["lastchange"])
     
@@ -256,18 +279,19 @@ class User:
         return True
     
     def generate_password(self,length:int,policy:dict) -> str:
-        if length < policy["length"]:
-            return False
         
-        password = Password(length=policy["length"],punctuation=policy["punctuation"],
+        password = Password(length=policy["length"],punctuation=policy["punctuation"], maxlength=policy["maxlength"],
                             numeric=policy["numeric"],lower=policy["lower"],
                             upper=policy["upper"], lastchange=policy["lastchange"])
-                
+
+        if length < password.get_length():
+            return False
+        
         return password.generate(length=length)
     
     def edit_password(self,new_password:str,policy:dict) -> dict:
         
-        password = Password(length=policy["length"],punctuation=policy["punctuation"],
+        password = Password(length=policy["length"],punctuation=policy["punctuation"], maxlength=policy["maxlength"],
                             numeric=policy["numeric"],lower=policy["lower"],
                             upper=policy["upper"], lastchange=policy["lastchange"])
         
@@ -280,8 +304,10 @@ class User:
         
         self.__password = hashed
         self.__expiration = Time.expiration_update(self.__lastchanged)
+        self.__lastchanged = Time.time_now()
         
-        return self.get_user()
+        return True
+    
 
 
 class Admin(User):
@@ -294,12 +320,16 @@ class Admin(User):
         return user_x.get_user()
     
      
-    def delete_user(self,user_x:User,data:dict):
+    def delete_user(self,user_x:User,data:dict,history:dict):
         data.pop(user_x.get_username())
-        return data
+        history["login"].pop(user_x.get_username())
+        history["change"].pop(user_x.get_username())
+        history["password"].pop(user_x.get_username())
+        
+        return data,history
 
     def reset_password(self,user_x:User,policy:dict):
-        password = Password(length=policy["length"],punctuation=policy["punctuation"],
+        password = Password(length=policy["length"],punctuation=policy["punctuation"], maxlength=policy["maxlength"],
                             numeric=policy["numeric"],lower=policy["lower"],
                             upper=policy["upper"], lastchange=policy["lastchange"])
         
@@ -311,20 +341,24 @@ class Admin(User):
         if not hashed:
             return False
         
-        user_x.set_password(password = hashed)
-        user_x.set_expiration(expiration = Time.expiration_update(user_x.get_expiration()))
+        if not user_x.set_password(password = hashed):
+            return False
         
-        return new_password,user_x
+        if not user_x.set_expiration(expiration = Time.time_now()):
+            return False
+        
+        return new_password
     
     
     def get_policy(self,policy:Password) -> dict:
         return policy.get_policy()
     
     def set_policy(self,policy:dict) -> dict:
-        password_policy = Password(length=policy["length"],punctuation=policy["punctuation"],
+        password_policy = Password(length=policy["length"],punctuation=policy["punctuation"], maxlength=policy["maxlength"],
                                    numeric=policy["numeric"],upper=policy["upper"],
                                    lower=policy["lower"],lastchange=policy["lastchange"])
-        
+        if not password_policy.check_policy():
+            return False
         password_policy.set_lastchange(time_str = Time.time_now()) 
         return password_policy.get_policy()
         
@@ -344,7 +378,7 @@ class Admin(User):
                     admin = user["admin"], expiration = Time.expiration_update(Time.time_now()),
                     lastchanged = Time.time_now(), lastlogin = Time.time_now())
         
-        password = Password(length = policy["length"], punctuation = policy["punctuation"],
+        password = Password(length = policy["length"], punctuation = policy["punctuation"], maxlength=policy["maxlength"],
                             numeric = policy["numeric"], upper = policy["upper"],
                             lower = policy["lower"], lastchange = policy["lastchange"])
         
@@ -353,4 +387,10 @@ class Admin(User):
         
         password_hash = hash_to_bcrypt(password = user_object.get_password())
         user_object.set_password(password = password_hash) 
-        return user_object.get_user()
+        return user_object
+    
+    def get_user_login_history(self,history:dict,user_x:User) -> list:
+        return history["login"][user_x.get_username()]
+    
+    def get_user_change_history(self,history:dict,user_x:User) -> list:
+        return history["change"][user_x.get_username()]
