@@ -13,7 +13,7 @@ def hash_to_sha1(password:str):
     Returns:
         str: hashed password as hex chars
     """
-    if type(password) != str:
+    if not isinstance(password,str):
         return False
     password = password.encode() 
     hash = hashlib.new('sha1') 
