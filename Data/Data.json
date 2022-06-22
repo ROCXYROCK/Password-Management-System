@@ -1,10 +1,26 @@
 {
-  "amin": {
-    "password": "$2b$12$i0PQ3K0xIOcFoA/PY0zMLu6esmfirlA2layXP/Rh8kABZNAaYE25K",
+  "Amino1": {
+    "hash": "$2b$12$e.pj8zLRRX1exJFPTnRBoOwXfK0eVXLbJqd3B8mwMTUpgrh37EbgW",
+    "enabled": true,
+    "admin": true,
+    "expiration": "2022-09-21 00:59:00.268556",
+    "lastlogin": "2022-06-21 00:58:59.642518",
+    "lastchange": "2022-06-16 15:30:54.359203"
+  },
+  "Ap23": {
+    "hash": "$2b$12$bku7Cv2PP6sx4confXcaq.Zo.A9fCLPxAMypplZdfdy9YMKOXXDy.",
     "enabled": true,
     "admin": false,
-    "expiration": "2022-07-10 17:17:12.321194",
-    "last_login": "2022-06-11 17:22:06.139017",
-    "last_changed": "2022-06-11 17:14:35.321194"
+    "expiration": "2022-09-16 17:22:51.047132",
+    "lastlogin": "2022-06-20 18:58:26.123619",
+    "lastchange": "2022-06-16 17:22:51.047189"
+  },
+  "Aow2": {
+    "hash": "$2b$12$UgoQFQwNwuzlfl1fBQbez.sN9Gcam9i0Pk44cjVc0cAANG2Ph/Nl6",
+    "enabled": true,
+    "admin": true,
+    "expiration": "2022-09-17 21:40:28.604251",
+    "lastlogin": "2022-06-17 21:40:28.604322",
+    "lastchange": "2022-06-17 21:40:28.604251"
   }
 }
