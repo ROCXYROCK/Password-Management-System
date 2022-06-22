@@ -1,18 +1,11 @@
-import os,json,datetime
-import Encryption,Generator
-from Password import policy,check,pwned
-from Classes import User,Admin,Password
+import os,json
 
 current_file = os.path.dirname(os.path.realpath(__file__))
 
 data_file = "/../Data/Data.json"
 history_file = "/../Data/history.json"
-applications_file = "/../Data/Applications.json"
+key_file = "/../Data/secret.json"
 policy_file = "/../Data/Policy.json"
-
-
-def time_now():
-    return str(datetime.datetime.utcnow())
 
 def read_file(file:str):    
     f = open(current_file+file,"r")
@@ -26,12 +19,101 @@ def write_file(file:str,Data):
     f.close()
 
 
-data = json.loads(read_file(data_file))
-policy = json.loads(read_file(policy_file))
-history = json.loads(read_file(history_file))
+def get_data_file():# write some check if file data is corrupt, if yes then write a new function to create or to handle this problem
+    try:
+        data = read_file(data_file)
+        
+        if not data:
+            return False
+        
+        data = json.loads(data)
+        return data
+    except:
+        return False
+    
+def get_policy_file():
+    try:
+        data = read_file(policy_file)
+        
+        if not data:
+            return False
+        
+        data = json.loads(data)
+        return data
+    except:
+        return False
 
+def get_history_file():
+    try:
+        data = read_file(history_file)
+        
+        if not data:
+            return False
+        
+        data = json.loads(data)
+        return data
+    except:
+        return False
+    
+def get_key_file():
+    try:
+        data = read_file(key_file)
+        
+        if not data:
+            return False
+        
+        data = json.loads(data)
+        return data
+    except:
+        return False
+
+def update_data(data:dict):
+    try:
+        write_file(data_file,data)
+        return True
+    except:
+        return False
+    
+def update_policy(policy:dict):
+    try:
+        write_file(policy_file,policy)
+        return True
+    except:
+        return False
+    
+def update_history(history:dict):
+    try:
+        write_file(history_file,history)
+        return True
+    except:
+        return False
+    
+def update_history_with_type(username:str,data:str,data_type:str):
+    try:
+        history = get_history_file()
+        if not username in history[data_type]:
+            history[data_type][username]=[]
+        data_list:list = history[data_type][username]
+        data_list.append(data)
+        length = data_list.__len__()
+        
+        if length > 15:
+            for i in range(length-15):
+                data_list.pop(0)
+        
+        history[data_type][username] = data_list
+        update_history(history=history)
+        return True
+    
+    except:
+        return False
+    
 def update_user_data(user:dict):
     try:
+        data = get_data_file()
+        if not data:
+            return data
+        
         username = user["username"]
         user.pop("username")
         data[username] = user
@@ -40,48 +122,15 @@ def update_user_data(user:dict):
         return True
     except:
         return False
-
-def update_login_history(username:str,Date:str):
-    try:
-        pass_list = history["login"][username]
-        length = len(pass_list)
-        
-        if length > 15:
-            for i in range(length-15):
-                pass_list.pop(0)
-        
-        history["login"][username] = pass_list
-        write_file(history_file,history)
+    
+def update_key(key:str):
+    try: 
+        data = get_key_file()
+        if not data:
+            return data
+    
+        data["key"]=key
+        write_file(key_file,data)
         return True
     except:
-        
         return False
-        
-
-
-
-def create_user_instance(username:str):
-    return User(username,data[username]["password"],data[username]["enabled"],data[username]["last_changed"],data[username]["expiration"],data[username]["last_login"],data[username]["admin"])
-
-def login(user:dict): 
-    if user["username"] not in data:
-        return False
-    
-    username = user["username"]
-    
-    User_X = create_user_instance(username)
-    return User_X.login_user(user["password"])#lastlogin speichern und user updaten
-
-# def generate_psw(user:dict,length:int):
-    
-#     if login(user) != True:
-#         return False
-    
-#     User_X = create_user_instance(user["username"])
-#     return User_X.generate_password(length)
-    
-    
-
-#hier kommen noch funktionen, da ich die Daten hier behandeln möchte und nicht im Hauptfile, dann falls
-#daten irgendwo gespeichert werden, dann wird eine Funktion set_Data aufgerufen. gelesen wird eine Funktion 
-#get_Data
