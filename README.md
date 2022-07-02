@@ -1,7 +1,194 @@
-#               Password-Management-System
-###             System to manage user account
+<head>
+<style>
+h1 {text-align: center;}
+p {text-align: center;}
+div {text-align: center;}
+tr:hover {background-color: coral;}
+table {position:relative;margin-left: 500px;align-items:right;margin-right: auto;}
+
+</style>
+</head>
+<body>
+<h1>Password-Management-System</h1>
+
+<h4>System to manage user account</h4>
+
+
+<table>
+<tbody>
+<tr style="height: 18px;">
+<th style="height: 18px;">Functions/user level</th>
+<th colspan="3">Master</th>
+<th colspan="3">Admin</th>
+<th colspan="3">User</th>
+</tr>
+<tr style="height: 18px;">
+<td style="height: 18px;">login</td>
+<td style="text-align: center;" colspan="3">✔️</td>
+<td style="text-align: center;" colspan="3">✔️</td>
+<td style="text-align: center;" colspan="3">✔️</td>
+</tr>
+<tr style="height: 18px;">
+<td style="height: 18px;">generate password </td>
+<td style="text-align: center;" colspan="3">✔️</td>
+<td style="text-align: center;" colspan="3">✔️</td>
+<td style="text-align: center;" colspan="3">✔️</td>
+</tr>
+<tr style="height: 18px;">
+<td style="height: 18px;">edit password</td>
+<td style="text-align: center;" colspan="3">✔️</td>
+<td style="text-align: center;" colspan="3">✔️</td>
+<td style="text-align: center;" colspan="3">✔️</td>
+</tr>
+<tr style="height: 18px;">
+<td style="height: 18px;">edit username</td>
+<td style="text-align: center;" colspan="3">✔️</td>
+<td style="text-align: center;" colspan="3">✔️</td>
+<td style="text-align: center;" colspan="3">✔️</td>
+</tr>
+<tr style="height: 18px;">
+<td style="height: 18px;">set username policy</td>
+<td style="text-align: center;" colspan="3">✔️</td>
+<td style="text-align: center;" colspan="3">✔️</td>
+<td style="text-align: center;" colspan="3">❌</td>
+</tr>
+<tr style="height: 18px;">
+<td style=" height: 18px;">set password policy</td>
+<td style=" text-align: center;" colspan="3">✔️</td>
+<td style=" text-align: center;" colspan="3">✔️</td>
+<td style=" text-align: center;" colspan="3">❌</td>
+</tr>
+<tr style="height: 18px;">
+<td style="height: 18px;">get user count</td>
+<td style="text-align: center;" colspan="3">✔️</td>
+<td style="text-align: center;" colspan="3">✔️</td>
+<td style="text-align: center;" colspan="3">❌</td>
+</tr>
+<tr style="height: 18px;">
+<td style="height: 18px;">&nbsp;</td>
+<td style="text-align: center;">Master</td>
+<td style="text-align: center;">Admin</td>
+<td style="height: 18px; text-align: center;">User</td>
+<td style="text-align: center;">Master</td>
+<td style="text-align: center;">Admin</td>
+<td style="height: 18px; text-align: center;">User</td>
+<td style="text-align: center;">Master</td>
+<td style="text-align: center;">Admin</td>
+<td style="height: 18px; text-align: center;">User</td>
+</tr>
+<tr>
+<td>get data </td>
+<td style="text-align: center;">✔️</td>
+<td style="text-align: center;">✔️</td>
+<td style="text-align: center;">✔️</td>
+<td style="text-align: center;">✔️</td>
+<td style="text-align: center;">✔️</td>
+<td style="text-align: center;">✔️</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">❌</td>
+</tr>
+<tr>
+<td >sign up</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">✔️</td>
+<td style="text-align: center;">✔️</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">✔️</td>
+<td style="text-align: center;">✔️</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">❌</td>
+</tr>
+<tr style="height: 10px;">
+<td style="height: 10px;">get login history </td>
+<td style="text-align: center;">✔️</td>
+<td style="text-align: center;">✔️</td>
+<td style="height: 10px; text-align: center;">✔️</td>
+<td style="text-align: center;">✔️</td>
+<td style="text-align: center;">✔️</td>
+<td style="height: 10px; text-align: center;">✔️</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">❌</td>
+<td style="height: 10px; text-align: center;">❌</td>
+</tr>
+<tr>
+<td >get change history</td>
+<td style="text-align: center;">✔️</td>
+<td style="text-align: center;">✔️</td>
+<td style="text-align: center;">✔️</td>
+<td style="text-align: center;">✔️</td>
+<td style="text-align: center;">✔️</td>
+<td style="text-align: center;">✔️</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">❌</td>
+</tr>
+<tr>
+<td >enable</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">✔️</td>
+<td style="text-align: center;">✔️</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">✔️</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">❌</td>
+</tr>
+<tr>
+<td >disable</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">✔️</td>
+<td style="text-align: center;">✔️</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">✔️</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">❌</td>
+</tr>
+<tr>
+<td >delete</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">✔️</td>
+<td style="text-align: center;">✔️</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">✔️</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">❌</td>
+</tr>
+<tr>
+<td >reset</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">✔️</td>
+<td style="text-align: center;">✔️</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">✔️</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">❌</td>
+</tr>
+</tbody>
+</table>
+
 ___
-![user_functions_roles](./user_functions_roles.png)
+
+
+</body>
+
+
+
+
+
+
+
+
+
+
 API Cheatsheet:
 
 create user:
