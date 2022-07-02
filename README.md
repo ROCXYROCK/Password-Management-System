@@ -260,6 +260,114 @@ ___
 
 <h2>Cheat Sheet:</h2>
 
+Possible Responses:
+<table>
+<tbody>
+<tr>
+<th style="color: #33cc66">Error</td>
+<th style="color: #33cc66"><b>Response</b></td>
+<th style="color: #33cc66">Discription</td>
+<th style="color: #33cc66">Code</td>
+</tr>
+<tr>
+<td>TypeError</td>
+<td>"invalid values!"</td>
+<td>user enter not supported type.</td>
+<td>400</td>
+</tr>
+<tr>
+<td>AttributeError</td>
+<td>"wrong header!"</td>
+<td>user enter not supported header.</td>
+<td>400</td>
+</tr>
+<tr>
+<td>FileNotFoundError</td>
+<td>"files missed!, all data resetted. Check for the original data on the cheat sheet"</td>
+<td>Problem arised while reading files.</td>
+<td>500</td>
+</tr>
+<tr>
+<td>ClassCreationError</td>
+<td>"Failed to build an object, check the input!"</td>
+<td>Problem arised while creating object</td>
+<td>500</td>
+</tr>
+<tr>
+<td>UserDoesNotExistError</td>
+<td>"User is not in the database, please enter an existing user!"</td>
+<td>User disabled or not found in the database!</td>
+<td>401</td>
+</tr>
+<tr>
+<td>UserisNotAdminError</td>
+<td>"User has no admin privileges!"</td>
+<td>User is not admin.</td>
+<td>405</td>
+</tr>
+<tr>
+<td>AdminIsNotMasterError</td>
+<td>"Admin has no master privileges!"</td>
+<td>Admin is not master.</td>
+<td>405</td>
+</tr>
+<tr>
+<td>ChangeYourUsernameError</td>
+<td>"Username doesn't match with policy, change it!"</td>
+<td>Username doesn't have required charcters.</td>
+<td>403</td>
+</tr>
+<tr>
+<td>ChangeYourPasswordError</td>
+<td>"Password is not valid any more, change it!"</td>
+<td>Password doesn't have required characters or is pwned.</td>
+<td>403</td>
+</tr>
+<tr>
+<td>UserExistsAlreadyError</td>
+<td>"User exists already, try with another one!"</td>
+<td>Sign up or editing username with already existing username.</td>
+<td>400</td>
+</tr>
+<tr>
+<td>AccountError</td>
+<td>"go to login to check your account!"</td>
+<td>User is trying to excute admin functions or his username/password should be changed.</td>
+<td>403</td>
+</tr>
+<tr>
+<td>LengthError</td>
+<td>"length doesn't match policy!"</td>
+<td>User is trying to generate password with invalid length.</td>
+<td>403</td>
+</tr>
+<tr>
+<td>PasswordUsedBeforeError</td>
+<td>"password used before!"</td>
+<td>User is trying to edit his password with a already used password.</td>
+<td>406</td>
+</tr>
+<tr>
+<td>AdminHimSelfError</td>
+<td>"you cannot excute it on yourself!"</td>
+<td>Admin is trying to enable,disable,delete or reset himself.</td>
+<td>403</td>
+</tr>
+<tr>
+<td>PasswordPolicyError</td>
+<td>"password policy is not valid, try again!"</td>
+<td>Admin is trying to enter logical invalid policy values.</td>
+<td>400</td>
+</tr>
+<tr>
+<td>UsernamePolicyError</td>
+<td>"username policy is not valid, try again!"</td>
+<td>Admin is trying to enter logical invalid policy values.</td>
+<td>400</td>
+</tr>
+</tbody>
+</table>
+
 <h4><b>Login</b></h4>
 
 <table>
