@@ -1,9 +1,90 @@
 <body>
-<h1>Password-Management-System</h1>
+<h1>Password Management System</h1>
 
-<h4>System to manage user account</h4>
-<h6>if you want to use the system, please check which permissions you have.</h6>
+<h5>Setup:</h5>
+<h6>
+<ul style="list-style-type:circle;">
+<li>install python3 on your pc.</li>
+<li>open the command line and go to the password-management-system directory.</li>
+<li> write "python3 Application.py" to run the application.</li>
+<li> write "python3 Unittest/Unittest.py" to run the 78 unit tests.</li>
+</ul>
+</h6>
 
+<h5>Rules:</h5>
+<h6>
+<ul style="list-style-type:circle;">
+<li>passwords not allowed to contain this characters " ' ; : \ this characters cause bugs</li>
+<li>password allowed to contain this punctuations !#$%&()*+,-./<=>?@[]^_`{|}~</li>
+<li>username policy:</li>
+<ul>
+<table>
+<tbody>
+<tr>
+<td><b>minimum length</b></td>
+<td>4</td>
+</tr>
+<tr>
+<td><b>maximum length</b></td>
+<td>15</td>
+</tr>
+<tr>
+<td><b>minimum count of upper cases</b></td>
+<td>1</td>
+</tr>
+<tr>
+<td><b>minimum count of lower cases</b></td>
+<td>1</td>
+</tr>
+<tr>
+<td><b>minimum count of numerical characters</b></td>
+<td>1</td>
+</tr>
+<tr>
+<td><b>minimum count of punctuations</b></td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+</ul>
+<li>password policy:
+<ul>
+<table>
+<tbody>
+<tr>
+<td><b>minimum length</b></td>
+<td>8</td>
+</tr>
+<tr>
+<td><b>maximum length</b></td>
+<td>60</td>
+</tr>
+<tr>
+<td><b>minimum count of upper cases</b></td>
+<td>1</td>
+</tr>
+<tr>
+<td><b>minimum count of lower cases</b></td>
+<td>1</td>
+</tr>
+<tr>
+<td><b>minimum count of numerical characters</b></td>
+<td>2</td>
+</tr>
+<tr>
+<td><b>minimum count of punctuations</b></td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+</ul>
+</li>
+</h6>
+
+
+<!-- <h6>if you want to use the system, please check which permissions you have.</h6> -->
+
+<h4>Predefined Master: <h6>This user is a default user which exist at the beginning of the program and can be used to execute all functions that need master permission. If anything went wrong with reading files, the system will be resetted and it exists only this user<li>username: Amino1<li>password: h]XN^3+R8s</h6></h4>
 
 
 <table>
@@ -80,18 +161,6 @@
 <td style="text-align: center;">❌</td>
 <td style="text-align: center;">❌</td>
 </tr>
-<tr>
-<td >sign up</td>
-<td style="text-align: center;">❌</td>
-<td style="text-align: center;">✔️</td>
-<td style="text-align: center;">✔️</td>
-<td style="text-align: center;">❌</td>
-<td style="text-align: center;">✔️</td>
-<td style="text-align: center;">✔️</td>
-<td style="text-align: center;">❌</td>
-<td style="text-align: center;">❌</td>
-<td style="text-align: center;">❌</td>
-</tr>
 <tr style="height: 10px;">
 <td style="height: 10px;">get login history </td>
 <td style="text-align: center;">✔️</td>
@@ -116,6 +185,19 @@
 <td style="text-align: center;">❌</td>
 <td style="text-align: center;">❌</td>
 </tr>
+<tr>
+<td >sign up</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">✔️</td>
+<td style="text-align: center;">✔️</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">✔️</td>
+<td style="text-align: center;">✔️</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">❌</td>
+</tr>
+
 <tr>
 <td >enable</td>
 <td style="text-align: center;">❌</td>
@@ -169,6 +251,10 @@
 
 ___
 
+<h2>Cheat Sheet:</h2>
+
+<h4><b>Login</b></h4>
+
 <table>
 <tbody>
 <tr>
@@ -203,11 +289,12 @@ ___
 </table>
 
 <br>
+<h4><b>Sign up</b></h4>
 
 <table>
 <tbody>
 <tr>
-<th style="color: #33cc66"><b>sign up</b></td>
+<th style="color: #33cc66"><b>Sign up</b></td>
 <th style="color: #33cc66">http://127.0.0.1:1337/signup</td>
 </tr>
 <tr>
@@ -238,11 +325,12 @@ ___
 </table>
 
 <br>
+<h4><b>Generate Password</b></h4>
 
 <table>
 <tbody>
 <tr>
-<th style="color: #33cc66"><b>generate password</b></td>
+<th style="color: #33cc66"><b>Generate password</b></td>
 <th style="color: #33cc66">http://127.0.0.1:1337/generate-password</td>
 </tr>
 <tr>
@@ -273,11 +361,13 @@ ___
 </table>
 
 <br>
+<h4><b>Edit Password</b></h4>
+
 
 <table>
 <tbody>
 <tr>
-<th style="color: #33cc66"><b>edit password</b></td>
+<th style="color: #33cc66"><b>Edit password</b></td>
 <th style="color: #33cc66">http://127.0.0.1:1337/edit-password</td>
 </tr>
 <tr>
@@ -308,11 +398,12 @@ ___
 </table>
 
 <br>
+<h4><b>Edit Username</b></h4>
 
 <table>
 <tbody>
 <tr>
-<th style="color: #33cc66"><b>edit username</b></td>
+<th style="color: #33cc66"><b>Edit username</b></td>
 <th style="color: #33cc66">http://127.0.0.1:1337/edit-username</td>
 </tr>
 <tr>
@@ -343,6 +434,7 @@ ___
 </table>
 
 <br>
+<h4><b>Enable User</b></h4>
 
 <table>
 <tbody>
@@ -378,11 +470,12 @@ ___
 </table>
 
 <br>
+<h4><b>Disable User</b></h4>
 
 <table>
 <tbody>
 <tr>
-<th style="color: #33cc66"><b>disable user</b></td>
+<th style="color: #33cc66"><b>Disable user</b></td>
 <th style="color: #33cc66">http://127.0.0.1:1337/admin/disable-user</td>
 </tr>
 <tr>
@@ -413,11 +506,12 @@ ___
 </table>
 
 <br>
+<h4><b>Delete User</b></h4>
 
 <table>
 <tbody>
 <tr>
-<th style="color: #33cc66"><b>delete user</b></td>
+<th style="color: #33cc66"><b>Delete user</b></td>
 <th style="color: #33cc66">http://127.0.0.1:1337/admin/delete-user</td>
 </tr>
 <tr>
@@ -448,11 +542,12 @@ ___
 </table>
 
 <br>
+<h4><b>Reset User</b></h4>
 
 <table>
 <tbody>
 <tr>
-<th style="color: #33cc66"><b>reset user</b></td>
+<th style="color: #33cc66"><b>Reset user</b></td>
 <th style="color: #33cc66">http://127.0.0.1:1337/admin/reset-user</td>
 </tr>
 <tr>
@@ -483,11 +578,12 @@ ___
 </table>
 
 <br>
+<h4><b>Set Password Policy</b></h4>
 
 <table>
 <tbody>
 <tr>
-<th style="color: #33cc66"><b>set password policy</b></td>
+<th style="color: #33cc66"><b>Set password policy</b></td>
 <th style="color: #33cc66">http://127.0.0.1:1337/admin/set-password-policy</td>
 </tr>
 <tr>
@@ -518,11 +614,12 @@ ___
 </table>
 
 <br>
+<h4><b>Set Username Policy</b></h4>
 
 <table>
 <tbody>
 <tr>
-<th style="color: #33cc66"><b>set username policy</b></td>
+<th style="color: #33cc66"><b>Set username policy</b></td>
 <th style="color: #33cc66">http://127.0.0.1:1337/admin/set-username-policy</td>
 </tr>
 <tr>
@@ -553,11 +650,12 @@ ___
 </table>
 
 <br>
+<h4><b>Get User Data</b></h4>
 
 <table>
 <tbody>
 <tr>
-<th style="color: #33cc66"><b>get user data</b></td>
+<th style="color: #33cc66"><b>Get user data</b></td>
 <th style="color: #33cc66">http://127.0.0.1:1337/admin/get-user-data</td>
 </tr>
 <tr>
@@ -588,11 +686,12 @@ ___
 </table>
 
 <br>
+<h4><b>Get User Count</b></h4>
 
 <table>
 <tbody>
 <tr>
-<th style="color: #33cc66"><b>get user count</b></td>
+<th style="color: #33cc66"><b>Get user count</b></td>
 <th style="color: #33cc66">http://127.0.0.1:1337/admin/get-user-count</td>
 </tr>
 <tr>
@@ -623,11 +722,12 @@ ___
 </table>
 
 <br>
+<h4><b>Get Login History</b></h4>
 
 <table>
 <tbody>
 <tr>
-<th style="color: #33cc66"><b>get login history</b></td>
+<th style="color: #33cc66"><b>Get login history</b></td>
 <th style="color: #33cc66">http://127.0.0.1:1337/admin/get-login-history</td>
 </tr>
 <tr>
@@ -658,11 +758,12 @@ ___
 </table>
 
 <br>
+<h4><b>Get Password Change History</b></h4>
 
 <table>
 <tbody>
 <tr>
-<th style="color: #33cc66"><b>get password change history</b></td>
+<th style="color: #33cc66"><b>Get password change history</b></td>
 <th style="color: #33cc66">http://127.0.0.1:1337/admin/get-change-history</td>
 </tr>
 <tr>
