@@ -84,7 +84,13 @@
 
 <!-- <h6>if you want to use the system, please check which permissions you have.</h6> -->
 
-<h4>Predefined Master: <h6>This user is a default user which exist at the beginning of the program and can be used to execute all functions that need master permission. If anything went wrong with reading files, the system will be resetted and it exists only this user<li>username: Amino1<li>password: h]XN^3+R8s</h6></h4>
+<h4>Predefined Master: <h6>This user is a default user which exist at the beginning of the program and can be used to execute all functions that need master permission. If anything went wrong with reading files, the system will be resetted and it exists only this user
+<ul>
+<li>username: Amino1</li>
+<li>password: h]XN^3+R8s</li>
+</ul>
+</h6>
+</h4>
 
 
 <table>
