@@ -1,87 +1,77 @@
-#https://dev.to/paurakhsharma/flask-rest-api-part-6-testing-rest-apis-4lla
-import sys,os,json
+# https://dev.to/paurakhsharma/flask-rest-api-part-6-testing-rest-apis-4lla
 import unittest
+import json
+import sys
+import pathlib
 
-file = os.path.dirname(os.path.realpath(__file__))+"/../"
-file1 = os.path.dirname(os.path.realpath(__file__))+"/tests/"
-files_test = os.path.dirname(os.path.realpath(__file__))+"/data"
+# adding the /passowrd-management-system to the python path
+pms = pathlib.Path(__file__).parent.parent.__fspath__()
+sys.path.append(pms)
 
-sys.path.append(file)
-sys.path.append(file1)
+# the password-management-system folder should be added to path before calling this modules
+import tests.test_app as app
+import tests.test_signup as signup
+import tests.test_encryption as encryption
 
-import Test_Application,Test_Creating_users
-
-def read_test_data():
-    with open(files_test+"/Data.json","r") as f:
-        data_file = json.loads(f.read())
-        f.close()
-
-    with open(files_test+"/secret.json","r") as f:
-        secret_file = json.loads(f.read())
-        f.close()
-        
-    with open(files_test+"/Policy.json","r") as f:
-        policy_file = json.loads(f.read())
-        f.close()
-
-    with open(files_test+"/history.json","r") as f:
-        history_file = json.loads(f.read())
-        f.close()
-        
-    return data_file,secret_file,policy_file,history_file
+#############################application files###########################
+file = pathlib.Path(__file__).parent.parent
+data_file = file.joinpath("Data", "Data.json").__fspath__()
+secret_file = file.joinpath("Data", "secret.json").__fspath__()
+history_file = file.joinpath("Data", "history.json").__fspath__()
+policy_file = file.joinpath("Data", "Policy.json").__fspath__()
 
 
+# reading application files
 def read_data():
-    with open(file+"/Data/Data.json","r") as f:
-        data_file = json.loads(f.read())
-        f.close()
+    with open(data_file, "r") as f:
+        data = json.loads(f.read())
 
-    with open(file+"/Data/secret.json","r") as f:
-        secret_file = json.loads(f.read())
-        f.close()
-        
-    with open(file+"/Data/Policy.json","r") as f:
-        policy_file = json.loads(f.read())
-        f.close()
+    with open(secret_file, "r") as f:
+        secret = json.loads(f.read())
 
-    with open(file+"/Data/history.json","r") as f:
-        history_file = json.loads(f.read())
-        f.close()
-        
-    return data_file,secret_file,policy_file,history_file
+    with open(policy_file, "r") as f:
+        policy = json.loads(f.read())
+
+    with open(history_file, "r") as f:
+        history = json.loads(f.read())
+
+    return data, secret, policy, history
+
+# writing data in application files
 
 
+def write_data(data, secret, policy, history):
+    with open(data_file, "w") as f:
+        json.dump(data, f, indent=2)
 
-def write_data(data_file,secret_file,policy_file,history_file):
-    with open(file+"/Data/Data.json","w") as f:
-        json.dump(data_file,f,indent=2)
-        f.close()
+    with open(secret_file, "w") as f:
+        json.dump(secret, f, indent=2)
 
-    with open(file+"/Data/secret.json","w") as f:
-        json.dump(secret_file,f,indent=2)
-        f.close()
-        
-    with open(file+"/Data/Policy.json","w") as f:
-        json.dump(policy_file,f,indent=2)
-        f.close()
+    with open(policy_file, "w") as f:
+        json.dump(policy, f, indent=2)
 
-    with open(file+"/Data/history.json","w") as f:
-        json.dump(history_file,f,indent=2)
-        f.close()   
-        
+    with open(history_file, "w") as f:
+        json.dump(history, f, indent=2)
+
+
 def run_tests():
-    suite = unittest.TestLoader().loadTestsFromModule(Test_Creating_users)
-    unittest.TextTestRunner(verbosity=2).run(suite)
-    
-    suite = unittest.TestLoader().loadTestsFromModule(Test_Application)
+    # load signup test file and run it
+    suite = unittest.TestLoader().loadTestsFromModule(signup)
     unittest.TextTestRunner(verbosity=2).run(suite)
 
+    # load app test file and run it
+    suite = unittest.TestLoader().loadTestsFromModule(app)
+    unittest.TextTestRunner(verbosity=2).run(suite)
+
+    # load encryption test file and run it
+    suite = unittest.TestLoader().loadTestsFromModule(encryption)
+    unittest.TextTestRunner(verbosity=2).run(suite)
 
 
-if __name__=="__main__":
-    
-    data,secret,policy,history=read_data()
-    
+if __name__ == "__main__":
+    # read data
+    data, secret, policy, history = read_data()
+    # run tests
     run_tests()
-    
-    write_data(data_file=data,secret_file=secret,policy_file=policy,history_file=history)
+    # write the read data again
+    write_data(data=data, secret=secret, policy=policy, history=history)
