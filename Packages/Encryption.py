@@ -1,68 +1,101 @@
-import bcrypt
+from typing import Union
+from passlib.hash import bcrypt as b
+from passlib.exc import PasswordSizeError
 import hashlib
 
 
-#hash password with sha-1 algorithm
-def hash_to_sha1(password:str): 
+def hash_to_sha1(password: str) -> Union[str, bool]:
     """
-    This function uses the sha-1 hashing algorithm to hash the password. It will be used to communicate with the HIBP-API to check if a password is pwned or not.
+    This function uses the sha-1 hashing algorithm to hash the password. 
 
     Args:
         password (str): The password will only be accepted if it's a string, this will be then hashed
 
     Returns:
-        str: hashed password as hex chars
+        hashed: hashed password as hex characters.
+        False: password hashing went wrong.
+
+    Errors:
+        TypeError: will be raised, if passord is not a string.
     """
-    if not isinstance(password,str):
+    try:
+        # check if password is string
+        if not isinstance(password, str):
+            raise TypeError
+
+        # convert password to byte and choose sha1 as hash algorithm
+        password = password.encode()
+        hashed = hashlib.new('sha1')
+
+        # hash it and return it
+        hashed.update(password)
+        return hashed.hexdigest()
+
+    except TypeError:
         return False
-    password = password.encode() 
-    hash = hashlib.new('sha1') 
-    
-    #hash it and return it
-    hash.update(password)
-    return hash.hexdigest() 
 
 
-#hash password with bcrypt algorithm 
-def hash_to_bcrypt(password:str):
-    """
-    this function is responsible for hashing password using a secure hash method. This method is slow, that can prevent a brute force attack, because it takes long time to be hashed
+def hash_to_bcrypt(password: str) -> Union[str, bool]:
+    """This function hash password securly using bcrypt algorithm to secure hashing. 
 
     Args:
-        password (str): the password will be accepted as a string which will be hashed with the bcrypt method. 
-        The password will go in 12 rounds  
+        password (str): string, which should be compared if this belong to hash 
 
     Returns:
-        str: hash
+        hashed: bcrypt hash of the entered password
+        False: password doesn't belong to the hash
+
+    Errors:
+        PasswordSizeError: will be raised if password is longer than 4096 characters
     """
-    if type(password)!= str:
+    try:
+        # check if password is string
+        if not isinstance(password, str):
+            raise TypeError
+
+        # hash it and return it
+        hashed = b.hash(password.encode(), rounds=14)
+        return hashed
+
+    except TypeError:
         return False
-    
-    password = password.encode()
-    salt = bcrypt.gensalt(12)
-    
-    #hash it and return it
-    hashed = bcrypt.hashpw(password,salt)
-    return hashed.decode() 
+
+    except PasswordSizeError:
+        return False
 
 
-#check if password belong to hash
-def password_hash_check(password:str, hashed:str):
-    
-    """
-    This function is used to check if a password belong to hash. The hash should be encrypted with the bcrypt algorithm and the password will be in plaintext
+def password_hash_check(password: str, hashed: str) -> bool:
+    """This function verify if password belong to hash using bcrypt algorithm to secure hashing. 
 
     Args:
-    password (str): The password is plain text which should be a string.
-    hashed (str): The hash should be an encrypted text using the bcrypt hash method
-    
-    Returns:
-        _type_: _description_
-    """
-    
-    password = password.encode()
-    hash = hashed.encode()
-    
-    #return checked password    
-    return bcrypt.checkpw(password,hash)
+        password (str): string, which should be compared if this belong to hash 
+        hashed (str): string, which should be comapred if this hash match with the password
 
+    Returns:
+        True: password belongs to the hash
+        False: password doesn't belong to the hash
+
+    Errors:
+        PasswordSizeError: will be raised if password is longer than 4096 characters
+    """
+    try:
+        # check if passowrd is string
+        if not isinstance(password, str):
+            raise TypeError
+
+        # check if hash is string
+        if not isinstance(hashed, str):
+            raise TypeError
+
+        # convert password and hash to byte string
+        byte_password = password.encode()
+        byte_hash = hashed.encode()
+
+        # return checked password
+        return b.verify(byte_password, byte_hash)
+
+    except TypeError:
+        return False
+
+    except PasswordSizeError:
+        return False
