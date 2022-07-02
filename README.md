@@ -1,11 +1,8 @@
 #               Password-Management-System
-
 ###             System to manage user account
 ___
 ![user_functions_roles](./user_functions_roles.png)
 API Cheatsheet:
-
-
 
 create user:
 curl -X POST -H "Content-Type:application/json" http://127.0.0.1:1337/signup -d'{"admin_username":"Amino1","admin_password":"h]XN^3+R8s","username":"ASu3w2","password":"h&5s§!/2S)JhGBV","status":true,"admin":true}'
