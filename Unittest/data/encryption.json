@@ -1,0 +1,8 @@
+{
+    "password":"HelloWorld",
+    "invalid_password":"HellWold",
+    "valid_bcrypt":"$2b$14$OtOjieDGGv9cFNkxG1e82ebYLZFGY2a4caUBavs.vHtKafBmGrpBS",
+    "invalid_bcrypt":"$2b$14$/ADbS8EeoJy83j2s0Na4KOvLCGsx4kvfrmXFycnDyuVryRucwxiUu",
+    "valid_sha1":"db8ac1c259eb89d4a131b253bacfca5f319d54f2",
+    "invalid_sha1":"efd67845c96599971aa5dfc198730de8ec90212b"
+}

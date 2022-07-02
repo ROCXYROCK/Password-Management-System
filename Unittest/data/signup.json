@@ -1,0 +1,16 @@
+{
+  "user1":{"username":"Asuw32!%","password":"hasZT!$12/s","status":false,"admin":false},
+  "user2":{"username":"Asuw32!3§§%","password":"hasZTa!$12/s","status":true,"admin":true},
+  "user3":{"username":"z1aOK3!$a3","password":"sw$rRQ$HD23%!","status":true,"admin":false},
+  "user4":{"username":"ASfle31()§","password":"sDeQ3§&!$124","status":true,"admin":false},
+  "user5":{"username":"H3gf8$/","password":"Hw432%sd&&6","status":false,"admin":true},
+  "user6":{"username":"Zgf3%2s","password":"sfZN54%))5§","status":true,"admin":false},
+  "user7":{"username":"lKwFo4&%","password":"jHuI§4$5!6","status":true,"admin":true},
+  "user8":{"username":"lKFo33&%","password":"jghI4$5!6","status":false,"admin":true},
+  "user9":{"username":"lKF!o22s%","password":"jghWE$5!6","status":false,"admin":false},
+  "user10":{"username":"lswFo2!%","password":"jHuI§we§5!6","status":true,"admin":true},
+  "invalid_user":{"username":2,"password":"sDeQ3§&!$124","status":true,"admin":false},
+  "policy_user":{"username":"as","password":"Has§45as)","status":true,"admin":false},
+  "admin":{"admin_username":"Amino1","admin_password":"h]XN^3+R8s"}
+}
+
