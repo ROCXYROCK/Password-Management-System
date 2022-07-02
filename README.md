@@ -169,28 +169,34 @@
 
 ___
 
-<table style="border-collapse: collapse; width: 100%; >
+<table>
 <tbody>
-<tr style="height: 18px;">
-<th >Login</td>
-<th >http://127.0.0.1:1337/login</td>
-</tr>
-<tr >
-<td >Description</td>
-<td >every user can get access to the system(user,admin,master)</td>
-</tr>
-<tr >
-<td >Method</td>
-<td >GET</td>
-</tr>
-<tr >
-<td >header</td>
-<td >Content-Type:application/json</td>
+<tr>
+<th style="color: #33cc66">Login</td>
+<th style="color: #33cc66">http://127.0.0.1:1337/login</td>
 </tr>
 <tr>
-<td >body</td>
-<td >
+<td style="color: #006600">Description</td>
+<td>every user can get access to the system(user,admin,master)</td>
+</tr>
+<tr>
+<td style="color: #006600">Method</td>
+<td>GET</td>
+</tr>
+<tr>
+<td style="color: #006600">Header</td>
+<td>Content-Type:application/json</td>
+</tr>
+<tr>
+<td style="color: #006600">Body</td>
+<td>
 <p>{<br>"username": str<br>"password": str<br>}</p>
+</td>
+</tr>
+<tr>
+<td style="color: #006600">Response</td>
+<td>
+<p>user authenticated!</p>
 </td>
 </tr>
 </tbody>
