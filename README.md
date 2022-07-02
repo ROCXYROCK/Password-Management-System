@@ -16,7 +16,7 @@
 <ul style="list-style-type:circle;">
 <li>passwords not allowed to contain this characters " ' ; : \ this characters cause bugs</li>
 <li>password allowed to contain this punctuations !#$%&()*+,-./<=>?@[]^_`{|}~</li>
-<li>username policy:</li>
+<li>username policy:
 <ul>
 <table>
 <tbody>
@@ -47,6 +47,7 @@
 </tbody>
 </table>
 </ul>
+</li>
 <li>password policy:
 <ul>
 <table>
@@ -84,7 +85,7 @@
 
 <!-- <h6>if you want to use the system, please check which permissions you have.</h6> -->
 
-<h4>Predefined Master: <h6>This user is a default user which exist at the beginning of the program and can be used to execute all functions that need master permission. If anything went wrong with reading files, the system will be resetted and it exists only this user
+<h4>Predefined Master: <h6>This user is a default user which exist at the beginning of the program and can be used to execute all functions that need master permission. If anything went wrong with reading files, the system will be resetted and it exists only this master:
 <ul>
 <li>username: Amino1</li>
 <li>password: h]XN^3+R8s</li>
