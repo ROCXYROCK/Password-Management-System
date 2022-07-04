@@ -284,43 +284,43 @@ ___
 </tr>
 <tr>
 <td>FileNotFoundError</td>
-<td>"files missed!, all data resetted. Check for the original data on the cheat sheet"</td>
-<td>Problem arised while reading files.</td>
+<td>"files missed!, all data reset. Check for the original data on the cheat sheet"</td>
+<td>Problem raised while reading files.</td>
 <td>500</td>
 </tr>
 <tr>
 <td>ClassCreationError</td>
-<td>"Failed to build an object, check the input!"</td>
-<td>Problem arised while creating object</td>
+<td>"failed to build an object, check the input!"</td>
+<td>Problem raised while creating object</td>
 <td>500</td>
 </tr>
 <tr>
 <td>UserDoesNotExistError</td>
-<td>"User is not in the database, please enter an existing user!"</td>
+<td>"user is not in the database, please enter an existing user!"</td>
 <td>User disabled or not found in the database!</td>
 <td>401</td>
 </tr>
 <tr>
 <td>UserisNotAdminError</td>
-<td>"User has no admin privileges!"</td>
+<td>"user has no admin privileges!"</td>
 <td>User is not admin.</td>
 <td>405</td>
 </tr>
 <tr>
 <td>AdminIsNotMasterError</td>
-<td>"Admin has no master privileges!"</td>
+<td>"admin has no master privileges!"</td>
 <td>Admin is not master.</td>
 <td>405</td>
 </tr>
 <tr>
 <td>ChangeYourUsernameError</td>
-<td>"Username doesn't match with policy, change it!"</td>
-<td>Username doesn't have required charcters.</td>
+<td>"username doesn't match with policy, change it!"</td>
+<td>Username doesn't have required characters.</td>
 <td>403</td>
 </tr>
 <tr>
 <td>ChangeYourPasswordError</td>
-<td>"Password is not valid any more, change it!"</td>
+<td>"password is not valid any more, change it!"</td>
 <td>Password doesn't have required characters or is pwned.</td>
 <td>403</td>
 </tr>
@@ -333,7 +333,7 @@ ___
 <tr>
 <td>AccountError</td>
 <td>"go to login to check your account!"</td>
-<td>User is trying to excute admin functions or his username/password should be changed.</td>
+<td>User is trying to execute admin functions or his username/password should be changed.</td>
 <td>403</td>
 </tr>
 <tr>
@@ -345,12 +345,12 @@ ___
 <tr>
 <td>PasswordUsedBeforeError</td>
 <td>"password used before!"</td>
-<td>User is trying to edit his password with a already used password.</td>
+<td>User is trying to edit his password with an already used password.</td>
 <td>406</td>
 </tr>
 <tr>
 <td>AdminHimSelfError</td>
-<td>"you cannot excute it on yourself!"</td>
+<td>"you cannot execute it on yourself!"</td>
 <td>Admin is trying to enable,disable,delete or reset himself.</td>
 <td>403</td>
 </tr>
