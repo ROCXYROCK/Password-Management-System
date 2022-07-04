@@ -1,11 +1,14 @@
+<!DOCTYPE html>
 <body>
 <h1>Password Management System</h1>
 
 <h5>Setup:</h5>
 <h6>
-<ul style="list-style-type:circle;">
+<ul>
 <li>install python3 on your pc.</li>
 <li>open the command line and go to the password-management-system directory.</li>
+<li> write "pip install Flask" to install the flask library</li>
+<li> write "pip install -r Requirements.txt" to install needed libraries to run the API</li>
 <li> write "python3 Application.py" to run the application.</li>
 <li> write "python3 Unittest/Unittest.py" to run the 78 unit tests.</li>
 </ul>
@@ -13,7 +16,7 @@
 
 <h5>Rules:</h5>
 <h6>
-<ul style="list-style-type:circle;">
+<ul>
 <li>passwords not allowed to contain this characters " ' ; : \ this characters cause bugs</li>
 <li>password allowed to contain this punctuations !#$%&()*+,-./<=>?@[]^_`{|}~</li>
 <li>only english letters and punctuations are allowed
@@ -83,8 +86,7 @@
 </li>
 </h6>
 
-___
-<!-- <h6>if you want to use the system, please check which permissions you have.</h6> -->
+---
 
 <h4>Predefined Master: <h6>This user is a default user which exist at the beginning of the program and can be used to execute all functions that need master permission. If anything went wrong with reading files, the system will be resetted and it exists only this master:
 <ul>
@@ -93,7 +95,6 @@ ___
 </ul>
 </h6>
 </h4>
-
 
 <table>
 <tbody>
@@ -257,7 +258,7 @@ ___
 </tbody>
 </table>
 
-___
+---
 
 <h2>Cheat Sheet:</h2>
 
@@ -478,7 +479,6 @@ ___
 
 <br>
 <h4><b>Edit Password</b></h4>
-
 
 <table>
 <tbody>
@@ -910,3 +910,4 @@ ___
 </table>
 
 </body>
+</html>
