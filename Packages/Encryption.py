@@ -1,3 +1,9 @@
+"""
+Module: Encryption.py
+Discription: This module helps to hash password to interact with HIBP or for secure hashing to store password.
+Author: Abdulhamid Hijli
+Date: 02.07.2022
+"""
 from typing import Union
 from passlib.hash import bcrypt as b
 from passlib.exc import PasswordSizeError
@@ -5,8 +11,7 @@ import hashlib
 
 
 def hash_to_sha1(password: str) -> Union[str, bool]:
-    """
-    This function uses the sha-1 hashing algorithm to hash the password. 
+    """This function uses the sha-1 hashing algorithm to hash the password. 
 
     Args:
         password (str): The password will only be accepted if it's a string, this will be then hashed
