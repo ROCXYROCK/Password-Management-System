@@ -117,7 +117,7 @@ def create_username_instance(username: str) -> Union[Username, bool]:
 
 
 def create_user_instance(user: dict) -> Union[User, Admin, bool]:
-    """This function creates a user or admin object, which can be used to 
+    """This function creates a user or admin object, which can be used to
     register the user in the data storage, because this function doesn't check
     if user is in database.
 
@@ -228,7 +228,7 @@ def check_master_admin(data: str) -> bool:
 
 
 def user_login(data: dict) -> Union[str, bool]:
-    """This function checks if user is allowed to get access into the system. 
+    """This function checks if user is allowed to get access into the system.
 
     Args:
         data(dict): data, to create an user object.
@@ -236,8 +236,8 @@ def user_login(data: dict) -> Union[str, bool]:
     Returns:
         "change username": username doesn't match with the policy.
         "change password": password is leaked or doesn't match with policy.
-        True: user get access to the system. 
-        False: user is not allowed to get access to the system. 
+        True: user get access to the system.
+        False: user is not allowed to get access to the system.
 
     Raises:
         AttributeError: will be raised, if methods of other var types are used.
@@ -278,7 +278,7 @@ def user_login(data: dict) -> Union[str, bool]:
 
 
 def login_user(data: dict) -> str:
-    """This function communicate with the application file and 
+    """This function communicate with the application file and
     checks if user can get access to the system.
 
     Args:
@@ -300,7 +300,7 @@ def login_user(data: dict) -> str:
         AttributeError: will be raised if methods of other var types are used.
         TypeError: will be raised when data type of objects in an operation is inappropriate.
         ClassCreationError: will be raised when problems happen while object creation.
-        FileNotFoundError: will be raised when file is not in the storage. 
+        FileNotFoundError: will be raised when file is not in the storage.
         UserDoesNotExistError: will be raised when user is not found in the database.
         ChangeYourUsernameError: will be raised when username doesn't match with policy.
         ChangeYourPasswordError: will be raised when password is either leaked or not matching policy.
@@ -583,7 +583,7 @@ def admin_login(admin: dict) -> bool:
     return True
 
 
-def admin_enable_disable_user(admin: dict, username: str, state: bool):
+def admin_enable_disable_user(admin: dict, username: str, state: bool) -> str:
     """This function communicate with the application file and 
     allow admin to enable/disable users and master to enable/disable users or admins.
 
@@ -848,7 +848,7 @@ def admin_reset_user_password(admin: dict, username: str) -> str:
 
 def admin_set_policy(admin: dict, policy: dict, policy_type: bool) -> str:
     """This function communicate with the application file and 
-    allow admins to set password and username policy which should not have any logical error. 
+    allow admins to set password and username policy which should not have any logical error.
 
     Args:
         admin(dict): user data containing the username and the password.
@@ -1084,7 +1084,7 @@ def admin_signup_user(admin: dict, user_data: dict) -> str:
 
         Args:
             admin(dict): user data containing the username and the password.
-            user_data(dict): user data that should be registered. 
+            user_data(dict): user data that should be registered.
 
         Returns:
             "created successfully!": user has been registered.
@@ -1103,7 +1103,7 @@ def admin_signup_user(admin: dict, user_data: dict) -> str:
             UserDoesNotExistError: will be raised when user is not found in the database.
             AccountError: will be raised if user has expired password, not existing user or not admin.
             UserisNotAdminError: will be raised when user tries to excute admin functions.
-            UserExistsAlreadyError: will be raised when user's username is already given. 
+            UserExistsAlreadyError: will be raised when user's username is already given.
     """
     login = admin_login(admin=admin)
 
