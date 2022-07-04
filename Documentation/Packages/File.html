@@ -1,0 +1,1276 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.10.0" />
+<title>File API documentation</title>
+<meta name="description" content="Module: File.py
+Discription: This module helps to interact with the data files, so it has general functions which can be used of other modules.
+…" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>File</code></h1>
+</header>
+<section id="section-intro">
+<p>Module: File.py
+Discription: This module helps to interact with the data files, so it has general functions which can be used of other modules.
+Author: Abdulhamid Hijli
+Date: 30.06.2022</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">&#34;&#34;&#34;
+Module: File.py
+Discription: This module helps to interact with the data files, so it has general functions which can be used of other modules.
+Author: Abdulhamid Hijli
+Date: 30.06.2022
+&#34;&#34;&#34;
+import json
+import pathlib
+from os import fspath
+from typing import Union
+
+# get the path of the Data directory
+file = pathlib.Path(__file__).parent.parent.joinpath(&#34;Data&#34;)
+
+data_file = fspath(file.joinpath(&#34;Data.json&#34;))
+key_file = fspath(file.joinpath(&#34;secret.json&#34;))
+policy_file = fspath(file.joinpath(&#34;Policy.json&#34;))
+history_file = fspath(file.joinpath(&#34;history.json&#34;))
+
+
+def read_file(file: str) -&gt; Union[dict, bool]:
+    &#34;&#34;&#34;This function is a general function to write json data in files.
+
+    Args:
+        file (str): file, where data should stored in.
+        data (dict): data, which should be stored in the file.
+
+    Returns:
+        read: data, which are successfully read.
+        False: writing file went wrong.
+
+    Raises:
+        AttributeError: will be raised, if methods of other types are used.
+        FileNotFoundError: will be raised when file doesn&#39;t exists at this place.
+    &#34;&#34;&#34;
+    try:
+        with open(file, &#34;r&#34;, encoding=&#39;UTF-8&#39;) as f:
+            read = f.read()
+
+        return read
+
+    except AttributeError:
+        return False
+    except FileNotFoundError:
+        return False
+
+
+def write_file(file: str, data: dict) -&gt; Union[dict, bool]:
+    &#34;&#34;&#34;This function is a general function to write json data in files.
+
+    Args:
+        file (str): file, where data should stored in.
+        data (dict): data, which should be stored in the file.
+
+    Returns:
+        True: file is stored successfully.
+        False: writing file went wrong.
+
+    Raises:
+        AttributeError: will be raised, if methods of other types are used.
+    &#34;&#34;&#34;
+    try:
+        with open(file, &#34;w&#34;, encoding=&#39;UTF-8&#39;) as f:
+            json.dump(data, f, indent=2)
+
+        return True
+
+    except AttributeError:
+        return False
+
+
+def filenotfoundwriter() -&gt; bool:
+    &#34;&#34;&#34;This function will be called, if files are empty or raising a NotFileFoundError
+
+    Returns:
+        True: All files already written
+        False: Files couldn&#39;t be wrought
+    &#34;&#34;&#34;
+    data = {&#34;Amino1&#34;: {&#34;hash&#34;: &#34;$2b$12$e.pj8zLRRX1exJFPTnRBoOwXfK0eVXLbJqd3B8mwMTUpgrh37EbgW&#34;,
+            &#34;enabled&#34;: True,
+                       &#34;admin&#34;: True,
+                       &#34;expiration&#34;: &#34;2022-09-21 00:59:00.268556&#34;,
+                       &#34;lastlogin&#34;: &#34;2022-06-30 16:32:10.458613&#34;,
+                       &#34;lastchange&#34;: &#34;2022-06-16 15:30:54.359203&#34;}}
+
+    policy = {
+        &#34;password&#34;: {
+            &#34;minlength&#34;: 8,
+            &#34;maxlength&#34;: 60,
+            &#34;upper&#34;: 1,
+            &#34;lower&#34;: 1,
+            &#34;punctuation&#34;: 1,
+            &#34;numeric&#34;: 2,
+            &#34;lastchange&#34;: &#34;2022-06-17 23:02:31.468827&#34;
+        },
+        &#34;username&#34;: {
+            &#34;minlength&#34;: 4,
+            &#34;maxlength&#34;: 15,
+            &#34;upper&#34;: 1,
+            &#34;lower&#34;: 1,
+            &#34;punctuation&#34;: 0,
+            &#34;numeric&#34;: 1,
+            &#34;lastchange&#34;: &#34;2022-06-17 22:47:02.195846&#34;
+        }
+    }
+
+    history = {
+        &#34;password&#34;: {
+            &#34;Amino1&#34;: [
+                &#34;$2b$12$bZklyhqIvlBxDhW/Mw8wQuLoJihOsuRjN/0TSwmRPvpCVZjz7wPcu&#34;,
+                &#34;$2b$12$j0qdeJtDARVzq0Go2h7z3.6vxDbNU5pDcRwARMOhmbvqDIa6F96a6&#34;]},
+        &#34;login&#34;: {
+            &#34;Amino1&#34;: [
+                &#34;2022-06-30 15:46:10.091938&#34;,
+                &#34;2022-06-30 15:46:17.866905&#34;,
+                &#34;2022-06-30 15:47:00.505671&#34;,
+                &#34;2022-06-30 15:48:48.050426&#34;,
+                &#34;2022-06-30 15:51:34.097386&#34;,
+                &#34;2022-06-30 15:51:59.604746&#34;,
+                &#34;2022-06-30 15:52:39.113701&#34;]},
+            &#34;change&#34;: {
+                &#34;Amino1&#34;: [
+                    &#34;2022-06-11 17:14:35.321194&#34;,
+                    &#34;2022-06-11 17:14:35.321194&#34;,
+                    &#34;2022-06-16 15:25:17.779154&#34;]}}
+
+    key = {&#34;key&#34;: &#34;Amino1&#34;}
+
+    if not write_file(file=data_file, data=data):
+        return False
+
+    if not write_file(file=key_file, data=key):
+        return False
+
+    if not write_file(file=policy_file, data=policy):
+        return False
+
+    if not write_file(file=history_file, data=history):
+        return False
+
+
+def get_data_file() -&gt; Union[dict, bool]:
+    &#34;&#34;&#34;This function returns the data file converted into Dictionary.
+
+    Returns:
+        data: data file converted in dictionary for treatment.
+        False: something went wrong.
+
+    Raises:
+        AttributeError: will be raised, if methods of other types are used.
+        FileNotFoundError: will be raised when file doesn&#39;t exists at this place.
+    &#34;&#34;&#34;
+    try:
+        data = read_file(data_file)
+
+        # check if file able to read
+        if not data:
+            raise FileNotFoundError
+
+        # convert json to dict
+        data = json.loads(data)
+        return data
+
+    except AttributeError:
+        return False
+
+    except FileNotFoundError:
+        if not filenotfoundwriter():
+            return False
+        return get_data_file()
+
+
+def get_policy_file() -&gt; Union[dict, bool]:
+    &#34;&#34;&#34;This function returns policy file converted into dictionary.
+
+    Returns:
+        data: policy file converted in dictionary for treatment.
+        False: something went wrong.
+
+    Raises:
+        AttributeError: will be raised, if methods of other types are used.
+        FileNotFoundError: will be raised when file doesn&#39;t exists at this place.
+    &#34;&#34;&#34;
+    try:
+        data = read_file(policy_file)
+
+        if not data:
+            raise FileNotFoundError
+
+        # convert json in dict
+        data = json.loads(data)
+        return data
+
+    except AttributeError:
+        return False
+
+    except FileNotFoundError:
+        if not filenotfoundwriter():
+            return False
+        return get_policy_file()
+
+
+def get_history_file() -&gt; Union[dict, bool]:
+    &#34;&#34;&#34;This function returns history file converted into dictionary.
+
+    Returns:
+        data: history file converted in dictionary for treatment.
+        False: something went wrong.
+
+    Raises:
+        AttributeError: will be raised, if methods of other types are used.
+        FileNotFoundError: will be raised when file doesn&#39;t exists at this place.
+    &#34;&#34;&#34;
+    try:
+        data = read_file(history_file)
+
+        if not data:
+            raise FileNotFoundError
+
+        data = json.loads(data)
+        return data
+
+    except AttributeError:
+        return False
+
+    except FileNotFoundError:
+        if not filenotfoundwriter():
+            return False
+        return get_history_file()
+
+
+def get_key_file() -&gt; Union[dict, bool]:
+    &#34;&#34;&#34;This function returns the secret file converted in dict.
+
+    Returns:
+        data: data file converted in dictionary for treatment.
+        False: something went wrong.
+
+    Raises:
+        AttributeError: will be raised, if methods of other types are used.
+        FileNotFoundError: will be raised when file doesn&#39;t exists at this place.
+    &#34;&#34;&#34;
+    try:
+        data = read_file(key_file)
+
+        # checks if file is empty
+        if not data:
+            raise FileNotFoundError
+
+        data = json.loads(data)
+        return data
+    except AttributeError:
+        return False
+
+    except FileNotFoundError:
+        if not filenotfoundwriter():
+            return False
+        return get_key_file()
+
+
+def update_data(data: dict) -&gt; bool:
+    &#34;&#34;&#34;This function write the data in the data file.
+
+    Args:
+        data (dict): data where every user is saving it.
+
+    Returns:
+        True: data updated successfully.
+        False: something went wrong.
+
+    Raises:
+        AttributeError: will be raised, if methods of other types are used.
+    &#34;&#34;&#34;
+    try:
+        write_file(file=data_file, data=data)
+        return True
+
+    except AttributeError:
+        return False
+
+
+def update_policy(policy: dict) -&gt; bool:
+    &#34;&#34;&#34;This function write the ploicy data in the policy file.
+
+    Args:
+        policy (dict): policy data
+
+    Returns:
+        True: policy updated successfully
+        False: something went wrong
+
+    Raises:
+        AttributeError: will be raised, if methods of other types are used
+    &#34;&#34;&#34;
+    try:
+        write_file(file=policy_file, data=policy)
+        return True
+
+    except AttributeError:
+        return False
+
+
+def update_history(history: dict) -&gt; bool:
+    &#34;&#34;&#34;This function saves the history data after reading this.
+
+    Args:
+        history (dict): history data which should be saved
+
+    Returns:
+        True: history updated successfully
+        False: something went wrong
+
+    Raises:
+        AttributeError: will be raised, if methods of other types are used
+    &#34;&#34;&#34;
+    try:
+        write_file(file=history_file, data=history)
+        return True
+
+    except AttributeError:
+        return False
+
+
+def update_history_with_type(username: str, data: str, data_type: str) -&gt; bool:
+    &#34;&#34;&#34;This function updates single lists of the history,
+       it upadates this with calling the history_update function.
+       The lists of each user should contain just 15 items,
+       which will be checked with help of this funtion.
+
+    Args:
+        username (str): which existing user should it be
+        data (str): data which sould be stored in the list of this user
+        data_type (str): which history should it be: &#34;login&#34;,&#34;password&#34; or &#34;change&#34;
+
+    Returns:
+        True: history updated successfully
+        False: something went wrong
+
+    Raises:
+        AttributeError: will be raised, if methods of other types are used
+    &#34;&#34;&#34;
+    try:
+        history = get_history_file()
+
+        if not history:
+            return False
+
+        # check if username is in the history
+        if username not in history[data_type]:
+            history[data_type][username] = []
+
+        # adding the given data by the calling function
+        data_list: list = history[data_type][username]
+
+        # add data to data_list
+        data_list.append(data)
+
+        # set list length in length
+        length = len(data_list)
+
+        # checks if length is more than 15, then it removes the first entry of the list
+        if length &gt; 15:
+            for _ in range(length-15):
+                data_list.pop(0)
+
+        # data will added after handling to the history var and try to store data again
+        history[data_type][username] = data_list
+
+        # checks if updating history went well
+        if not update_history(history=history):
+            return False
+
+        return True
+
+    except AttributeError:
+        return False
+
+
+def update_user_data(user: dict) -&gt; bool:
+    &#34;&#34;&#34;This function adds or updates user data into the data file.
+
+    Args:
+        user (dict): needed user data to save it in the Data.json
+
+    Returns:
+        True: data updated successfully
+        False: something went wrong
+
+    Raises:
+        AttributeError: will be raised, if methods of other types are used
+    &#34;&#34;&#34;
+    try:
+        data = get_data_file()
+
+        # check if data creating went well
+        if not data:
+            return False
+
+        username = user[&#34;username&#34;]
+
+        # remove the item username
+        user.pop(&#34;username&#34;)
+
+        # adding user data to data
+        data[username] = user
+
+        # check if file wrought successfully
+        if not write_file(file=data_file, data=data):
+            return False
+
+        return True
+
+    except AttributeError:
+        return False
+
+
+def update_key(key: str) -&gt; bool:
+    &#34;&#34;&#34;This function updates the name of the master admin
+
+    Args:
+        key (str): username of the master admin
+
+    Returns:
+        True: secret file updated successfully
+        False: something went wrong
+
+    Raises:
+        AttributeError: will be raised, if methods of other types are used
+    &#34;&#34;&#34;
+    try:
+        data = get_key_file()
+
+        # check if data exists
+        if not data:
+            return False
+
+        data[&#34;key&#34;] = key
+
+        write_file(file=key_file, data=data)
+        return True
+
+    except AttributeError:
+        return False</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="File.filenotfoundwriter"><code class="name flex">
+<span>def <span class="ident">filenotfoundwriter</span></span>(<span>) ‑> bool</span>
+</code></dt>
+<dd>
+<div class="desc"><p>This function will be called, if files are empty or raising a NotFileFoundError</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>True</code></dt>
+<dd>All files already written</dd>
+<dt><code>False</code></dt>
+<dd>Files couldn't be wrought</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def filenotfoundwriter() -&gt; bool:
+    &#34;&#34;&#34;This function will be called, if files are empty or raising a NotFileFoundError
+
+    Returns:
+        True: All files already written
+        False: Files couldn&#39;t be wrought
+    &#34;&#34;&#34;
+    data = {&#34;Amino1&#34;: {&#34;hash&#34;: &#34;$2b$12$e.pj8zLRRX1exJFPTnRBoOwXfK0eVXLbJqd3B8mwMTUpgrh37EbgW&#34;,
+            &#34;enabled&#34;: True,
+                       &#34;admin&#34;: True,
+                       &#34;expiration&#34;: &#34;2022-09-21 00:59:00.268556&#34;,
+                       &#34;lastlogin&#34;: &#34;2022-06-30 16:32:10.458613&#34;,
+                       &#34;lastchange&#34;: &#34;2022-06-16 15:30:54.359203&#34;}}
+
+    policy = {
+        &#34;password&#34;: {
+            &#34;minlength&#34;: 8,
+            &#34;maxlength&#34;: 60,
+            &#34;upper&#34;: 1,
+            &#34;lower&#34;: 1,
+            &#34;punctuation&#34;: 1,
+            &#34;numeric&#34;: 2,
+            &#34;lastchange&#34;: &#34;2022-06-17 23:02:31.468827&#34;
+        },
+        &#34;username&#34;: {
+            &#34;minlength&#34;: 4,
+            &#34;maxlength&#34;: 15,
+            &#34;upper&#34;: 1,
+            &#34;lower&#34;: 1,
+            &#34;punctuation&#34;: 0,
+            &#34;numeric&#34;: 1,
+            &#34;lastchange&#34;: &#34;2022-06-17 22:47:02.195846&#34;
+        }
+    }
+
+    history = {
+        &#34;password&#34;: {
+            &#34;Amino1&#34;: [
+                &#34;$2b$12$bZklyhqIvlBxDhW/Mw8wQuLoJihOsuRjN/0TSwmRPvpCVZjz7wPcu&#34;,
+                &#34;$2b$12$j0qdeJtDARVzq0Go2h7z3.6vxDbNU5pDcRwARMOhmbvqDIa6F96a6&#34;]},
+        &#34;login&#34;: {
+            &#34;Amino1&#34;: [
+                &#34;2022-06-30 15:46:10.091938&#34;,
+                &#34;2022-06-30 15:46:17.866905&#34;,
+                &#34;2022-06-30 15:47:00.505671&#34;,
+                &#34;2022-06-30 15:48:48.050426&#34;,
+                &#34;2022-06-30 15:51:34.097386&#34;,
+                &#34;2022-06-30 15:51:59.604746&#34;,
+                &#34;2022-06-30 15:52:39.113701&#34;]},
+            &#34;change&#34;: {
+                &#34;Amino1&#34;: [
+                    &#34;2022-06-11 17:14:35.321194&#34;,
+                    &#34;2022-06-11 17:14:35.321194&#34;,
+                    &#34;2022-06-16 15:25:17.779154&#34;]}}
+
+    key = {&#34;key&#34;: &#34;Amino1&#34;}
+
+    if not write_file(file=data_file, data=data):
+        return False
+
+    if not write_file(file=key_file, data=key):
+        return False
+
+    if not write_file(file=policy_file, data=policy):
+        return False
+
+    if not write_file(file=history_file, data=history):
+        return False</code></pre>
+</details>
+</dd>
+<dt id="File.get_data_file"><code class="name flex">
+<span>def <span class="ident">get_data_file</span></span>(<span>) ‑> Union[dict, bool]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>This function returns the data file converted into Dictionary.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>data</code></dt>
+<dd>data file converted in dictionary for treatment.</dd>
+<dt><code>False</code></dt>
+<dd>something went wrong.</dd>
+</dl>
+<h2 id="raises">Raises</h2>
+<dl>
+<dt><code>AttributeError</code></dt>
+<dd>will be raised, if methods of other types are used.</dd>
+<dt><code>FileNotFoundError</code></dt>
+<dd>will be raised when file doesn't exists at this place.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_data_file() -&gt; Union[dict, bool]:
+    &#34;&#34;&#34;This function returns the data file converted into Dictionary.
+
+    Returns:
+        data: data file converted in dictionary for treatment.
+        False: something went wrong.
+
+    Raises:
+        AttributeError: will be raised, if methods of other types are used.
+        FileNotFoundError: will be raised when file doesn&#39;t exists at this place.
+    &#34;&#34;&#34;
+    try:
+        data = read_file(data_file)
+
+        # check if file able to read
+        if not data:
+            raise FileNotFoundError
+
+        # convert json to dict
+        data = json.loads(data)
+        return data
+
+    except AttributeError:
+        return False
+
+    except FileNotFoundError:
+        if not filenotfoundwriter():
+            return False
+        return get_data_file()</code></pre>
+</details>
+</dd>
+<dt id="File.get_history_file"><code class="name flex">
+<span>def <span class="ident">get_history_file</span></span>(<span>) ‑> Union[dict, bool]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>This function returns history file converted into dictionary.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>data</code></dt>
+<dd>history file converted in dictionary for treatment.</dd>
+<dt><code>False</code></dt>
+<dd>something went wrong.</dd>
+</dl>
+<h2 id="raises">Raises</h2>
+<dl>
+<dt><code>AttributeError</code></dt>
+<dd>will be raised, if methods of other types are used.</dd>
+<dt><code>FileNotFoundError</code></dt>
+<dd>will be raised when file doesn't exists at this place.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_history_file() -&gt; Union[dict, bool]:
+    &#34;&#34;&#34;This function returns history file converted into dictionary.
+
+    Returns:
+        data: history file converted in dictionary for treatment.
+        False: something went wrong.
+
+    Raises:
+        AttributeError: will be raised, if methods of other types are used.
+        FileNotFoundError: will be raised when file doesn&#39;t exists at this place.
+    &#34;&#34;&#34;
+    try:
+        data = read_file(history_file)
+
+        if not data:
+            raise FileNotFoundError
+
+        data = json.loads(data)
+        return data
+
+    except AttributeError:
+        return False
+
+    except FileNotFoundError:
+        if not filenotfoundwriter():
+            return False
+        return get_history_file()</code></pre>
+</details>
+</dd>
+<dt id="File.get_key_file"><code class="name flex">
+<span>def <span class="ident">get_key_file</span></span>(<span>) ‑> Union[dict, bool]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>This function returns the secret file converted in dict.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>data</code></dt>
+<dd>data file converted in dictionary for treatment.</dd>
+<dt><code>False</code></dt>
+<dd>something went wrong.</dd>
+</dl>
+<h2 id="raises">Raises</h2>
+<dl>
+<dt><code>AttributeError</code></dt>
+<dd>will be raised, if methods of other types are used.</dd>
+<dt><code>FileNotFoundError</code></dt>
+<dd>will be raised when file doesn't exists at this place.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_key_file() -&gt; Union[dict, bool]:
+    &#34;&#34;&#34;This function returns the secret file converted in dict.
+
+    Returns:
+        data: data file converted in dictionary for treatment.
+        False: something went wrong.
+
+    Raises:
+        AttributeError: will be raised, if methods of other types are used.
+        FileNotFoundError: will be raised when file doesn&#39;t exists at this place.
+    &#34;&#34;&#34;
+    try:
+        data = read_file(key_file)
+
+        # checks if file is empty
+        if not data:
+            raise FileNotFoundError
+
+        data = json.loads(data)
+        return data
+    except AttributeError:
+        return False
+
+    except FileNotFoundError:
+        if not filenotfoundwriter():
+            return False
+        return get_key_file()</code></pre>
+</details>
+</dd>
+<dt id="File.get_policy_file"><code class="name flex">
+<span>def <span class="ident">get_policy_file</span></span>(<span>) ‑> Union[dict, bool]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>This function returns policy file converted into dictionary.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>data</code></dt>
+<dd>policy file converted in dictionary for treatment.</dd>
+<dt><code>False</code></dt>
+<dd>something went wrong.</dd>
+</dl>
+<h2 id="raises">Raises</h2>
+<dl>
+<dt><code>AttributeError</code></dt>
+<dd>will be raised, if methods of other types are used.</dd>
+<dt><code>FileNotFoundError</code></dt>
+<dd>will be raised when file doesn't exists at this place.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_policy_file() -&gt; Union[dict, bool]:
+    &#34;&#34;&#34;This function returns policy file converted into dictionary.
+
+    Returns:
+        data: policy file converted in dictionary for treatment.
+        False: something went wrong.
+
+    Raises:
+        AttributeError: will be raised, if methods of other types are used.
+        FileNotFoundError: will be raised when file doesn&#39;t exists at this place.
+    &#34;&#34;&#34;
+    try:
+        data = read_file(policy_file)
+
+        if not data:
+            raise FileNotFoundError
+
+        # convert json in dict
+        data = json.loads(data)
+        return data
+
+    except AttributeError:
+        return False
+
+    except FileNotFoundError:
+        if not filenotfoundwriter():
+            return False
+        return get_policy_file()</code></pre>
+</details>
+</dd>
+<dt id="File.read_file"><code class="name flex">
+<span>def <span class="ident">read_file</span></span>(<span>file: str) ‑> Union[dict, bool]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>This function is a general function to write json data in files.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>file</code></strong> :&ensp;<code>str</code></dt>
+<dd>file, where data should stored in.</dd>
+<dt><strong><code>data</code></strong> :&ensp;<code>dict</code></dt>
+<dd>data, which should be stored in the file.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>read</code></dt>
+<dd>data, which are successfully read.</dd>
+<dt><code>False</code></dt>
+<dd>writing file went wrong.</dd>
+</dl>
+<h2 id="raises">Raises</h2>
+<dl>
+<dt><code>AttributeError</code></dt>
+<dd>will be raised, if methods of other types are used.</dd>
+<dt><code>FileNotFoundError</code></dt>
+<dd>will be raised when file doesn't exists at this place.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def read_file(file: str) -&gt; Union[dict, bool]:
+    &#34;&#34;&#34;This function is a general function to write json data in files.
+
+    Args:
+        file (str): file, where data should stored in.
+        data (dict): data, which should be stored in the file.
+
+    Returns:
+        read: data, which are successfully read.
+        False: writing file went wrong.
+
+    Raises:
+        AttributeError: will be raised, if methods of other types are used.
+        FileNotFoundError: will be raised when file doesn&#39;t exists at this place.
+    &#34;&#34;&#34;
+    try:
+        with open(file, &#34;r&#34;, encoding=&#39;UTF-8&#39;) as f:
+            read = f.read()
+
+        return read
+
+    except AttributeError:
+        return False
+    except FileNotFoundError:
+        return False</code></pre>
+</details>
+</dd>
+<dt id="File.update_data"><code class="name flex">
+<span>def <span class="ident">update_data</span></span>(<span>data: dict) ‑> bool</span>
+</code></dt>
+<dd>
+<div class="desc"><p>This function write the data in the data file.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>data</code></strong> :&ensp;<code>dict</code></dt>
+<dd>data where every user is saving it.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>True</code></dt>
+<dd>data updated successfully.</dd>
+<dt><code>False</code></dt>
+<dd>something went wrong.</dd>
+</dl>
+<h2 id="raises">Raises</h2>
+<dl>
+<dt><code>AttributeError</code></dt>
+<dd>will be raised, if methods of other types are used.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def update_data(data: dict) -&gt; bool:
+    &#34;&#34;&#34;This function write the data in the data file.
+
+    Args:
+        data (dict): data where every user is saving it.
+
+    Returns:
+        True: data updated successfully.
+        False: something went wrong.
+
+    Raises:
+        AttributeError: will be raised, if methods of other types are used.
+    &#34;&#34;&#34;
+    try:
+        write_file(file=data_file, data=data)
+        return True
+
+    except AttributeError:
+        return False</code></pre>
+</details>
+</dd>
+<dt id="File.update_history"><code class="name flex">
+<span>def <span class="ident">update_history</span></span>(<span>history: dict) ‑> bool</span>
+</code></dt>
+<dd>
+<div class="desc"><p>This function saves the history data after reading this.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>history</code></strong> :&ensp;<code>dict</code></dt>
+<dd>history data which should be saved</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>True</code></dt>
+<dd>history updated successfully</dd>
+<dt><code>False</code></dt>
+<dd>something went wrong</dd>
+</dl>
+<h2 id="raises">Raises</h2>
+<dl>
+<dt><code>AttributeError</code></dt>
+<dd>will be raised, if methods of other types are used</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def update_history(history: dict) -&gt; bool:
+    &#34;&#34;&#34;This function saves the history data after reading this.
+
+    Args:
+        history (dict): history data which should be saved
+
+    Returns:
+        True: history updated successfully
+        False: something went wrong
+
+    Raises:
+        AttributeError: will be raised, if methods of other types are used
+    &#34;&#34;&#34;
+    try:
+        write_file(file=history_file, data=history)
+        return True
+
+    except AttributeError:
+        return False</code></pre>
+</details>
+</dd>
+<dt id="File.update_history_with_type"><code class="name flex">
+<span>def <span class="ident">update_history_with_type</span></span>(<span>username: str, data: str, data_type: str) ‑> bool</span>
+</code></dt>
+<dd>
+<div class="desc"><p>This function updates single lists of the history,
+it upadates this with calling the history_update function.
+The lists of each user should contain just 15 items,
+which will be checked with help of this funtion.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>username</code></strong> :&ensp;<code>str</code></dt>
+<dd>which existing user should it be</dd>
+<dt><strong><code>data</code></strong> :&ensp;<code>str</code></dt>
+<dd>data which sould be stored in the list of this user</dd>
+<dt><strong><code>data_type</code></strong> :&ensp;<code>str</code></dt>
+<dd>which history should it be: "login","password" or "change"</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>True</code></dt>
+<dd>history updated successfully</dd>
+<dt><code>False</code></dt>
+<dd>something went wrong</dd>
+</dl>
+<h2 id="raises">Raises</h2>
+<dl>
+<dt><code>AttributeError</code></dt>
+<dd>will be raised, if methods of other types are used</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def update_history_with_type(username: str, data: str, data_type: str) -&gt; bool:
+    &#34;&#34;&#34;This function updates single lists of the history,
+       it upadates this with calling the history_update function.
+       The lists of each user should contain just 15 items,
+       which will be checked with help of this funtion.
+
+    Args:
+        username (str): which existing user should it be
+        data (str): data which sould be stored in the list of this user
+        data_type (str): which history should it be: &#34;login&#34;,&#34;password&#34; or &#34;change&#34;
+
+    Returns:
+        True: history updated successfully
+        False: something went wrong
+
+    Raises:
+        AttributeError: will be raised, if methods of other types are used
+    &#34;&#34;&#34;
+    try:
+        history = get_history_file()
+
+        if not history:
+            return False
+
+        # check if username is in the history
+        if username not in history[data_type]:
+            history[data_type][username] = []
+
+        # adding the given data by the calling function
+        data_list: list = history[data_type][username]
+
+        # add data to data_list
+        data_list.append(data)
+
+        # set list length in length
+        length = len(data_list)
+
+        # checks if length is more than 15, then it removes the first entry of the list
+        if length &gt; 15:
+            for _ in range(length-15):
+                data_list.pop(0)
+
+        # data will added after handling to the history var and try to store data again
+        history[data_type][username] = data_list
+
+        # checks if updating history went well
+        if not update_history(history=history):
+            return False
+
+        return True
+
+    except AttributeError:
+        return False</code></pre>
+</details>
+</dd>
+<dt id="File.update_key"><code class="name flex">
+<span>def <span class="ident">update_key</span></span>(<span>key: str) ‑> bool</span>
+</code></dt>
+<dd>
+<div class="desc"><p>This function updates the name of the master admin</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>key</code></strong> :&ensp;<code>str</code></dt>
+<dd>username of the master admin</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>True</code></dt>
+<dd>secret file updated successfully</dd>
+<dt><code>False</code></dt>
+<dd>something went wrong</dd>
+</dl>
+<h2 id="raises">Raises</h2>
+<dl>
+<dt><code>AttributeError</code></dt>
+<dd>will be raised, if methods of other types are used</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def update_key(key: str) -&gt; bool:
+    &#34;&#34;&#34;This function updates the name of the master admin
+
+    Args:
+        key (str): username of the master admin
+
+    Returns:
+        True: secret file updated successfully
+        False: something went wrong
+
+    Raises:
+        AttributeError: will be raised, if methods of other types are used
+    &#34;&#34;&#34;
+    try:
+        data = get_key_file()
+
+        # check if data exists
+        if not data:
+            return False
+
+        data[&#34;key&#34;] = key
+
+        write_file(file=key_file, data=data)
+        return True
+
+    except AttributeError:
+        return False</code></pre>
+</details>
+</dd>
+<dt id="File.update_policy"><code class="name flex">
+<span>def <span class="ident">update_policy</span></span>(<span>policy: dict) ‑> bool</span>
+</code></dt>
+<dd>
+<div class="desc"><p>This function write the ploicy data in the policy file.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>policy</code></strong> :&ensp;<code>dict</code></dt>
+<dd>policy data</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>True</code></dt>
+<dd>policy updated successfully</dd>
+<dt><code>False</code></dt>
+<dd>something went wrong</dd>
+</dl>
+<h2 id="raises">Raises</h2>
+<dl>
+<dt><code>AttributeError</code></dt>
+<dd>will be raised, if methods of other types are used</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def update_policy(policy: dict) -&gt; bool:
+    &#34;&#34;&#34;This function write the ploicy data in the policy file.
+
+    Args:
+        policy (dict): policy data
+
+    Returns:
+        True: policy updated successfully
+        False: something went wrong
+
+    Raises:
+        AttributeError: will be raised, if methods of other types are used
+    &#34;&#34;&#34;
+    try:
+        write_file(file=policy_file, data=policy)
+        return True
+
+    except AttributeError:
+        return False</code></pre>
+</details>
+</dd>
+<dt id="File.update_user_data"><code class="name flex">
+<span>def <span class="ident">update_user_data</span></span>(<span>user: dict) ‑> bool</span>
+</code></dt>
+<dd>
+<div class="desc"><p>This function adds or updates user data into the data file.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>user</code></strong> :&ensp;<code>dict</code></dt>
+<dd>needed user data to save it in the Data.json</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>True</code></dt>
+<dd>data updated successfully</dd>
+<dt><code>False</code></dt>
+<dd>something went wrong</dd>
+</dl>
+<h2 id="raises">Raises</h2>
+<dl>
+<dt><code>AttributeError</code></dt>
+<dd>will be raised, if methods of other types are used</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def update_user_data(user: dict) -&gt; bool:
+    &#34;&#34;&#34;This function adds or updates user data into the data file.
+
+    Args:
+        user (dict): needed user data to save it in the Data.json
+
+    Returns:
+        True: data updated successfully
+        False: something went wrong
+
+    Raises:
+        AttributeError: will be raised, if methods of other types are used
+    &#34;&#34;&#34;
+    try:
+        data = get_data_file()
+
+        # check if data creating went well
+        if not data:
+            return False
+
+        username = user[&#34;username&#34;]
+
+        # remove the item username
+        user.pop(&#34;username&#34;)
+
+        # adding user data to data
+        data[username] = user
+
+        # check if file wrought successfully
+        if not write_file(file=data_file, data=data):
+            return False
+
+        return True
+
+    except AttributeError:
+        return False</code></pre>
+</details>
+</dd>
+<dt id="File.write_file"><code class="name flex">
+<span>def <span class="ident">write_file</span></span>(<span>file: str, data: dict) ‑> Union[dict, bool]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>This function is a general function to write json data in files.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>file</code></strong> :&ensp;<code>str</code></dt>
+<dd>file, where data should stored in.</dd>
+<dt><strong><code>data</code></strong> :&ensp;<code>dict</code></dt>
+<dd>data, which should be stored in the file.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>True</code></dt>
+<dd>file is stored successfully.</dd>
+<dt><code>False</code></dt>
+<dd>writing file went wrong.</dd>
+</dl>
+<h2 id="raises">Raises</h2>
+<dl>
+<dt><code>AttributeError</code></dt>
+<dd>will be raised, if methods of other types are used.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def write_file(file: str, data: dict) -&gt; Union[dict, bool]:
+    &#34;&#34;&#34;This function is a general function to write json data in files.
+
+    Args:
+        file (str): file, where data should stored in.
+        data (dict): data, which should be stored in the file.
+
+    Returns:
+        True: file is stored successfully.
+        False: writing file went wrong.
+
+    Raises:
+        AttributeError: will be raised, if methods of other types are used.
+    &#34;&#34;&#34;
+    try:
+        with open(file, &#34;w&#34;, encoding=&#39;UTF-8&#39;) as f:
+            json.dump(data, f, indent=2)
+
+        return True
+
+    except AttributeError:
+        return False</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+<section>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="File.filenotfoundwriter" href="#File.filenotfoundwriter">filenotfoundwriter</a></code></li>
+<li><code><a title="File.get_data_file" href="#File.get_data_file">get_data_file</a></code></li>
+<li><code><a title="File.get_history_file" href="#File.get_history_file">get_history_file</a></code></li>
+<li><code><a title="File.get_key_file" href="#File.get_key_file">get_key_file</a></code></li>
+<li><code><a title="File.get_policy_file" href="#File.get_policy_file">get_policy_file</a></code></li>
+<li><code><a title="File.read_file" href="#File.read_file">read_file</a></code></li>
+<li><code><a title="File.update_data" href="#File.update_data">update_data</a></code></li>
+<li><code><a title="File.update_history" href="#File.update_history">update_history</a></code></li>
+<li><code><a title="File.update_history_with_type" href="#File.update_history_with_type">update_history_with_type</a></code></li>
+<li><code><a title="File.update_key" href="#File.update_key">update_key</a></code></li>
+<li><code><a title="File.update_policy" href="#File.update_policy">update_policy</a></code></li>
+<li><code><a title="File.update_user_data" href="#File.update_user_data">update_user_data</a></code></li>
+<li><code><a title="File.write_file" href="#File.write_file">write_file</a></code></li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.10.0</a>.</p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,2990 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.10.0" />
+<title>Classes API documentation</title>
+<meta name="description" content="Module: Classes.py
+Discription: Classes will be created in this module, to help other modules to create objects of this classes.
+Author: Abdulhamid …" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>Classes</code></h1>
+</header>
+<section id="section-intro">
+<p>Module: Classes.py
+Discription: Classes will be created in this module, to help other modules to create objects of this classes.
+Author: Abdulhamid Hijli
+Date: 30.06.2022</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">&#34;&#34;&#34;
+Module: Classes.py
+Discription: Classes will be created in this module, to help other modules to create objects of this classes.
+Author: Abdulhamid Hijli
+Date: 30.06.2022
+&#34;&#34;&#34;
+import requests
+import secrets
+from typing import Union, Tuple
+from datetime import datetime
+from dateutil.relativedelta import relativedelta
+from Packages.Exceptions import PasswordIsPwnedError
+from string import ascii_lowercase, ascii_uppercase, digits, punctuation
+from Packages.Encryption import hash_to_sha1, hash_to_bcrypt, password_hash_check
+
+
+class Time:
+    def time_now() -&gt; str:
+        return str(datetime.utcnow())
+
+    def expiration_update(time_str: str) -&gt; str:
+
+        # convert string into datetime object
+        time = datetime.fromisoformat(time_str)
+
+        # add to the datetime object 3 months
+        time = time + relativedelta(months=3)
+
+        return str(time)
+
+
+class Policy:
+    def __init__(self, minlength: int, maxlength: int,
+                 punctuation: int, numeric: int,
+                 lower: int, upper: int, lastchange: str) -&gt; None:
+
+        self.__minlength: int = minlength
+        self.__maxlength: int = maxlength
+        self.__punctuation: int = punctuation
+        self.__numeric: int = numeric
+        self.__lower: int = lower
+        self.__upper: int = upper
+        self.__lastchange: str = lastchange
+
+    def get_lastchange(self) -&gt; str:
+        return self.__lastchange
+
+    def get_minlength(self) -&gt; int:
+        return self.__minlength
+
+    def get_maxlength(self) -&gt; int:
+        return self.__maxlength
+
+    def get_punctuation(self) -&gt; int:
+        return self.__punctuation
+
+    def get_numeric(self) -&gt; int:
+        return self.__numeric
+
+    def get_upper(self) -&gt; int:
+        return self.__upper
+
+    def get_lower(self) -&gt; int:
+        return self.__lower
+
+    def set_minlength(self, minlength: int) -&gt; bool:
+        try:
+            self.__minlength = minlength
+            return True
+        except TypeError:
+            return False
+
+    def set_maxlength(self, maxlength: int) -&gt; bool:
+        try:
+            self.__maxlength = maxlength
+            return True
+        except TypeError:
+            return False
+
+    def set_punctuation(self, punctuation: int) -&gt; bool:
+        try:
+            self.__punctuation = punctuation
+            return True
+
+        except TypeError:
+            return False
+
+    def set_numeric(self, numeric: int) -&gt; bool:
+        try:
+            self.__numeric = numeric
+            return True
+
+        except TypeError:
+            return False
+
+    def set_upper(self, upper: int) -&gt; bool:
+        try:
+            self.__upper = upper
+            return True
+
+        except TypeError:
+            return False
+
+    def set_lower(self, lower: int) -&gt; bool:
+        try:
+            self.__lower = lower
+            return True
+
+        except TypeError:
+            return False
+
+    def set_lastchange(self, time_str: str) -&gt; bool:
+        try:
+            self.__lastchange = time_str
+            return True
+
+        except TypeError:
+            return False
+
+    def get_policy(self) -&gt; dict:
+        return {&#34;minlength&#34;: self.__minlength, &#34;maxlength&#34;: self.__maxlength,
+                &#34;upper&#34;: self.__upper, &#34;lower&#34;: self.__lower,
+                &#34;punctuation&#34;: self.__punctuation, &#34;numeric&#34;: self.__numeric,
+                &#34;lastchange&#34;: self.__lastchange}
+
+    def isupper(self, text: str) -&gt; bool:
+        &#34;&#34;&#34;checks if the password contains enough upper cases&#34;&#34;&#34;
+        counter = 0
+
+        for i in text:
+            if i.isupper():
+                counter += 1
+
+        if counter &gt;= self.__upper:
+            return True
+
+        return False
+
+    def islower(self, text: str) -&gt; bool:
+        &#34;&#34;&#34;checks if the password conatains enough lower cases&#34;&#34;&#34;
+        counter = 0
+
+        for i in text:
+            if i.islower():
+                counter += 1
+
+        if counter &gt;= self.__lower:
+            return True
+
+        return False
+
+    def isnumeric(self, text: str) -&gt; bool:
+        &#34;&#34;&#34;checks if the password has enough numerical characters&#34;&#34;&#34;
+        counter = 0
+
+        for i in text:
+            if i.isnumeric():
+                counter += 1
+
+        if counter &gt;= self.__numeric:
+            return True
+
+        return False
+
+    def ispunctuation(self, text: str) -&gt; bool:
+        &#34;&#34;&#34;checks if the password has enough special characters&#34;&#34;&#34;
+        counter = 0
+        list_of_non = [&#34;\&#34;&#34;, &#34;&#39;&#34;, &#34;:&#34;, &#34;;&#34;, &#34;\\&#34;]
+
+        # check chars of string
+        for i in text:
+            if i in punctuation:
+                counter += 1
+
+            # check if any char of the string is part of the list_of_non
+            if i in list_of_non:
+                return False
+
+        # check if count match with minimum count of punctuation
+        if counter &lt; self.__punctuation:
+            return False
+
+        return True
+
+    def length(self, text: str) -&gt; bool:
+        &#34;&#34;&#34;checks if the lenght of the given password is equal to the required length or not&#34;&#34;&#34;
+
+        # checks if text has the minimum required length
+        if len(text) &lt; self.__minlength:
+            return False
+
+        # checks if text length is not greater than maximum allowed length
+        if len(text) &gt; self.__maxlength:
+            return False
+
+        return True
+
+    def policy_text(self, text: str) -&gt; bool:
+
+        # check if text has enough lower letters
+        if not self.islower(text=text):
+            return False
+
+        # check if text has enough upper letters
+        if not self.isupper(text=text):
+            return False
+
+        # check if text has enough numerical characters
+        if not self.isnumeric(text=text):
+            return False
+
+        # check if text has enough punctuation characters
+        if not self.ispunctuation(text=text):
+            return False
+
+        # check if text has enough length
+        if not self.length(text=text):
+            return False
+        return True
+
+    def check_policy(self) -&gt; bool:
+
+        # check if minlength is not greater than maxlength
+        if self.__minlength &gt;= self.__maxlength:
+            return False
+
+        # sum of policy&#39;s possible minimum rules
+        sum_of = self.__lower + self.__numeric + self.__punctuation + self.__upper
+
+        # check if these rules are not greater than minlength
+        if sum_of &gt; self.__minlength:
+            return False
+
+        return True
+
+
+class Username:
+    def __init__(self, username: str, policy: Policy) -&gt; None:
+        self.__username: str = username
+        self.__policy: Policy = policy
+
+    def get_username(self) -&gt; str:
+        return self.__username
+
+    def get_policy(self) -&gt; Policy:
+        &#34;&#34;&#34;It returns a Policy bject&#34;&#34;&#34;
+        return self.__policy
+
+    def policy_username(self) -&gt; bool:
+        &#34;&#34;&#34;check if username is matching with username policy&#34;&#34;&#34;
+
+        resault = self.__policy.policy_text(text=self.__username)
+
+        if not resault:
+            return False
+
+        return True
+
+    def set_username(self, username: str) -&gt; bool:
+        try:
+            self.__username = username
+            return True
+        except TypeError:
+            return False
+
+
+class Password:
+
+    def __init__(self, plain: str, policy: Policy) -&gt; None:
+        self.__policy: Policy = policy
+        self.__plain: str = plain
+
+    def get_length(self) -&gt; int:
+        return len(self.__plain)
+
+    def get_password(self) -&gt; str:
+        return self.__plain
+
+    def get_policy(self) -&gt; Policy:
+        return self.__policy
+
+    def set_password(self, plain: str) -&gt; bool:
+        try:
+            self.__plain = plain
+            return True
+
+        except TypeError:
+            return False
+
+    def pwned(self) -&gt; bool:
+        try:
+            # hash the self.__plain to sha1 with upper cases
+            hashed = hash_to_sha1(password=self.__plain).upper()
+
+            # send reqest to HIBP
+            pwned_list = requests.get(
+                url=&#34;https://api.pwnedpasswords.com/range/&#34;+hashed[:5])
+
+            # check if response is valid
+            if pwned_list.status_code != 200:
+                raise TypeError
+
+            # convert recieved text to list
+            pwned = pwned_list.text.split(&#34;\n&#34;)
+
+            # pop the last item of the list
+            pwned.pop()
+
+            # check if hash is in the list
+            for i in pwned:
+                tmp = i.split(&#34;:&#34;)[0]
+
+                if hashed[5:] == tmp:
+                    raise PasswordIsPwnedError
+
+            return True
+
+        except TypeError:
+            return False
+
+        except PasswordIsPwnedError:
+            return False
+
+    def check(self) -&gt; bool:
+
+        # check if password is not pwned and matching with password policy
+        if self.__policy.policy_text(text=self.__plain) and self.pwned():
+            return True
+
+        return False
+
+    def generate(self, length: int) -&gt; str:
+        chars = ascii_lowercase+ascii_uppercase+digits+punctuation
+
+        # set the password to the attribute __plain
+        self.__plain = &#34;&#34;.join(secrets.choice(chars) for _ in range(length))
+
+        # check the attribute __plain, if it&#39;s not pwned and matching policy
+        if self.check():
+            return self.__plain
+
+        # if not recall the same method
+        return self.generate(length=length)
+
+
+class User:
+    def __init__(self,
+                 username: Username, password: Password,
+                 hashed: str, enabled: bool,
+                 lastchange: str, expiration: str,
+                 lastlogin: str, admin: bool) -&gt; None:
+
+        self.__username: Username = username
+        self.__password: Password = password
+        self.__hash: str = hashed
+        self.__lastchange: str = lastchange
+        self.__lastlogin: str = lastlogin
+        self.__expiration: str = expiration
+        self.__enabled: bool = enabled
+        self.__admin: bool = admin
+
+    def get_user(self) -&gt; dict:
+        return {&#34;username&#34;: self.__username.get_username(),
+                &#34;hash&#34;: self.__hash, &#34;enabled&#34;: self.__enabled,
+                &#34;admin&#34;: self.__admin, &#34;expiration&#34;: self.__expiration,
+                &#34;lastlogin&#34;: self.__lastlogin, &#34;lastchange&#34;: self.__lastchange}
+
+    def get_password(self) -&gt; Password:
+        return self.__password
+
+    def get_hash(self) -&gt; str:
+        return self.__hash
+
+    def get_username(self) -&gt; Username:
+        return self.__username
+
+    def get_expiration(self) -&gt; str:
+        return self.__expiration
+
+    def get_lastlogin(self) -&gt; str:
+        return self.__lastlogin
+
+    def get_lastchange(self) -&gt; str:
+        return self.__lastchange
+
+    def get_enabled(self) -&gt; bool:
+        return self.__enabled
+
+    def get_admin_status(self) -&gt; bool:
+        return self.__admin
+
+    def set_enabled(self, status: bool) -&gt; bool:
+        try:
+            self.__enabled = status
+            return True
+
+        except TypeError:
+            return False
+
+    def set_hash(self, hashed: str) -&gt; bool:
+        try:
+            self.__hash = hashed
+            return True
+
+        except TypeError:
+            return False
+
+    def set_expiration(self, expiration: str) -&gt; bool:
+        try:
+            self.__expiration = expiration
+            return True
+
+        except TypeError:
+            return False
+
+    def set_lastchange(self, lastchange: str) -&gt; bool:
+        try:
+            self.__lastchange = lastchange
+            return True
+
+        except TypeError:
+            return False
+
+    def set_lastlogin(self, lastlogin: str) -&gt; bool:
+        try:
+            self.__lastlogin = lastlogin
+            return True
+
+        except TypeError:
+            return False
+
+    def login_user(self) -&gt; Union[str, bool]:
+
+        # check if the password match with the hash
+        if not password_hash_check(password=self.__password.get_password(), hashed=self.get_hash()):
+            return False
+
+        # chcek if user is enabled
+        if not self.get_enabled():
+            return False
+
+        # set new lastlogin
+        if not self.set_lastlogin(lastlogin=Time.time_now()):
+            return False
+
+        # check if password is pwned
+        if not self.__password.pwned():
+            return &#34;change password&#34;
+
+        # chcek if password policy has changed
+        password_policy = self.__password.get_policy()
+        if self.get_lastchange() &lt; password_policy.get_lastchange():
+
+            # check for policy, if no matching then change the expiration time
+            if not password_policy.policy_text(text=self.__password.get_password()):
+                self.set_expiration(expiration=Time.time_now())
+
+        # check if username policy has changed, check for policy
+        if not self.get_username().policy_username():
+            return &#34;change username&#34;
+
+        # check if password is expired
+        if self.get_expiration() &lt; Time.time_now():
+            return &#34;change password&#34;
+
+        return True
+
+    def generate_password(self, length: int, password: Password) -&gt; Union[str, bool]:
+
+        policy = password.get_policy()
+
+        # checks if from user inputted length is doesn&#39;t match with policy lengths
+        if length &lt; policy.get_minlength() or length &gt; policy.get_maxlength():
+            return False
+
+        return password.generate(length=length)
+
+    def edit_password(self):
+
+        password = self.get_password()
+        hashed = hash_to_bcrypt(password=password.get_password())
+
+        # checks if password is not pwned and matching with password policy
+        if not password.check():
+            return False
+
+        # checks if hashing function went well
+        if not hashed:
+            return False
+
+        # overriting the old hash of the object
+        if not self.set_hash(hashed=hashed):
+            return False
+
+        # overwriting the lastchange date to now
+        if not self.set_lastchange(lastchange=Time.time_now()):
+            return False
+
+        # overwriting the expiration date and adding 3 months to the lastchange date
+        if not self.set_expiration(expiration=Time.expiration_update(self.get_lastchange())):
+            return False
+
+        return True
+
+    def edit_username(self):
+        try:
+            username = self.get_username()
+
+            # check if username match with username policy
+            if not username.policy_username():
+                return False
+
+            return True
+
+        except TypeError:
+            return False
+
+
+class Admin(User):
+
+    def enable_user(self, user: User) -&gt; Union[dict, bool]:
+
+        # setting user enabled to True
+        if not user.set_enabled(status=True):
+            return False
+
+        return user.get_user()
+
+    def disable_user(self, user: User) -&gt; Union[dict, bool]:
+
+        # setting user enabled to False
+        if not user.set_enabled(status=False):
+            return False
+
+        return user.get_user()
+
+    def delete_user(self, user: User, data: dict, history: dict) -&gt; Tuple[dict, dict]:
+
+        # deleteing user from the data dictionary
+        data.pop(user.get_username().get_username())
+
+        # deleting user from the histories
+        history[&#34;login&#34;].pop(user.get_username().get_username())
+        history[&#34;change&#34;].pop(user.get_username().get_username())
+        history[&#34;password&#34;].pop(user.get_username().get_username())
+
+        return data, history
+
+    def reset_password(self, user: User) -&gt; Union[str, bool]:
+
+        password = user.get_password()
+        policy = password.get_policy()
+
+        # generate valid password with the min. length
+        if not password.generate(length=policy.get_minlength()):
+            return False
+
+        # create a hash
+        hashed = hash_to_bcrypt(password=password.get_password())
+        if not hashed:
+            return False
+
+        # set the created hash
+        if not user.set_hash(hashed=hashed):
+            return False
+
+        # set password lastchange date to now
+        if not user.set_lastchange(lastchange=Time.time_now()):
+            return False
+
+        # set password expiration to 3 months after lastchange
+        if not user.set_expiration(expiration=user.get_lastchange()):
+            return False
+
+        # return the new password
+        return password.get_password()
+
+    def get_password_policy(self) -&gt; dict:
+        policy = self.get_password().get_policy()
+        return policy.get_policy()
+
+    def get_username_policy(self) -&gt; dict:
+        policy = self.get_username().get_policy()
+        return policy.get_policy()
+
+    def set_password_policy(self, data: dict) -&gt; Union[dict, bool]:
+        policy = self.get_password().get_policy()
+
+        # sets the lower min count
+        if not policy.set_lower(lower=data[&#34;lower&#34;]):
+            return False
+
+        # sets the upper min count
+        if not policy.set_upper(upper=data[&#34;upper&#34;]):
+            return False
+
+        # sets the min length
+        if not policy.set_minlength(minlength=data[&#34;minlength&#34;]):
+            return False
+
+        # sets the max length
+        if not policy.set_maxlength(maxlength=data[&#34;maxlength&#34;]):
+            return False
+
+        # sets the punctuation min count
+        if not policy.set_punctuation(punctuation=data[&#34;punctuation&#34;]):
+            return False
+
+        # sets the numeric min count
+        if not policy.set_numeric(numeric=data[&#34;numeric&#34;]):
+            return False
+
+        # checks if policy is valid
+        if not policy.check_policy():
+            return False
+
+        # sets lastchange date on now
+        if not policy.set_lastchange(time_str=Time.time_now()):
+            return False
+
+        return policy.get_policy()
+
+    def set_username_policy(self, data: dict) -&gt; Union[str, bool]:
+        policy = self.get_username().get_policy()
+
+        # sets the lower min count
+        if not policy.set_lower(lower=data[&#34;lower&#34;]):
+            return False
+
+        # sets the upper min count
+        if not policy.set_upper(upper=data[&#34;upper&#34;]):
+            return False
+
+        # sets the min length
+        if not policy.set_minlength(minlength=data[&#34;minlength&#34;]):
+            return False
+
+        # sets the max length
+        if not policy.set_maxlength(maxlength=data[&#34;maxlength&#34;]):
+            return False
+
+        # sets the punctuation min count
+        if not policy.set_punctuation(punctuation=data[&#34;punctuation&#34;]):
+            return False
+
+        # sets the numeric min count
+        if not policy.set_numeric(numeric=data[&#34;numeric&#34;]):
+            return False
+
+        # checks if policy is valid
+        if not policy.check_policy():
+            return False
+
+        # sets lastchange date to now
+        if not policy.set_lastchange(time_str=Time.time_now()):
+            return False
+
+        return policy.get_policy()
+
+    def get_user_data(self, user: User) -&gt; dict:
+        return user.get_user()
+
+    def get_user_count(self, data: dict) -&gt; int:
+        return len(data)
+
+    def signup(self, user: User) -&gt; bool:
+
+        # set lastchange
+        if not user.set_lastchange(lastchange=Time.time_now()):
+            return False
+
+        # set expiration date to 3 months after lastchange
+        if not user.set_expiration(expiration=Time.expiration_update(user.get_lastchange())):
+            return False
+
+        # set lastlogin date to now
+        if not user.set_lastlogin(lastlogin=Time.time_now()):
+            return False
+
+        # check password with password policy and pwned
+        password = user.get_password()
+        if not password.check():
+            return False
+
+        username = user.get_username()
+
+        # check username with username policy
+        if not username.policy_username():
+            return False
+
+        # check that username is not in password
+        if username.get_username() in password.get_password():
+            return False
+
+        # check that password is not in username
+        if password.get_password() in username.get_username():
+            return False
+
+        # create hash of the password
+        password_hash = hash_to_bcrypt(password=password.get_password())
+
+        # check if creating hash went well
+        if not password_hash:
+            return False
+
+        # set that hash
+        if not user.set_hash(hashed=password_hash):
+            return False
+
+        return user
+
+    def get_user_login_history(self, history: dict, user: User) -&gt; list:
+
+        # returns login history of username
+        return history[&#34;login&#34;][user.get_username().get_username()]
+
+    def get_user_change_history(self, history: dict, user: User) -&gt; list:
+
+        # returns change history of username
+        return history[&#34;change&#34;][user.get_username().get_username()]</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="Classes.Admin"><code class="flex name class">
+<span>class <span class="ident">Admin</span></span>
+<span>(</span><span>username: <a title="Classes.Username" href="#Classes.Username">Username</a>, password: <a title="Classes.Password" href="#Classes.Password">Password</a>, hashed: str, enabled: bool, lastchange: str, expiration: str, lastlogin: str, admin: bool)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Admin(User):
+
+    def enable_user(self, user: User) -&gt; Union[dict, bool]:
+
+        # setting user enabled to True
+        if not user.set_enabled(status=True):
+            return False
+
+        return user.get_user()
+
+    def disable_user(self, user: User) -&gt; Union[dict, bool]:
+
+        # setting user enabled to False
+        if not user.set_enabled(status=False):
+            return False
+
+        return user.get_user()
+
+    def delete_user(self, user: User, data: dict, history: dict) -&gt; Tuple[dict, dict]:
+
+        # deleteing user from the data dictionary
+        data.pop(user.get_username().get_username())
+
+        # deleting user from the histories
+        history[&#34;login&#34;].pop(user.get_username().get_username())
+        history[&#34;change&#34;].pop(user.get_username().get_username())
+        history[&#34;password&#34;].pop(user.get_username().get_username())
+
+        return data, history
+
+    def reset_password(self, user: User) -&gt; Union[str, bool]:
+
+        password = user.get_password()
+        policy = password.get_policy()
+
+        # generate valid password with the min. length
+        if not password.generate(length=policy.get_minlength()):
+            return False
+
+        # create a hash
+        hashed = hash_to_bcrypt(password=password.get_password())
+        if not hashed:
+            return False
+
+        # set the created hash
+        if not user.set_hash(hashed=hashed):
+            return False
+
+        # set password lastchange date to now
+        if not user.set_lastchange(lastchange=Time.time_now()):
+            return False
+
+        # set password expiration to 3 months after lastchange
+        if not user.set_expiration(expiration=user.get_lastchange()):
+            return False
+
+        # return the new password
+        return password.get_password()
+
+    def get_password_policy(self) -&gt; dict:
+        policy = self.get_password().get_policy()
+        return policy.get_policy()
+
+    def get_username_policy(self) -&gt; dict:
+        policy = self.get_username().get_policy()
+        return policy.get_policy()
+
+    def set_password_policy(self, data: dict) -&gt; Union[dict, bool]:
+        policy = self.get_password().get_policy()
+
+        # sets the lower min count
+        if not policy.set_lower(lower=data[&#34;lower&#34;]):
+            return False
+
+        # sets the upper min count
+        if not policy.set_upper(upper=data[&#34;upper&#34;]):
+            return False
+
+        # sets the min length
+        if not policy.set_minlength(minlength=data[&#34;minlength&#34;]):
+            return False
+
+        # sets the max length
+        if not policy.set_maxlength(maxlength=data[&#34;maxlength&#34;]):
+            return False
+
+        # sets the punctuation min count
+        if not policy.set_punctuation(punctuation=data[&#34;punctuation&#34;]):
+            return False
+
+        # sets the numeric min count
+        if not policy.set_numeric(numeric=data[&#34;numeric&#34;]):
+            return False
+
+        # checks if policy is valid
+        if not policy.check_policy():
+            return False
+
+        # sets lastchange date on now
+        if not policy.set_lastchange(time_str=Time.time_now()):
+            return False
+
+        return policy.get_policy()
+
+    def set_username_policy(self, data: dict) -&gt; Union[str, bool]:
+        policy = self.get_username().get_policy()
+
+        # sets the lower min count
+        if not policy.set_lower(lower=data[&#34;lower&#34;]):
+            return False
+
+        # sets the upper min count
+        if not policy.set_upper(upper=data[&#34;upper&#34;]):
+            return False
+
+        # sets the min length
+        if not policy.set_minlength(minlength=data[&#34;minlength&#34;]):
+            return False
+
+        # sets the max length
+        if not policy.set_maxlength(maxlength=data[&#34;maxlength&#34;]):
+            return False
+
+        # sets the punctuation min count
+        if not policy.set_punctuation(punctuation=data[&#34;punctuation&#34;]):
+            return False
+
+        # sets the numeric min count
+        if not policy.set_numeric(numeric=data[&#34;numeric&#34;]):
+            return False
+
+        # checks if policy is valid
+        if not policy.check_policy():
+            return False
+
+        # sets lastchange date to now
+        if not policy.set_lastchange(time_str=Time.time_now()):
+            return False
+
+        return policy.get_policy()
+
+    def get_user_data(self, user: User) -&gt; dict:
+        return user.get_user()
+
+    def get_user_count(self, data: dict) -&gt; int:
+        return len(data)
+
+    def signup(self, user: User) -&gt; bool:
+
+        # set lastchange
+        if not user.set_lastchange(lastchange=Time.time_now()):
+            return False
+
+        # set expiration date to 3 months after lastchange
+        if not user.set_expiration(expiration=Time.expiration_update(user.get_lastchange())):
+            return False
+
+        # set lastlogin date to now
+        if not user.set_lastlogin(lastlogin=Time.time_now()):
+            return False
+
+        # check password with password policy and pwned
+        password = user.get_password()
+        if not password.check():
+            return False
+
+        username = user.get_username()
+
+        # check username with username policy
+        if not username.policy_username():
+            return False
+
+        # check that username is not in password
+        if username.get_username() in password.get_password():
+            return False
+
+        # check that password is not in username
+        if password.get_password() in username.get_username():
+            return False
+
+        # create hash of the password
+        password_hash = hash_to_bcrypt(password=password.get_password())
+
+        # check if creating hash went well
+        if not password_hash:
+            return False
+
+        # set that hash
+        if not user.set_hash(hashed=password_hash):
+            return False
+
+        return user
+
+    def get_user_login_history(self, history: dict, user: User) -&gt; list:
+
+        # returns login history of username
+        return history[&#34;login&#34;][user.get_username().get_username()]
+
+    def get_user_change_history(self, history: dict, user: User) -&gt; list:
+
+        # returns change history of username
+        return history[&#34;change&#34;][user.get_username().get_username()]</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="Classes.User" href="#Classes.User">User</a></li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="Classes.Admin.delete_user"><code class="name flex">
+<span>def <span class="ident">delete_user</span></span>(<span>self, user: <a title="Classes.User" href="#Classes.User">User</a>, data: dict, history: dict) ‑> Tuple[dict, dict]</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def delete_user(self, user: User, data: dict, history: dict) -&gt; Tuple[dict, dict]:
+
+    # deleteing user from the data dictionary
+    data.pop(user.get_username().get_username())
+
+    # deleting user from the histories
+    history[&#34;login&#34;].pop(user.get_username().get_username())
+    history[&#34;change&#34;].pop(user.get_username().get_username())
+    history[&#34;password&#34;].pop(user.get_username().get_username())
+
+    return data, history</code></pre>
+</details>
+</dd>
+<dt id="Classes.Admin.disable_user"><code class="name flex">
+<span>def <span class="ident">disable_user</span></span>(<span>self, user: <a title="Classes.User" href="#Classes.User">User</a>) ‑> Union[dict, bool]</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def disable_user(self, user: User) -&gt; Union[dict, bool]:
+
+    # setting user enabled to False
+    if not user.set_enabled(status=False):
+        return False
+
+    return user.get_user()</code></pre>
+</details>
+</dd>
+<dt id="Classes.Admin.enable_user"><code class="name flex">
+<span>def <span class="ident">enable_user</span></span>(<span>self, user: <a title="Classes.User" href="#Classes.User">User</a>) ‑> Union[dict, bool]</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def enable_user(self, user: User) -&gt; Union[dict, bool]:
+
+    # setting user enabled to True
+    if not user.set_enabled(status=True):
+        return False
+
+    return user.get_user()</code></pre>
+</details>
+</dd>
+<dt id="Classes.Admin.get_password_policy"><code class="name flex">
+<span>def <span class="ident">get_password_policy</span></span>(<span>self) ‑> dict</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_password_policy(self) -&gt; dict:
+    policy = self.get_password().get_policy()
+    return policy.get_policy()</code></pre>
+</details>
+</dd>
+<dt id="Classes.Admin.get_user_change_history"><code class="name flex">
+<span>def <span class="ident">get_user_change_history</span></span>(<span>self, history: dict, user: <a title="Classes.User" href="#Classes.User">User</a>) ‑> list</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_user_change_history(self, history: dict, user: User) -&gt; list:
+
+    # returns change history of username
+    return history[&#34;change&#34;][user.get_username().get_username()]</code></pre>
+</details>
+</dd>
+<dt id="Classes.Admin.get_user_count"><code class="name flex">
+<span>def <span class="ident">get_user_count</span></span>(<span>self, data: dict) ‑> int</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_user_count(self, data: dict) -&gt; int:
+    return len(data)</code></pre>
+</details>
+</dd>
+<dt id="Classes.Admin.get_user_data"><code class="name flex">
+<span>def <span class="ident">get_user_data</span></span>(<span>self, user: <a title="Classes.User" href="#Classes.User">User</a>) ‑> dict</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_user_data(self, user: User) -&gt; dict:
+    return user.get_user()</code></pre>
+</details>
+</dd>
+<dt id="Classes.Admin.get_user_login_history"><code class="name flex">
+<span>def <span class="ident">get_user_login_history</span></span>(<span>self, history: dict, user: <a title="Classes.User" href="#Classes.User">User</a>) ‑> list</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_user_login_history(self, history: dict, user: User) -&gt; list:
+
+    # returns login history of username
+    return history[&#34;login&#34;][user.get_username().get_username()]</code></pre>
+</details>
+</dd>
+<dt id="Classes.Admin.get_username_policy"><code class="name flex">
+<span>def <span class="ident">get_username_policy</span></span>(<span>self) ‑> dict</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_username_policy(self) -&gt; dict:
+    policy = self.get_username().get_policy()
+    return policy.get_policy()</code></pre>
+</details>
+</dd>
+<dt id="Classes.Admin.reset_password"><code class="name flex">
+<span>def <span class="ident">reset_password</span></span>(<span>self, user: <a title="Classes.User" href="#Classes.User">User</a>) ‑> Union[str, bool]</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def reset_password(self, user: User) -&gt; Union[str, bool]:
+
+    password = user.get_password()
+    policy = password.get_policy()
+
+    # generate valid password with the min. length
+    if not password.generate(length=policy.get_minlength()):
+        return False
+
+    # create a hash
+    hashed = hash_to_bcrypt(password=password.get_password())
+    if not hashed:
+        return False
+
+    # set the created hash
+    if not user.set_hash(hashed=hashed):
+        return False
+
+    # set password lastchange date to now
+    if not user.set_lastchange(lastchange=Time.time_now()):
+        return False
+
+    # set password expiration to 3 months after lastchange
+    if not user.set_expiration(expiration=user.get_lastchange()):
+        return False
+
+    # return the new password
+    return password.get_password()</code></pre>
+</details>
+</dd>
+<dt id="Classes.Admin.set_password_policy"><code class="name flex">
+<span>def <span class="ident">set_password_policy</span></span>(<span>self, data: dict) ‑> Union[dict, bool]</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def set_password_policy(self, data: dict) -&gt; Union[dict, bool]:
+    policy = self.get_password().get_policy()
+
+    # sets the lower min count
+    if not policy.set_lower(lower=data[&#34;lower&#34;]):
+        return False
+
+    # sets the upper min count
+    if not policy.set_upper(upper=data[&#34;upper&#34;]):
+        return False
+
+    # sets the min length
+    if not policy.set_minlength(minlength=data[&#34;minlength&#34;]):
+        return False
+
+    # sets the max length
+    if not policy.set_maxlength(maxlength=data[&#34;maxlength&#34;]):
+        return False
+
+    # sets the punctuation min count
+    if not policy.set_punctuation(punctuation=data[&#34;punctuation&#34;]):
+        return False
+
+    # sets the numeric min count
+    if not policy.set_numeric(numeric=data[&#34;numeric&#34;]):
+        return False
+
+    # checks if policy is valid
+    if not policy.check_policy():
+        return False
+
+    # sets lastchange date on now
+    if not policy.set_lastchange(time_str=Time.time_now()):
+        return False
+
+    return policy.get_policy()</code></pre>
+</details>
+</dd>
+<dt id="Classes.Admin.set_username_policy"><code class="name flex">
+<span>def <span class="ident">set_username_policy</span></span>(<span>self, data: dict) ‑> Union[str, bool]</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def set_username_policy(self, data: dict) -&gt; Union[str, bool]:
+    policy = self.get_username().get_policy()
+
+    # sets the lower min count
+    if not policy.set_lower(lower=data[&#34;lower&#34;]):
+        return False
+
+    # sets the upper min count
+    if not policy.set_upper(upper=data[&#34;upper&#34;]):
+        return False
+
+    # sets the min length
+    if not policy.set_minlength(minlength=data[&#34;minlength&#34;]):
+        return False
+
+    # sets the max length
+    if not policy.set_maxlength(maxlength=data[&#34;maxlength&#34;]):
+        return False
+
+    # sets the punctuation min count
+    if not policy.set_punctuation(punctuation=data[&#34;punctuation&#34;]):
+        return False
+
+    # sets the numeric min count
+    if not policy.set_numeric(numeric=data[&#34;numeric&#34;]):
+        return False
+
+    # checks if policy is valid
+    if not policy.check_policy():
+        return False
+
+    # sets lastchange date to now
+    if not policy.set_lastchange(time_str=Time.time_now()):
+        return False
+
+    return policy.get_policy()</code></pre>
+</details>
+</dd>
+<dt id="Classes.Admin.signup"><code class="name flex">
+<span>def <span class="ident">signup</span></span>(<span>self, user: <a title="Classes.User" href="#Classes.User">User</a>) ‑> bool</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def signup(self, user: User) -&gt; bool:
+
+    # set lastchange
+    if not user.set_lastchange(lastchange=Time.time_now()):
+        return False
+
+    # set expiration date to 3 months after lastchange
+    if not user.set_expiration(expiration=Time.expiration_update(user.get_lastchange())):
+        return False
+
+    # set lastlogin date to now
+    if not user.set_lastlogin(lastlogin=Time.time_now()):
+        return False
+
+    # check password with password policy and pwned
+    password = user.get_password()
+    if not password.check():
+        return False
+
+    username = user.get_username()
+
+    # check username with username policy
+    if not username.policy_username():
+        return False
+
+    # check that username is not in password
+    if username.get_username() in password.get_password():
+        return False
+
+    # check that password is not in username
+    if password.get_password() in username.get_username():
+        return False
+
+    # create hash of the password
+    password_hash = hash_to_bcrypt(password=password.get_password())
+
+    # check if creating hash went well
+    if not password_hash:
+        return False
+
+    # set that hash
+    if not user.set_hash(hashed=password_hash):
+        return False
+
+    return user</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="Classes.Password"><code class="flex name class">
+<span>class <span class="ident">Password</span></span>
+<span>(</span><span>plain: str, policy: <a title="Classes.Policy" href="#Classes.Policy">Policy</a>)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Password:
+
+    def __init__(self, plain: str, policy: Policy) -&gt; None:
+        self.__policy: Policy = policy
+        self.__plain: str = plain
+
+    def get_length(self) -&gt; int:
+        return len(self.__plain)
+
+    def get_password(self) -&gt; str:
+        return self.__plain
+
+    def get_policy(self) -&gt; Policy:
+        return self.__policy
+
+    def set_password(self, plain: str) -&gt; bool:
+        try:
+            self.__plain = plain
+            return True
+
+        except TypeError:
+            return False
+
+    def pwned(self) -&gt; bool:
+        try:
+            # hash the self.__plain to sha1 with upper cases
+            hashed = hash_to_sha1(password=self.__plain).upper()
+
+            # send reqest to HIBP
+            pwned_list = requests.get(
+                url=&#34;https://api.pwnedpasswords.com/range/&#34;+hashed[:5])
+
+            # check if response is valid
+            if pwned_list.status_code != 200:
+                raise TypeError
+
+            # convert recieved text to list
+            pwned = pwned_list.text.split(&#34;\n&#34;)
+
+            # pop the last item of the list
+            pwned.pop()
+
+            # check if hash is in the list
+            for i in pwned:
+                tmp = i.split(&#34;:&#34;)[0]
+
+                if hashed[5:] == tmp:
+                    raise PasswordIsPwnedError
+
+            return True
+
+        except TypeError:
+            return False
+
+        except PasswordIsPwnedError:
+            return False
+
+    def check(self) -&gt; bool:
+
+        # check if password is not pwned and matching with password policy
+        if self.__policy.policy_text(text=self.__plain) and self.pwned():
+            return True
+
+        return False
+
+    def generate(self, length: int) -&gt; str:
+        chars = ascii_lowercase+ascii_uppercase+digits+punctuation
+
+        # set the password to the attribute __plain
+        self.__plain = &#34;&#34;.join(secrets.choice(chars) for _ in range(length))
+
+        # check the attribute __plain, if it&#39;s not pwned and matching policy
+        if self.check():
+            return self.__plain
+
+        # if not recall the same method
+        return self.generate(length=length)</code></pre>
+</details>
+<h3>Methods</h3>
+<dl>
+<dt id="Classes.Password.check"><code class="name flex">
+<span>def <span class="ident">check</span></span>(<span>self) ‑> bool</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def check(self) -&gt; bool:
+
+    # check if password is not pwned and matching with password policy
+    if self.__policy.policy_text(text=self.__plain) and self.pwned():
+        return True
+
+    return False</code></pre>
+</details>
+</dd>
+<dt id="Classes.Password.generate"><code class="name flex">
+<span>def <span class="ident">generate</span></span>(<span>self, length: int) ‑> str</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def generate(self, length: int) -&gt; str:
+    chars = ascii_lowercase+ascii_uppercase+digits+punctuation
+
+    # set the password to the attribute __plain
+    self.__plain = &#34;&#34;.join(secrets.choice(chars) for _ in range(length))
+
+    # check the attribute __plain, if it&#39;s not pwned and matching policy
+    if self.check():
+        return self.__plain
+
+    # if not recall the same method
+    return self.generate(length=length)</code></pre>
+</details>
+</dd>
+<dt id="Classes.Password.get_length"><code class="name flex">
+<span>def <span class="ident">get_length</span></span>(<span>self) ‑> int</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_length(self) -&gt; int:
+    return len(self.__plain)</code></pre>
+</details>
+</dd>
+<dt id="Classes.Password.get_password"><code class="name flex">
+<span>def <span class="ident">get_password</span></span>(<span>self) ‑> str</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_password(self) -&gt; str:
+    return self.__plain</code></pre>
+</details>
+</dd>
+<dt id="Classes.Password.get_policy"><code class="name flex">
+<span>def <span class="ident">get_policy</span></span>(<span>self) ‑> <a title="Classes.Policy" href="#Classes.Policy">Policy</a></span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_policy(self) -&gt; Policy:
+    return self.__policy</code></pre>
+</details>
+</dd>
+<dt id="Classes.Password.pwned"><code class="name flex">
+<span>def <span class="ident">pwned</span></span>(<span>self) ‑> bool</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def pwned(self) -&gt; bool:
+    try:
+        # hash the self.__plain to sha1 with upper cases
+        hashed = hash_to_sha1(password=self.__plain).upper()
+
+        # send reqest to HIBP
+        pwned_list = requests.get(
+            url=&#34;https://api.pwnedpasswords.com/range/&#34;+hashed[:5])
+
+        # check if response is valid
+        if pwned_list.status_code != 200:
+            raise TypeError
+
+        # convert recieved text to list
+        pwned = pwned_list.text.split(&#34;\n&#34;)
+
+        # pop the last item of the list
+        pwned.pop()
+
+        # check if hash is in the list
+        for i in pwned:
+            tmp = i.split(&#34;:&#34;)[0]
+
+            if hashed[5:] == tmp:
+                raise PasswordIsPwnedError
+
+        return True
+
+    except TypeError:
+        return False
+
+    except PasswordIsPwnedError:
+        return False</code></pre>
+</details>
+</dd>
+<dt id="Classes.Password.set_password"><code class="name flex">
+<span>def <span class="ident">set_password</span></span>(<span>self, plain: str) ‑> bool</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def set_password(self, plain: str) -&gt; bool:
+    try:
+        self.__plain = plain
+        return True
+
+    except TypeError:
+        return False</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="Classes.Policy"><code class="flex name class">
+<span>class <span class="ident">Policy</span></span>
+<span>(</span><span>minlength: int, maxlength: int, punctuation: int, numeric: int, lower: int, upper: int, lastchange: str)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Policy:
+    def __init__(self, minlength: int, maxlength: int,
+                 punctuation: int, numeric: int,
+                 lower: int, upper: int, lastchange: str) -&gt; None:
+
+        self.__minlength: int = minlength
+        self.__maxlength: int = maxlength
+        self.__punctuation: int = punctuation
+        self.__numeric: int = numeric
+        self.__lower: int = lower
+        self.__upper: int = upper
+        self.__lastchange: str = lastchange
+
+    def get_lastchange(self) -&gt; str:
+        return self.__lastchange
+
+    def get_minlength(self) -&gt; int:
+        return self.__minlength
+
+    def get_maxlength(self) -&gt; int:
+        return self.__maxlength
+
+    def get_punctuation(self) -&gt; int:
+        return self.__punctuation
+
+    def get_numeric(self) -&gt; int:
+        return self.__numeric
+
+    def get_upper(self) -&gt; int:
+        return self.__upper
+
+    def get_lower(self) -&gt; int:
+        return self.__lower
+
+    def set_minlength(self, minlength: int) -&gt; bool:
+        try:
+            self.__minlength = minlength
+            return True
+        except TypeError:
+            return False
+
+    def set_maxlength(self, maxlength: int) -&gt; bool:
+        try:
+            self.__maxlength = maxlength
+            return True
+        except TypeError:
+            return False
+
+    def set_punctuation(self, punctuation: int) -&gt; bool:
+        try:
+            self.__punctuation = punctuation
+            return True
+
+        except TypeError:
+            return False
+
+    def set_numeric(self, numeric: int) -&gt; bool:
+        try:
+            self.__numeric = numeric
+            return True
+
+        except TypeError:
+            return False
+
+    def set_upper(self, upper: int) -&gt; bool:
+        try:
+            self.__upper = upper
+            return True
+
+        except TypeError:
+            return False
+
+    def set_lower(self, lower: int) -&gt; bool:
+        try:
+            self.__lower = lower
+            return True
+
+        except TypeError:
+            return False
+
+    def set_lastchange(self, time_str: str) -&gt; bool:
+        try:
+            self.__lastchange = time_str
+            return True
+
+        except TypeError:
+            return False
+
+    def get_policy(self) -&gt; dict:
+        return {&#34;minlength&#34;: self.__minlength, &#34;maxlength&#34;: self.__maxlength,
+                &#34;upper&#34;: self.__upper, &#34;lower&#34;: self.__lower,
+                &#34;punctuation&#34;: self.__punctuation, &#34;numeric&#34;: self.__numeric,
+                &#34;lastchange&#34;: self.__lastchange}
+
+    def isupper(self, text: str) -&gt; bool:
+        &#34;&#34;&#34;checks if the password contains enough upper cases&#34;&#34;&#34;
+        counter = 0
+
+        for i in text:
+            if i.isupper():
+                counter += 1
+
+        if counter &gt;= self.__upper:
+            return True
+
+        return False
+
+    def islower(self, text: str) -&gt; bool:
+        &#34;&#34;&#34;checks if the password conatains enough lower cases&#34;&#34;&#34;
+        counter = 0
+
+        for i in text:
+            if i.islower():
+                counter += 1
+
+        if counter &gt;= self.__lower:
+            return True
+
+        return False
+
+    def isnumeric(self, text: str) -&gt; bool:
+        &#34;&#34;&#34;checks if the password has enough numerical characters&#34;&#34;&#34;
+        counter = 0
+
+        for i in text:
+            if i.isnumeric():
+                counter += 1
+
+        if counter &gt;= self.__numeric:
+            return True
+
+        return False
+
+    def ispunctuation(self, text: str) -&gt; bool:
+        &#34;&#34;&#34;checks if the password has enough special characters&#34;&#34;&#34;
+        counter = 0
+        list_of_non = [&#34;\&#34;&#34;, &#34;&#39;&#34;, &#34;:&#34;, &#34;;&#34;, &#34;\\&#34;]
+
+        # check chars of string
+        for i in text:
+            if i in punctuation:
+                counter += 1
+
+            # check if any char of the string is part of the list_of_non
+            if i in list_of_non:
+                return False
+
+        # check if count match with minimum count of punctuation
+        if counter &lt; self.__punctuation:
+            return False
+
+        return True
+
+    def length(self, text: str) -&gt; bool:
+        &#34;&#34;&#34;checks if the lenght of the given password is equal to the required length or not&#34;&#34;&#34;
+
+        # checks if text has the minimum required length
+        if len(text) &lt; self.__minlength:
+            return False
+
+        # checks if text length is not greater than maximum allowed length
+        if len(text) &gt; self.__maxlength:
+            return False
+
+        return True
+
+    def policy_text(self, text: str) -&gt; bool:
+
+        # check if text has enough lower letters
+        if not self.islower(text=text):
+            return False
+
+        # check if text has enough upper letters
+        if not self.isupper(text=text):
+            return False
+
+        # check if text has enough numerical characters
+        if not self.isnumeric(text=text):
+            return False
+
+        # check if text has enough punctuation characters
+        if not self.ispunctuation(text=text):
+            return False
+
+        # check if text has enough length
+        if not self.length(text=text):
+            return False
+        return True
+
+    def check_policy(self) -&gt; bool:
+
+        # check if minlength is not greater than maxlength
+        if self.__minlength &gt;= self.__maxlength:
+            return False
+
+        # sum of policy&#39;s possible minimum rules
+        sum_of = self.__lower + self.__numeric + self.__punctuation + self.__upper
+
+        # check if these rules are not greater than minlength
+        if sum_of &gt; self.__minlength:
+            return False
+
+        return True</code></pre>
+</details>
+<h3>Methods</h3>
+<dl>
+<dt id="Classes.Policy.check_policy"><code class="name flex">
+<span>def <span class="ident">check_policy</span></span>(<span>self) ‑> bool</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def check_policy(self) -&gt; bool:
+
+    # check if minlength is not greater than maxlength
+    if self.__minlength &gt;= self.__maxlength:
+        return False
+
+    # sum of policy&#39;s possible minimum rules
+    sum_of = self.__lower + self.__numeric + self.__punctuation + self.__upper
+
+    # check if these rules are not greater than minlength
+    if sum_of &gt; self.__minlength:
+        return False
+
+    return True</code></pre>
+</details>
+</dd>
+<dt id="Classes.Policy.get_lastchange"><code class="name flex">
+<span>def <span class="ident">get_lastchange</span></span>(<span>self) ‑> str</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_lastchange(self) -&gt; str:
+    return self.__lastchange</code></pre>
+</details>
+</dd>
+<dt id="Classes.Policy.get_lower"><code class="name flex">
+<span>def <span class="ident">get_lower</span></span>(<span>self) ‑> int</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_lower(self) -&gt; int:
+    return self.__lower</code></pre>
+</details>
+</dd>
+<dt id="Classes.Policy.get_maxlength"><code class="name flex">
+<span>def <span class="ident">get_maxlength</span></span>(<span>self) ‑> int</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_maxlength(self) -&gt; int:
+    return self.__maxlength</code></pre>
+</details>
+</dd>
+<dt id="Classes.Policy.get_minlength"><code class="name flex">
+<span>def <span class="ident">get_minlength</span></span>(<span>self) ‑> int</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_minlength(self) -&gt; int:
+    return self.__minlength</code></pre>
+</details>
+</dd>
+<dt id="Classes.Policy.get_numeric"><code class="name flex">
+<span>def <span class="ident">get_numeric</span></span>(<span>self) ‑> int</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_numeric(self) -&gt; int:
+    return self.__numeric</code></pre>
+</details>
+</dd>
+<dt id="Classes.Policy.get_policy"><code class="name flex">
+<span>def <span class="ident">get_policy</span></span>(<span>self) ‑> dict</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_policy(self) -&gt; dict:
+    return {&#34;minlength&#34;: self.__minlength, &#34;maxlength&#34;: self.__maxlength,
+            &#34;upper&#34;: self.__upper, &#34;lower&#34;: self.__lower,
+            &#34;punctuation&#34;: self.__punctuation, &#34;numeric&#34;: self.__numeric,
+            &#34;lastchange&#34;: self.__lastchange}</code></pre>
+</details>
+</dd>
+<dt id="Classes.Policy.get_punctuation"><code class="name flex">
+<span>def <span class="ident">get_punctuation</span></span>(<span>self) ‑> int</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_punctuation(self) -&gt; int:
+    return self.__punctuation</code></pre>
+</details>
+</dd>
+<dt id="Classes.Policy.get_upper"><code class="name flex">
+<span>def <span class="ident">get_upper</span></span>(<span>self) ‑> int</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_upper(self) -&gt; int:
+    return self.__upper</code></pre>
+</details>
+</dd>
+<dt id="Classes.Policy.islower"><code class="name flex">
+<span>def <span class="ident">islower</span></span>(<span>self, text: str) ‑> bool</span>
+</code></dt>
+<dd>
+<div class="desc"><p>checks if the password conatains enough lower cases</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def islower(self, text: str) -&gt; bool:
+    &#34;&#34;&#34;checks if the password conatains enough lower cases&#34;&#34;&#34;
+    counter = 0
+
+    for i in text:
+        if i.islower():
+            counter += 1
+
+    if counter &gt;= self.__lower:
+        return True
+
+    return False</code></pre>
+</details>
+</dd>
+<dt id="Classes.Policy.isnumeric"><code class="name flex">
+<span>def <span class="ident">isnumeric</span></span>(<span>self, text: str) ‑> bool</span>
+</code></dt>
+<dd>
+<div class="desc"><p>checks if the password has enough numerical characters</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def isnumeric(self, text: str) -&gt; bool:
+    &#34;&#34;&#34;checks if the password has enough numerical characters&#34;&#34;&#34;
+    counter = 0
+
+    for i in text:
+        if i.isnumeric():
+            counter += 1
+
+    if counter &gt;= self.__numeric:
+        return True
+
+    return False</code></pre>
+</details>
+</dd>
+<dt id="Classes.Policy.ispunctuation"><code class="name flex">
+<span>def <span class="ident">ispunctuation</span></span>(<span>self, text: str) ‑> bool</span>
+</code></dt>
+<dd>
+<div class="desc"><p>checks if the password has enough special characters</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def ispunctuation(self, text: str) -&gt; bool:
+    &#34;&#34;&#34;checks if the password has enough special characters&#34;&#34;&#34;
+    counter = 0
+    list_of_non = [&#34;\&#34;&#34;, &#34;&#39;&#34;, &#34;:&#34;, &#34;;&#34;, &#34;\\&#34;]
+
+    # check chars of string
+    for i in text:
+        if i in punctuation:
+            counter += 1
+
+        # check if any char of the string is part of the list_of_non
+        if i in list_of_non:
+            return False
+
+    # check if count match with minimum count of punctuation
+    if counter &lt; self.__punctuation:
+        return False
+
+    return True</code></pre>
+</details>
+</dd>
+<dt id="Classes.Policy.isupper"><code class="name flex">
+<span>def <span class="ident">isupper</span></span>(<span>self, text: str) ‑> bool</span>
+</code></dt>
+<dd>
+<div class="desc"><p>checks if the password contains enough upper cases</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def isupper(self, text: str) -&gt; bool:
+    &#34;&#34;&#34;checks if the password contains enough upper cases&#34;&#34;&#34;
+    counter = 0
+
+    for i in text:
+        if i.isupper():
+            counter += 1
+
+    if counter &gt;= self.__upper:
+        return True
+
+    return False</code></pre>
+</details>
+</dd>
+<dt id="Classes.Policy.length"><code class="name flex">
+<span>def <span class="ident">length</span></span>(<span>self, text: str) ‑> bool</span>
+</code></dt>
+<dd>
+<div class="desc"><p>checks if the lenght of the given password is equal to the required length or not</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def length(self, text: str) -&gt; bool:
+    &#34;&#34;&#34;checks if the lenght of the given password is equal to the required length or not&#34;&#34;&#34;
+
+    # checks if text has the minimum required length
+    if len(text) &lt; self.__minlength:
+        return False
+
+    # checks if text length is not greater than maximum allowed length
+    if len(text) &gt; self.__maxlength:
+        return False
+
+    return True</code></pre>
+</details>
+</dd>
+<dt id="Classes.Policy.policy_text"><code class="name flex">
+<span>def <span class="ident">policy_text</span></span>(<span>self, text: str) ‑> bool</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def policy_text(self, text: str) -&gt; bool:
+
+    # check if text has enough lower letters
+    if not self.islower(text=text):
+        return False
+
+    # check if text has enough upper letters
+    if not self.isupper(text=text):
+        return False
+
+    # check if text has enough numerical characters
+    if not self.isnumeric(text=text):
+        return False
+
+    # check if text has enough punctuation characters
+    if not self.ispunctuation(text=text):
+        return False
+
+    # check if text has enough length
+    if not self.length(text=text):
+        return False
+    return True</code></pre>
+</details>
+</dd>
+<dt id="Classes.Policy.set_lastchange"><code class="name flex">
+<span>def <span class="ident">set_lastchange</span></span>(<span>self, time_str: str) ‑> bool</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def set_lastchange(self, time_str: str) -&gt; bool:
+    try:
+        self.__lastchange = time_str
+        return True
+
+    except TypeError:
+        return False</code></pre>
+</details>
+</dd>
+<dt id="Classes.Policy.set_lower"><code class="name flex">
+<span>def <span class="ident">set_lower</span></span>(<span>self, lower: int) ‑> bool</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def set_lower(self, lower: int) -&gt; bool:
+    try:
+        self.__lower = lower
+        return True
+
+    except TypeError:
+        return False</code></pre>
+</details>
+</dd>
+<dt id="Classes.Policy.set_maxlength"><code class="name flex">
+<span>def <span class="ident">set_maxlength</span></span>(<span>self, maxlength: int) ‑> bool</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def set_maxlength(self, maxlength: int) -&gt; bool:
+    try:
+        self.__maxlength = maxlength
+        return True
+    except TypeError:
+        return False</code></pre>
+</details>
+</dd>
+<dt id="Classes.Policy.set_minlength"><code class="name flex">
+<span>def <span class="ident">set_minlength</span></span>(<span>self, minlength: int) ‑> bool</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def set_minlength(self, minlength: int) -&gt; bool:
+    try:
+        self.__minlength = minlength
+        return True
+    except TypeError:
+        return False</code></pre>
+</details>
+</dd>
+<dt id="Classes.Policy.set_numeric"><code class="name flex">
+<span>def <span class="ident">set_numeric</span></span>(<span>self, numeric: int) ‑> bool</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def set_numeric(self, numeric: int) -&gt; bool:
+    try:
+        self.__numeric = numeric
+        return True
+
+    except TypeError:
+        return False</code></pre>
+</details>
+</dd>
+<dt id="Classes.Policy.set_punctuation"><code class="name flex">
+<span>def <span class="ident">set_punctuation</span></span>(<span>self, punctuation: int) ‑> bool</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def set_punctuation(self, punctuation: int) -&gt; bool:
+    try:
+        self.__punctuation = punctuation
+        return True
+
+    except TypeError:
+        return False</code></pre>
+</details>
+</dd>
+<dt id="Classes.Policy.set_upper"><code class="name flex">
+<span>def <span class="ident">set_upper</span></span>(<span>self, upper: int) ‑> bool</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def set_upper(self, upper: int) -&gt; bool:
+    try:
+        self.__upper = upper
+        return True
+
+    except TypeError:
+        return False</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="Classes.Time"><code class="flex name class">
+<span>class <span class="ident">Time</span></span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Time:
+    def time_now() -&gt; str:
+        return str(datetime.utcnow())
+
+    def expiration_update(time_str: str) -&gt; str:
+
+        # convert string into datetime object
+        time = datetime.fromisoformat(time_str)
+
+        # add to the datetime object 3 months
+        time = time + relativedelta(months=3)
+
+        return str(time)</code></pre>
+</details>
+<h3>Methods</h3>
+<dl>
+<dt id="Classes.Time.expiration_update"><code class="name flex">
+<span>def <span class="ident">expiration_update</span></span>(<span>time_str: str) ‑> str</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def expiration_update(time_str: str) -&gt; str:
+
+    # convert string into datetime object
+    time = datetime.fromisoformat(time_str)
+
+    # add to the datetime object 3 months
+    time = time + relativedelta(months=3)
+
+    return str(time)</code></pre>
+</details>
+</dd>
+<dt id="Classes.Time.time_now"><code class="name flex">
+<span>def <span class="ident">time_now</span></span>(<span>) ‑> str</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def time_now() -&gt; str:
+    return str(datetime.utcnow())</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="Classes.User"><code class="flex name class">
+<span>class <span class="ident">User</span></span>
+<span>(</span><span>username: <a title="Classes.Username" href="#Classes.Username">Username</a>, password: <a title="Classes.Password" href="#Classes.Password">Password</a>, hashed: str, enabled: bool, lastchange: str, expiration: str, lastlogin: str, admin: bool)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class User:
+    def __init__(self,
+                 username: Username, password: Password,
+                 hashed: str, enabled: bool,
+                 lastchange: str, expiration: str,
+                 lastlogin: str, admin: bool) -&gt; None:
+
+        self.__username: Username = username
+        self.__password: Password = password
+        self.__hash: str = hashed
+        self.__lastchange: str = lastchange
+        self.__lastlogin: str = lastlogin
+        self.__expiration: str = expiration
+        self.__enabled: bool = enabled
+        self.__admin: bool = admin
+
+    def get_user(self) -&gt; dict:
+        return {&#34;username&#34;: self.__username.get_username(),
+                &#34;hash&#34;: self.__hash, &#34;enabled&#34;: self.__enabled,
+                &#34;admin&#34;: self.__admin, &#34;expiration&#34;: self.__expiration,
+                &#34;lastlogin&#34;: self.__lastlogin, &#34;lastchange&#34;: self.__lastchange}
+
+    def get_password(self) -&gt; Password:
+        return self.__password
+
+    def get_hash(self) -&gt; str:
+        return self.__hash
+
+    def get_username(self) -&gt; Username:
+        return self.__username
+
+    def get_expiration(self) -&gt; str:
+        return self.__expiration
+
+    def get_lastlogin(self) -&gt; str:
+        return self.__lastlogin
+
+    def get_lastchange(self) -&gt; str:
+        return self.__lastchange
+
+    def get_enabled(self) -&gt; bool:
+        return self.__enabled
+
+    def get_admin_status(self) -&gt; bool:
+        return self.__admin
+
+    def set_enabled(self, status: bool) -&gt; bool:
+        try:
+            self.__enabled = status
+            return True
+
+        except TypeError:
+            return False
+
+    def set_hash(self, hashed: str) -&gt; bool:
+        try:
+            self.__hash = hashed
+            return True
+
+        except TypeError:
+            return False
+
+    def set_expiration(self, expiration: str) -&gt; bool:
+        try:
+            self.__expiration = expiration
+            return True
+
+        except TypeError:
+            return False
+
+    def set_lastchange(self, lastchange: str) -&gt; bool:
+        try:
+            self.__lastchange = lastchange
+            return True
+
+        except TypeError:
+            return False
+
+    def set_lastlogin(self, lastlogin: str) -&gt; bool:
+        try:
+            self.__lastlogin = lastlogin
+            return True
+
+        except TypeError:
+            return False
+
+    def login_user(self) -&gt; Union[str, bool]:
+
+        # check if the password match with the hash
+        if not password_hash_check(password=self.__password.get_password(), hashed=self.get_hash()):
+            return False
+
+        # chcek if user is enabled
+        if not self.get_enabled():
+            return False
+
+        # set new lastlogin
+        if not self.set_lastlogin(lastlogin=Time.time_now()):
+            return False
+
+        # check if password is pwned
+        if not self.__password.pwned():
+            return &#34;change password&#34;
+
+        # chcek if password policy has changed
+        password_policy = self.__password.get_policy()
+        if self.get_lastchange() &lt; password_policy.get_lastchange():
+
+            # check for policy, if no matching then change the expiration time
+            if not password_policy.policy_text(text=self.__password.get_password()):
+                self.set_expiration(expiration=Time.time_now())
+
+        # check if username policy has changed, check for policy
+        if not self.get_username().policy_username():
+            return &#34;change username&#34;
+
+        # check if password is expired
+        if self.get_expiration() &lt; Time.time_now():
+            return &#34;change password&#34;
+
+        return True
+
+    def generate_password(self, length: int, password: Password) -&gt; Union[str, bool]:
+
+        policy = password.get_policy()
+
+        # checks if from user inputted length is doesn&#39;t match with policy lengths
+        if length &lt; policy.get_minlength() or length &gt; policy.get_maxlength():
+            return False
+
+        return password.generate(length=length)
+
+    def edit_password(self):
+
+        password = self.get_password()
+        hashed = hash_to_bcrypt(password=password.get_password())
+
+        # checks if password is not pwned and matching with password policy
+        if not password.check():
+            return False
+
+        # checks if hashing function went well
+        if not hashed:
+            return False
+
+        # overriting the old hash of the object
+        if not self.set_hash(hashed=hashed):
+            return False
+
+        # overwriting the lastchange date to now
+        if not self.set_lastchange(lastchange=Time.time_now()):
+            return False
+
+        # overwriting the expiration date and adding 3 months to the lastchange date
+        if not self.set_expiration(expiration=Time.expiration_update(self.get_lastchange())):
+            return False
+
+        return True
+
+    def edit_username(self):
+        try:
+            username = self.get_username()
+
+            # check if username match with username policy
+            if not username.policy_username():
+                return False
+
+            return True
+
+        except TypeError:
+            return False</code></pre>
+</details>
+<h3>Subclasses</h3>
+<ul class="hlist">
+<li><a title="Classes.Admin" href="#Classes.Admin">Admin</a></li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="Classes.User.edit_password"><code class="name flex">
+<span>def <span class="ident">edit_password</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def edit_password(self):
+
+    password = self.get_password()
+    hashed = hash_to_bcrypt(password=password.get_password())
+
+    # checks if password is not pwned and matching with password policy
+    if not password.check():
+        return False
+
+    # checks if hashing function went well
+    if not hashed:
+        return False
+
+    # overriting the old hash of the object
+    if not self.set_hash(hashed=hashed):
+        return False
+
+    # overwriting the lastchange date to now
+    if not self.set_lastchange(lastchange=Time.time_now()):
+        return False
+
+    # overwriting the expiration date and adding 3 months to the lastchange date
+    if not self.set_expiration(expiration=Time.expiration_update(self.get_lastchange())):
+        return False
+
+    return True</code></pre>
+</details>
+</dd>
+<dt id="Classes.User.edit_username"><code class="name flex">
+<span>def <span class="ident">edit_username</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def edit_username(self):
+    try:
+        username = self.get_username()
+
+        # check if username match with username policy
+        if not username.policy_username():
+            return False
+
+        return True
+
+    except TypeError:
+        return False</code></pre>
+</details>
+</dd>
+<dt id="Classes.User.generate_password"><code class="name flex">
+<span>def <span class="ident">generate_password</span></span>(<span>self, length: int, password: <a title="Classes.Password" href="#Classes.Password">Password</a>) ‑> Union[str, bool]</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def generate_password(self, length: int, password: Password) -&gt; Union[str, bool]:
+
+    policy = password.get_policy()
+
+    # checks if from user inputted length is doesn&#39;t match with policy lengths
+    if length &lt; policy.get_minlength() or length &gt; policy.get_maxlength():
+        return False
+
+    return password.generate(length=length)</code></pre>
+</details>
+</dd>
+<dt id="Classes.User.get_admin_status"><code class="name flex">
+<span>def <span class="ident">get_admin_status</span></span>(<span>self) ‑> bool</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_admin_status(self) -&gt; bool:
+    return self.__admin</code></pre>
+</details>
+</dd>
+<dt id="Classes.User.get_enabled"><code class="name flex">
+<span>def <span class="ident">get_enabled</span></span>(<span>self) ‑> bool</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_enabled(self) -&gt; bool:
+    return self.__enabled</code></pre>
+</details>
+</dd>
+<dt id="Classes.User.get_expiration"><code class="name flex">
+<span>def <span class="ident">get_expiration</span></span>(<span>self) ‑> str</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_expiration(self) -&gt; str:
+    return self.__expiration</code></pre>
+</details>
+</dd>
+<dt id="Classes.User.get_hash"><code class="name flex">
+<span>def <span class="ident">get_hash</span></span>(<span>self) ‑> str</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_hash(self) -&gt; str:
+    return self.__hash</code></pre>
+</details>
+</dd>
+<dt id="Classes.User.get_lastchange"><code class="name flex">
+<span>def <span class="ident">get_lastchange</span></span>(<span>self) ‑> str</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_lastchange(self) -&gt; str:
+    return self.__lastchange</code></pre>
+</details>
+</dd>
+<dt id="Classes.User.get_lastlogin"><code class="name flex">
+<span>def <span class="ident">get_lastlogin</span></span>(<span>self) ‑> str</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_lastlogin(self) -&gt; str:
+    return self.__lastlogin</code></pre>
+</details>
+</dd>
+<dt id="Classes.User.get_password"><code class="name flex">
+<span>def <span class="ident">get_password</span></span>(<span>self) ‑> <a title="Classes.Password" href="#Classes.Password">Password</a></span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_password(self) -&gt; Password:
+    return self.__password</code></pre>
+</details>
+</dd>
+<dt id="Classes.User.get_user"><code class="name flex">
+<span>def <span class="ident">get_user</span></span>(<span>self) ‑> dict</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_user(self) -&gt; dict:
+    return {&#34;username&#34;: self.__username.get_username(),
+            &#34;hash&#34;: self.__hash, &#34;enabled&#34;: self.__enabled,
+            &#34;admin&#34;: self.__admin, &#34;expiration&#34;: self.__expiration,
+            &#34;lastlogin&#34;: self.__lastlogin, &#34;lastchange&#34;: self.__lastchange}</code></pre>
+</details>
+</dd>
+<dt id="Classes.User.get_username"><code class="name flex">
+<span>def <span class="ident">get_username</span></span>(<span>self) ‑> <a title="Classes.Username" href="#Classes.Username">Username</a></span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_username(self) -&gt; Username:
+    return self.__username</code></pre>
+</details>
+</dd>
+<dt id="Classes.User.login_user"><code class="name flex">
+<span>def <span class="ident">login_user</span></span>(<span>self) ‑> Union[str, bool]</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def login_user(self) -&gt; Union[str, bool]:
+
+    # check if the password match with the hash
+    if not password_hash_check(password=self.__password.get_password(), hashed=self.get_hash()):
+        return False
+
+    # chcek if user is enabled
+    if not self.get_enabled():
+        return False
+
+    # set new lastlogin
+    if not self.set_lastlogin(lastlogin=Time.time_now()):
+        return False
+
+    # check if password is pwned
+    if not self.__password.pwned():
+        return &#34;change password&#34;
+
+    # chcek if password policy has changed
+    password_policy = self.__password.get_policy()
+    if self.get_lastchange() &lt; password_policy.get_lastchange():
+
+        # check for policy, if no matching then change the expiration time
+        if not password_policy.policy_text(text=self.__password.get_password()):
+            self.set_expiration(expiration=Time.time_now())
+
+    # check if username policy has changed, check for policy
+    if not self.get_username().policy_username():
+        return &#34;change username&#34;
+
+    # check if password is expired
+    if self.get_expiration() &lt; Time.time_now():
+        return &#34;change password&#34;
+
+    return True</code></pre>
+</details>
+</dd>
+<dt id="Classes.User.set_enabled"><code class="name flex">
+<span>def <span class="ident">set_enabled</span></span>(<span>self, status: bool) ‑> bool</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def set_enabled(self, status: bool) -&gt; bool:
+    try:
+        self.__enabled = status
+        return True
+
+    except TypeError:
+        return False</code></pre>
+</details>
+</dd>
+<dt id="Classes.User.set_expiration"><code class="name flex">
+<span>def <span class="ident">set_expiration</span></span>(<span>self, expiration: str) ‑> bool</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def set_expiration(self, expiration: str) -&gt; bool:
+    try:
+        self.__expiration = expiration
+        return True
+
+    except TypeError:
+        return False</code></pre>
+</details>
+</dd>
+<dt id="Classes.User.set_hash"><code class="name flex">
+<span>def <span class="ident">set_hash</span></span>(<span>self, hashed: str) ‑> bool</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def set_hash(self, hashed: str) -&gt; bool:
+    try:
+        self.__hash = hashed
+        return True
+
+    except TypeError:
+        return False</code></pre>
+</details>
+</dd>
+<dt id="Classes.User.set_lastchange"><code class="name flex">
+<span>def <span class="ident">set_lastchange</span></span>(<span>self, lastchange: str) ‑> bool</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def set_lastchange(self, lastchange: str) -&gt; bool:
+    try:
+        self.__lastchange = lastchange
+        return True
+
+    except TypeError:
+        return False</code></pre>
+</details>
+</dd>
+<dt id="Classes.User.set_lastlogin"><code class="name flex">
+<span>def <span class="ident">set_lastlogin</span></span>(<span>self, lastlogin: str) ‑> bool</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def set_lastlogin(self, lastlogin: str) -&gt; bool:
+    try:
+        self.__lastlogin = lastlogin
+        return True
+
+    except TypeError:
+        return False</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="Classes.Username"><code class="flex name class">
+<span>class <span class="ident">Username</span></span>
+<span>(</span><span>username: str, policy: <a title="Classes.Policy" href="#Classes.Policy">Policy</a>)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Username:
+    def __init__(self, username: str, policy: Policy) -&gt; None:
+        self.__username: str = username
+        self.__policy: Policy = policy
+
+    def get_username(self) -&gt; str:
+        return self.__username
+
+    def get_policy(self) -&gt; Policy:
+        &#34;&#34;&#34;It returns a Policy bject&#34;&#34;&#34;
+        return self.__policy
+
+    def policy_username(self) -&gt; bool:
+        &#34;&#34;&#34;check if username is matching with username policy&#34;&#34;&#34;
+
+        resault = self.__policy.policy_text(text=self.__username)
+
+        if not resault:
+            return False
+
+        return True
+
+    def set_username(self, username: str) -&gt; bool:
+        try:
+            self.__username = username
+            return True
+        except TypeError:
+            return False</code></pre>
+</details>
+<h3>Methods</h3>
+<dl>
+<dt id="Classes.Username.get_policy"><code class="name flex">
+<span>def <span class="ident">get_policy</span></span>(<span>self) ‑> <a title="Classes.Policy" href="#Classes.Policy">Policy</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>It returns a Policy bject</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_policy(self) -&gt; Policy:
+    &#34;&#34;&#34;It returns a Policy bject&#34;&#34;&#34;
+    return self.__policy</code></pre>
+</details>
+</dd>
+<dt id="Classes.Username.get_username"><code class="name flex">
+<span>def <span class="ident">get_username</span></span>(<span>self) ‑> str</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_username(self) -&gt; str:
+    return self.__username</code></pre>
+</details>
+</dd>
+<dt id="Classes.Username.policy_username"><code class="name flex">
+<span>def <span class="ident">policy_username</span></span>(<span>self) ‑> bool</span>
+</code></dt>
+<dd>
+<div class="desc"><p>check if username is matching with username policy</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def policy_username(self) -&gt; bool:
+    &#34;&#34;&#34;check if username is matching with username policy&#34;&#34;&#34;
+
+    resault = self.__policy.policy_text(text=self.__username)
+
+    if not resault:
+        return False
+
+    return True</code></pre>
+</details>
+</dd>
+<dt id="Classes.Username.set_username"><code class="name flex">
+<span>def <span class="ident">set_username</span></span>(<span>self, username: str) ‑> bool</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def set_username(self, username: str) -&gt; bool:
+    try:
+        self.__username = username
+        return True
+    except TypeError:
+        return False</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="Classes.Admin" href="#Classes.Admin">Admin</a></code></h4>
+<ul class="">
+<li><code><a title="Classes.Admin.delete_user" href="#Classes.Admin.delete_user">delete_user</a></code></li>
+<li><code><a title="Classes.Admin.disable_user" href="#Classes.Admin.disable_user">disable_user</a></code></li>
+<li><code><a title="Classes.Admin.enable_user" href="#Classes.Admin.enable_user">enable_user</a></code></li>
+<li><code><a title="Classes.Admin.get_password_policy" href="#Classes.Admin.get_password_policy">get_password_policy</a></code></li>
+<li><code><a title="Classes.Admin.get_user_change_history" href="#Classes.Admin.get_user_change_history">get_user_change_history</a></code></li>
+<li><code><a title="Classes.Admin.get_user_count" href="#Classes.Admin.get_user_count">get_user_count</a></code></li>
+<li><code><a title="Classes.Admin.get_user_data" href="#Classes.Admin.get_user_data">get_user_data</a></code></li>
+<li><code><a title="Classes.Admin.get_user_login_history" href="#Classes.Admin.get_user_login_history">get_user_login_history</a></code></li>
+<li><code><a title="Classes.Admin.get_username_policy" href="#Classes.Admin.get_username_policy">get_username_policy</a></code></li>
+<li><code><a title="Classes.Admin.reset_password" href="#Classes.Admin.reset_password">reset_password</a></code></li>
+<li><code><a title="Classes.Admin.set_password_policy" href="#Classes.Admin.set_password_policy">set_password_policy</a></code></li>
+<li><code><a title="Classes.Admin.set_username_policy" href="#Classes.Admin.set_username_policy">set_username_policy</a></code></li>
+<li><code><a title="Classes.Admin.signup" href="#Classes.Admin.signup">signup</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="Classes.Password" href="#Classes.Password">Password</a></code></h4>
+<ul class="two-column">
+<li><code><a title="Classes.Password.check" href="#Classes.Password.check">check</a></code></li>
+<li><code><a title="Classes.Password.generate" href="#Classes.Password.generate">generate</a></code></li>
+<li><code><a title="Classes.Password.get_length" href="#Classes.Password.get_length">get_length</a></code></li>
+<li><code><a title="Classes.Password.get_password" href="#Classes.Password.get_password">get_password</a></code></li>
+<li><code><a title="Classes.Password.get_policy" href="#Classes.Password.get_policy">get_policy</a></code></li>
+<li><code><a title="Classes.Password.pwned" href="#Classes.Password.pwned">pwned</a></code></li>
+<li><code><a title="Classes.Password.set_password" href="#Classes.Password.set_password">set_password</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="Classes.Policy" href="#Classes.Policy">Policy</a></code></h4>
+<ul class="two-column">
+<li><code><a title="Classes.Policy.check_policy" href="#Classes.Policy.check_policy">check_policy</a></code></li>
+<li><code><a title="Classes.Policy.get_lastchange" href="#Classes.Policy.get_lastchange">get_lastchange</a></code></li>
+<li><code><a title="Classes.Policy.get_lower" href="#Classes.Policy.get_lower">get_lower</a></code></li>
+<li><code><a title="Classes.Policy.get_maxlength" href="#Classes.Policy.get_maxlength">get_maxlength</a></code></li>
+<li><code><a title="Classes.Policy.get_minlength" href="#Classes.Policy.get_minlength">get_minlength</a></code></li>
+<li><code><a title="Classes.Policy.get_numeric" href="#Classes.Policy.get_numeric">get_numeric</a></code></li>
+<li><code><a title="Classes.Policy.get_policy" href="#Classes.Policy.get_policy">get_policy</a></code></li>
+<li><code><a title="Classes.Policy.get_punctuation" href="#Classes.Policy.get_punctuation">get_punctuation</a></code></li>
+<li><code><a title="Classes.Policy.get_upper" href="#Classes.Policy.get_upper">get_upper</a></code></li>
+<li><code><a title="Classes.Policy.islower" href="#Classes.Policy.islower">islower</a></code></li>
+<li><code><a title="Classes.Policy.isnumeric" href="#Classes.Policy.isnumeric">isnumeric</a></code></li>
+<li><code><a title="Classes.Policy.ispunctuation" href="#Classes.Policy.ispunctuation">ispunctuation</a></code></li>
+<li><code><a title="Classes.Policy.isupper" href="#Classes.Policy.isupper">isupper</a></code></li>
+<li><code><a title="Classes.Policy.length" href="#Classes.Policy.length">length</a></code></li>
+<li><code><a title="Classes.Policy.policy_text" href="#Classes.Policy.policy_text">policy_text</a></code></li>
+<li><code><a title="Classes.Policy.set_lastchange" href="#Classes.Policy.set_lastchange">set_lastchange</a></code></li>
+<li><code><a title="Classes.Policy.set_lower" href="#Classes.Policy.set_lower">set_lower</a></code></li>
+<li><code><a title="Classes.Policy.set_maxlength" href="#Classes.Policy.set_maxlength">set_maxlength</a></code></li>
+<li><code><a title="Classes.Policy.set_minlength" href="#Classes.Policy.set_minlength">set_minlength</a></code></li>
+<li><code><a title="Classes.Policy.set_numeric" href="#Classes.Policy.set_numeric">set_numeric</a></code></li>
+<li><code><a title="Classes.Policy.set_punctuation" href="#Classes.Policy.set_punctuation">set_punctuation</a></code></li>
+<li><code><a title="Classes.Policy.set_upper" href="#Classes.Policy.set_upper">set_upper</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="Classes.Time" href="#Classes.Time">Time</a></code></h4>
+<ul class="">
+<li><code><a title="Classes.Time.expiration_update" href="#Classes.Time.expiration_update">expiration_update</a></code></li>
+<li><code><a title="Classes.Time.time_now" href="#Classes.Time.time_now">time_now</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="Classes.User" href="#Classes.User">User</a></code></h4>
+<ul class="two-column">
+<li><code><a title="Classes.User.edit_password" href="#Classes.User.edit_password">edit_password</a></code></li>
+<li><code><a title="Classes.User.edit_username" href="#Classes.User.edit_username">edit_username</a></code></li>
+<li><code><a title="Classes.User.generate_password" href="#Classes.User.generate_password">generate_password</a></code></li>
+<li><code><a title="Classes.User.get_admin_status" href="#Classes.User.get_admin_status">get_admin_status</a></code></li>
+<li><code><a title="Classes.User.get_enabled" href="#Classes.User.get_enabled">get_enabled</a></code></li>
+<li><code><a title="Classes.User.get_expiration" href="#Classes.User.get_expiration">get_expiration</a></code></li>
+<li><code><a title="Classes.User.get_hash" href="#Classes.User.get_hash">get_hash</a></code></li>
+<li><code><a title="Classes.User.get_lastchange" href="#Classes.User.get_lastchange">get_lastchange</a></code></li>
+<li><code><a title="Classes.User.get_lastlogin" href="#Classes.User.get_lastlogin">get_lastlogin</a></code></li>
+<li><code><a title="Classes.User.get_password" href="#Classes.User.get_password">get_password</a></code></li>
+<li><code><a title="Classes.User.get_user" href="#Classes.User.get_user">get_user</a></code></li>
+<li><code><a title="Classes.User.get_username" href="#Classes.User.get_username">get_username</a></code></li>
+<li><code><a title="Classes.User.login_user" href="#Classes.User.login_user">login_user</a></code></li>
+<li><code><a title="Classes.User.set_enabled" href="#Classes.User.set_enabled">set_enabled</a></code></li>
+<li><code><a title="Classes.User.set_expiration" href="#Classes.User.set_expiration">set_expiration</a></code></li>
+<li><code><a title="Classes.User.set_hash" href="#Classes.User.set_hash">set_hash</a></code></li>
+<li><code><a title="Classes.User.set_lastchange" href="#Classes.User.set_lastchange">set_lastchange</a></code></li>
+<li><code><a title="Classes.User.set_lastlogin" href="#Classes.User.set_lastlogin">set_lastlogin</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="Classes.Username" href="#Classes.Username">Username</a></code></h4>
+<ul class="">
+<li><code><a title="Classes.Username.get_policy" href="#Classes.Username.get_policy">get_policy</a></code></li>
+<li><code><a title="Classes.Username.get_username" href="#Classes.Username.get_username">get_username</a></code></li>
+<li><code><a title="Classes.Username.policy_username" href="#Classes.Username.policy_username">policy_username</a></code></li>
+<li><code><a title="Classes.Username.set_username" href="#Classes.Username.set_username">set_username</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.10.0</a>.</p>
+</footer>
+</body>
+</html>
