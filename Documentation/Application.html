@@ -26,48 +26,550 @@
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">from flask import Flask, request, jsonify
-from Packages.File_Handling import Read_Data,Write_Data
-import json
-import os
+<pre><code class="python">from Packages import Help
+from flask import Flask, make_response, request
+from Packages.Exceptions import ChangeYourUsernameError, ChangeYourPasswordError, UserExistsAlreadyError, AccountError
+from Packages.Exceptions import UserisNotAdminError, AdminIsNotMasterError, ClassCreationError, UserDoesNotExistError
+from Packages.Exceptions import AdminHimSelfError, LengthError, PasswordPolicyError, PasswordUsedBeforeError, UsernamePolicyError
+
+app = Flask(__name__)
 
 
+@app.route(&#34;/signup&#34;, methods=[&#34;POST&#34;])
+def signup():
 
-App= Flask(__name__)
+    data = request.get_json()
+
+    admin_username = data.get(&#34;admin_username&#34;)
+    admin_password = data.get(&#34;admin_password&#34;)
+    username = data.get(&#34;username&#34;)
+    password = data.get(&#34;password&#34;)
+    status = data.get(&#34;status&#34;)
+    admin = data.get(&#34;admin&#34;)
+
+    list_of_str = [admin_username, admin_password, username, password]
+    list_of_bool = [status, admin]
+
+    for i in list_of_str:
+        if not isinstance(i, str):
+            raise TypeError
+
+    for i in list_of_bool:
+        if not isinstance(i, bool):
+            raise TypeError
+
+    response = Help.admin_signup_user(admin={&#34;username&#34;: admin_username,
+                                             &#34;password&#34;: admin_password},
+                                      user_data={&#34;username&#34;: username,
+                                                 &#34;password&#34;: password,
+                                                 &#34;enabled&#34;: status,
+                                                 &#34;admin&#34;: admin})
+
+    response = response.split(&#34;:&#34;)
+
+    return make_response(response[0], response[1])
 
 
+@app.route(&#34;/login&#34;, methods=[&#34;GET&#34;])
+def login():
+
+    data = request.get_json()
+
+    # get input
+    username = data.get(&#34;username&#34;)
+    password = data.get(&#34;password&#34;)
+
+    # check if items are strings
+    if not isinstance(username, str) or not isinstance(password, str):
+        raise TypeError
+
+    response = Help.login_user(
+        data={&#34;username&#34;: username,
+              &#34;password&#34;: password})
+
+    response = response.split(&#34;:&#34;)
+
+    return make_response(response[0], response[1])
 
 
+@app.route(&#34;/generate-password&#34;, methods=[&#34;GET&#34;])
+def user_generate_password():
 
-@App.route(&#34;/register/user&#34;,methods=[&#34;PUT&#34;])
-def register():
-    InputData = json.loads(request.data)
-    #open file and read data
+    data = request.get_json()
 
-    Reader = Read_Data()
-    ################add read fiel here############
-    print(Reader[&#34;Users&#34;])
+    # get input
+    username = data.get(&#34;username&#34;)
+    password = data.get(&#34;password&#34;)
+    length = data.get(&#34;length&#34;)
 
-    # if not Reader:
-    #     Data[&#34;Users&#34;].append(InputData)
-    # else:
-    #     Data = Reader
-    #     Data[&#34;Users&#34;].append(InputData)
-    #     print(Data[&#34;Users&#34;])
-    
-    
-    # return jsonify(Data)
+    # check if items are strings
+    if not isinstance(username, str) or not isinstance(password, str):
+        raise TypeError
 
+    # check if item is integer
+    if not isinstance(length, int):
+        raise TypeError
 
-@App.route(&#34;/login/user&#34;,methods=[&#34;GET&#34;])
-def login_user():
-    User_input = json.loads(request.data)
+    response = Help.user_generate_password(
+        data={&#34;username&#34;: username,
+              &#34;password&#34;: password},
+        length=length)
 
-    
+    response = response.split(&#34;:&#34;)
+
+    return make_response(response[0], response[1])
 
 
-if __name__==&#34;__main__&#34;:
-    App.run(debug=True,port=1337)</code></pre>
+@app.route(&#34;/edit-password&#34;, methods=[&#34;PUT&#34;])
+def edit_password():
+
+    data = request.get_json()
+
+    # get input
+    username = data.get(&#34;username&#34;)
+    password = data.get(&#34;password&#34;)
+    new_password = data.get(&#34;new&#34;)
+
+    # check if list items are strings
+    list_of_str = [username, password, new_password]
+    for i in list_of_str:
+        if not isinstance(i, str):
+            raise TypeError
+
+    response = Help.edit_password(
+        data={&#34;username&#34;: username,
+              &#34;password&#34;: password,
+              &#34;newpassword&#34;: new_password})
+
+    response = response.split(&#34;:&#34;)
+
+    return make_response(response[0], response[1])
+
+
+@app.route(&#34;/edit-username&#34;, methods=[&#34;PUT&#34;])
+def edit_useranme():
+
+    data = request.get_json()
+
+    # get input
+    username = data.get(&#34;username&#34;)
+    password = data.get(&#34;password&#34;)
+    new_username = data.get(&#34;new&#34;)
+
+    # check if list items are strings
+    list_of_str = [username, password, new_username]
+    for i in list_of_str:
+        if not isinstance(i, str):
+            raise TypeError
+
+    response = Help.user_edit_username(
+        data={&#34;username&#34;: username,
+              &#34;password&#34;: password,
+              &#34;newusername&#34;: new_username})
+
+    response = response.split(&#34;:&#34;)
+
+    return make_response(response[0], response[1])
+
+
+@app.route(&#34;/admin/enable-user&#34;, methods=[&#34;PUT&#34;])
+def enable_user():
+
+    data = request.get_json()
+
+    # read data as input
+    username = data.get(&#34;username&#34;)
+    password = data.get(&#34;password&#34;)
+    user = data.get(&#34;user&#34;)
+
+    # check if all data are strings
+    list_of_str = [username, password, user]
+    for i in list_of_str:
+        if not isinstance(i, str):
+            raise TypeError
+
+    response = Help.admin_enable_disable_user(admin={&#34;username&#34;: username,
+                                                     &#34;password&#34;: password},
+                                              username=user,
+                                              state=True)
+
+    response = response.split(&#34;:&#34;)
+
+    return make_response(response[0], response[1])
+
+
+@app.route(&#34;/admin/disable-user&#34;, methods=[&#34;PUT&#34;])
+def disable_user():
+
+    data = request.get_json()
+
+    # get input
+    username = data.get(&#34;username&#34;)
+    password = data.get(&#34;password&#34;)
+    user = data.get(&#34;user&#34;)
+
+    # check if list items are strings
+    list_of_str = [username, password, user]
+    for i in list_of_str:
+        if not isinstance(i, str):
+            raise TypeError
+
+    response = Help.admin_enable_disable_user(admin={&#34;username&#34;: username,
+                                                     &#34;password&#34;: password},
+                                              username=user,
+                                              state=False)
+
+    response = response.split(&#34;:&#34;)
+
+    return make_response(response[0], response[1])
+
+
+@app.route(&#34;/admin/delete-user&#34;, methods=[&#34;DELETE&#34;])
+def delete_user():
+
+    data = request.get_json()
+
+    # get input
+    username = data.get(&#34;username&#34;)
+    password = data.get(&#34;password&#34;)
+    user = data.get(&#34;user&#34;)
+
+    # check if list items are strings
+    list_of_str = [username, password, user]
+    for i in list_of_str:
+        if not isinstance(i, str):
+            raise TypeError
+
+    response = Help.admin_delete_user(admin={&#34;username&#34;: username,
+                                             &#34;password&#34;: password},
+                                      username=user)
+
+    response = response.split(&#34;:&#34;)
+
+    return make_response(response[0], response[1])
+
+
+@app.route(&#34;/admin/reset-user&#34;, methods=[&#34;PUT&#34;])
+def reset_password():
+
+    data = request.get_json()
+
+    # get input
+    username = data.get(&#34;username&#34;)
+    password = data.get(&#34;password&#34;)
+    user = data.get(&#34;user&#34;)
+
+    # check if input are strings
+    list_of_str = [username, password, user]
+    for i in list_of_str:
+        if not isinstance(i, str):
+            raise TypeError
+
+    response = Help.admin_reset_user_password(
+        admin={&#34;username&#34;: username,
+               &#34;password&#34;: password},
+        username=user)
+
+    response = response.split(&#34;:&#34;)
+
+    return make_response(response[0], response[1])
+
+
+@app.route(&#34;/admin/set-password-policy&#34;, methods=[&#34;PUT&#34;])
+def set_password_policy():
+
+    data = request.get_json()
+
+    # get user data
+    username = data.get(&#34;username&#34;)
+    password = data.get(&#34;password&#34;)
+
+    # get policy data
+    minlength = data.get(&#34;minlength&#34;)
+    maxlength = data.get(&#34;maxlength&#34;)
+    upper = data.get(&#34;upper&#34;)
+    lower = data.get(&#34;lower&#34;)
+    numeric = data.get(&#34;numeric&#34;)
+    punctuation = data.get(&#34;punctuation&#34;)
+
+    list_of_str = [username, password]
+    list_of_int = [upper, lower, punctuation,
+                   numeric, maxlength, minlength]
+
+    # check if list items are strings
+    for i in list_of_str:
+        if not isinstance(i, str):
+            raise TypeError
+
+    # check if list items are integers
+    for i in list_of_int:
+        if not isinstance(i, int):
+            raise TypeError
+
+    response = Help.admin_set_policy(
+        admin={&#34;username&#34;: username,
+               &#34;password&#34;: password},
+        policy={&#34;minlength&#34;: minlength,
+                &#34;maxlength&#34;: maxlength,
+                &#34;upper&#34;: upper,
+                &#34;lower&#34;: lower,
+                &#34;punctuation&#34;: punctuation,
+                &#34;numeric&#34;: numeric},
+        policy_type=False)
+
+    response = response.split(&#34;:&#34;)
+
+    return make_response(response[0], response[1])
+
+
+@app.route(&#34;/admin/set-username-policy&#34;, methods=[&#34;PUT&#34;])
+def set_username_policy():
+
+    data = request.get_json()
+
+    # login data
+    username = data.get(&#34;username&#34;)
+    password = data.get(&#34;password&#34;)
+
+    # policy data
+    minlength = data.get(&#34;minlength&#34;)
+    max_length = data.get(&#34;maxlength&#34;)
+    upper = data.get(&#34;upper&#34;)
+    lower = data.get(&#34;lower&#34;)
+    numeric = data.get(&#34;numeric&#34;)
+    punctuation = data.get(&#34;punctuation&#34;)
+
+    list_of_str = [username, password]
+    list_of_int = [upper, lower, punctuation,
+                   numeric, max_length, minlength]
+
+    # check if items are strings
+    for i in list_of_str:
+        if not isinstance(i, str):
+            raise TypeError
+
+    # check if items are integers
+    for i in list_of_int:
+        if not isinstance(i, int):
+            raise TypeError
+
+    response = Help.admin_set_policy(
+        admin={&#34;username&#34;: username,
+               &#34;password&#34;: password},
+        policy={&#34;minlength&#34;: minlength,
+                &#34;maxlength&#34;: max_length,
+                &#34;upper&#34;: upper,
+                &#34;lower&#34;: lower,
+                &#34;punctuation&#34;: punctuation,
+                &#34;numeric&#34;: numeric},
+        policy_type=True)
+
+    response = response.split(&#34;:&#34;)
+
+    return make_response(response[0], response[1])
+
+
+@app.route(&#34;/admin/get-user-data&#34;, methods=[&#34;GET&#34;])
+def get_user_data():
+
+    data = request.get_json()
+
+    # get input
+    username = data.get(&#34;username&#34;)
+    password = data.get(&#34;password&#34;)
+    user = data.get(&#34;user&#34;)
+
+    # check if list items are strings
+    list_of_str = [username, password, user]
+    for i in list_of_str:
+        if not isinstance(i, str):
+            raise TypeError
+
+    response = Help.admin_get_user_data(
+        admin={&#34;username&#34;: username,
+               &#34;password&#34;: password},
+        username=username)
+
+    response = response.split(&#34;;&#34;)
+    return make_response(response[0], response[1])
+
+
+@app.route(&#34;/admin/get-user-count&#34;, methods=[&#34;GET&#34;])
+def get_user_count():
+
+    data = request.get_json()
+
+    # get input
+    username = data.get(&#34;username&#34;)
+    password = data.get(&#34;password&#34;)
+
+    # check if list items are strings
+    list_of_str = [username, password]
+    for i in list_of_str:
+        if not isinstance(i, str):
+            raise TypeError
+
+    response = Help.admin_get_user_count(
+        admin={&#34;username&#34;: username,
+               &#34;password&#34;: password})
+
+    response = response.split(&#34;:&#34;)
+
+    return make_response(response[0], response[1])
+
+
+@app.route(&#34;/admin/get-login-history&#34;, methods=[&#34;GET&#34;])
+def get_user_login_history():
+
+    data = request.get_json()
+
+    # get user input
+    username = data.get(&#34;username&#34;)
+    password = data.get(&#34;password&#34;)
+    user = data.get(&#34;user&#34;)
+
+    # check if list items are strings
+    list_of_str = [username, password, user]
+    for i in list_of_str:
+        if not isinstance(i, str):
+            raise TypeError
+
+    response = Help.admin_get_user_loginorchange_history(
+        admin={&#34;username&#34;: username,
+               &#34;password&#34;: password},
+        username=user,
+        history_type=True)
+
+    # split with ; because it returns data which include :
+    response = response.split(&#34;;&#34;)
+
+    return make_response(response[0], response[1])
+
+
+@app.route(&#34;/admin/get-change-history&#34;, methods=[&#34;GET&#34;])
+def get_user_change_history():
+
+    data = request.get_json()
+
+    # get user input
+    username = data.get(&#34;username&#34;)
+    password = data.get(&#34;password&#34;)
+    user = data.get(&#34;user&#34;)
+
+    # check if items are strings
+    list_of_str = [username, password, user]
+    for i in list_of_str:
+        if not isinstance(i, str):
+            raise TypeError
+
+    response = Help.admin_get_user_loginorchange_history(
+        admin={&#34;username&#34;: username,
+               &#34;password&#34;: password},
+        username=user,
+        history_type=False)
+
+    # split with ; because it returns data which include :
+    response = response.split(&#34;;&#34;)
+    return make_response(response[0], response[1])
+
+# _________________________________________________________________________________________________
+
+
+@app.errorhandler(ClassCreationError)
+def handling(e):
+    e = str(e).split(&#34;:&#34;)
+    return make_response(e[0], e[1])
+
+
+@app.errorhandler(UserDoesNotExistError)
+def handling(e):
+    e = str(e).split(&#34;:&#34;)
+    return make_response(e[0], e[1])
+
+
+@app.errorhandler(UserisNotAdminError)
+def handling(e):
+    e = str(e).split(&#34;:&#34;)
+    return make_response(e[0], e[1])
+
+
+@app.errorhandler(AdminIsNotMasterError)
+def handling(e):
+    e = str(e).split(&#34;:&#34;)
+    return make_response(e[0], e[1])
+
+
+@app.errorhandler(ChangeYourPasswordError)
+def handling(e):
+    e = str(e).split(&#34;:&#34;)
+    return make_response(e[0], e[1])
+
+
+@app.errorhandler(ChangeYourUsernameError)
+def handling(e):
+    e = str(e).split(&#34;:&#34;)
+    return make_response(e[0], e[1])
+
+
+@app.errorhandler(UserExistsAlreadyError)
+def handling(e):
+    e = str(e).split(&#34;:&#34;)
+    return make_response(e[0], e[1])
+
+
+@app.errorhandler(AccountError)
+def handling(e):
+    e = str(e).split(&#34;:&#34;)
+    return make_response(e[0], e[1])
+
+
+@app.errorhandler(LengthError)
+def handling(e):
+    e = str(e).split(&#34;:&#34;)
+    return make_response(e[0], e[1])
+
+
+@app.errorhandler(PasswordUsedBeforeError)
+def handling(e):
+    e = str(e).split(&#34;:&#34;)
+    return make_response(e[0], e[1])
+
+
+@app.errorhandler(AdminHimSelfError)
+def handling(e):
+    e = str(e).split(&#34;:&#34;)
+    return make_response(e[0], e[1])
+
+
+@app.errorhandler(PasswordPolicyError)
+def handling(e):
+    e = str(e).split(&#34;:&#34;)
+    return make_response(e[0], e[1])
+
+
+@app.errorhandler(UsernamePolicyError)
+def handling(e):
+    e = str(e).split(&#34;:&#34;)
+    return make_response(e[0], e[1])
+
+
+@app.errorhandler(AttributeError)
+def handling(e):
+    return make_response(&#34;wrong header!&#34;, 400)
+
+
+@app.errorhandler(TypeError)
+def handling(e):
+    return make_response(&#34;invalid values!&#34;, 400)
+
+
+@app.errorhandler(FileNotFoundError)
+def handling(e):
+    return make_response(&#34;files missed!, all data resetted. Check for the original data on the cheat sheet&#34;, 500)
+
+
+if __name__ == &#34;__main__&#34;:
+    app.run(port=1337)</code></pre>
 </details>
 </section>
 <section>
@@ -77,8 +579,8 @@ if __name__==&#34;__main__&#34;:
 <section>
 <h2 class="section-title" id="header-functions">Functions</h2>
 <dl>
-<dt id="Application.login_user"><code class="name flex">
-<span>def <span class="ident">login_user</span></span>(<span>)</span>
+<dt id="Application.delete_user"><code class="name flex">
+<span>def <span class="ident">delete_user</span></span>(<span>)</span>
 </code></dt>
 <dd>
 <div class="desc"></div>
@@ -86,13 +588,33 @@ if __name__==&#34;__main__&#34;:
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">@App.route(&#34;/login/user&#34;,methods=[&#34;GET&#34;])
-def login_user():
-    User_input = json.loads(request.data)</code></pre>
+<pre><code class="python">@app.route(&#34;/admin/delete-user&#34;, methods=[&#34;DELETE&#34;])
+def delete_user():
+
+    data = request.get_json()
+
+    # get input
+    username = data.get(&#34;username&#34;)
+    password = data.get(&#34;password&#34;)
+    user = data.get(&#34;user&#34;)
+
+    # check if list items are strings
+    list_of_str = [username, password, user]
+    for i in list_of_str:
+        if not isinstance(i, str):
+            raise TypeError
+
+    response = Help.admin_delete_user(admin={&#34;username&#34;: username,
+                                             &#34;password&#34;: password},
+                                      username=user)
+
+    response = response.split(&#34;:&#34;)
+
+    return make_response(response[0], response[1])</code></pre>
 </details>
 </dd>
-<dt id="Application.register"><code class="name flex">
-<span>def <span class="ident">register</span></span>(<span>)</span>
+<dt id="Application.disable_user"><code class="name flex">
+<span>def <span class="ident">disable_user</span></span>(<span>)</span>
 </code></dt>
 <dd>
 <div class="desc"></div>
@@ -100,24 +622,548 @@ def login_user():
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">@App.route(&#34;/register/user&#34;,methods=[&#34;PUT&#34;])
-def register():
-    InputData = json.loads(request.data)
-    #open file and read data
+<pre><code class="python">@app.route(&#34;/admin/disable-user&#34;, methods=[&#34;PUT&#34;])
+def disable_user():
 
-    Reader = Read_Data()
-    ################add read fiel here############
-    print(Reader[&#34;Users&#34;])
+    data = request.get_json()
 
-    # if not Reader:
-    #     Data[&#34;Users&#34;].append(InputData)
-    # else:
-    #     Data = Reader
-    #     Data[&#34;Users&#34;].append(InputData)
-    #     print(Data[&#34;Users&#34;])
-    
-    
-    # return jsonify(Data)</code></pre>
+    # get input
+    username = data.get(&#34;username&#34;)
+    password = data.get(&#34;password&#34;)
+    user = data.get(&#34;user&#34;)
+
+    # check if list items are strings
+    list_of_str = [username, password, user]
+    for i in list_of_str:
+        if not isinstance(i, str):
+            raise TypeError
+
+    response = Help.admin_enable_disable_user(admin={&#34;username&#34;: username,
+                                                     &#34;password&#34;: password},
+                                              username=user,
+                                              state=False)
+
+    response = response.split(&#34;:&#34;)
+
+    return make_response(response[0], response[1])</code></pre>
+</details>
+</dd>
+<dt id="Application.edit_password"><code class="name flex">
+<span>def <span class="ident">edit_password</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@app.route(&#34;/edit-password&#34;, methods=[&#34;PUT&#34;])
+def edit_password():
+
+    data = request.get_json()
+
+    # get input
+    username = data.get(&#34;username&#34;)
+    password = data.get(&#34;password&#34;)
+    new_password = data.get(&#34;new&#34;)
+
+    # check if list items are strings
+    list_of_str = [username, password, new_password]
+    for i in list_of_str:
+        if not isinstance(i, str):
+            raise TypeError
+
+    response = Help.edit_password(
+        data={&#34;username&#34;: username,
+              &#34;password&#34;: password,
+              &#34;newpassword&#34;: new_password})
+
+    response = response.split(&#34;:&#34;)
+
+    return make_response(response[0], response[1])</code></pre>
+</details>
+</dd>
+<dt id="Application.edit_useranme"><code class="name flex">
+<span>def <span class="ident">edit_useranme</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@app.route(&#34;/edit-username&#34;, methods=[&#34;PUT&#34;])
+def edit_useranme():
+
+    data = request.get_json()
+
+    # get input
+    username = data.get(&#34;username&#34;)
+    password = data.get(&#34;password&#34;)
+    new_username = data.get(&#34;new&#34;)
+
+    # check if list items are strings
+    list_of_str = [username, password, new_username]
+    for i in list_of_str:
+        if not isinstance(i, str):
+            raise TypeError
+
+    response = Help.user_edit_username(
+        data={&#34;username&#34;: username,
+              &#34;password&#34;: password,
+              &#34;newusername&#34;: new_username})
+
+    response = response.split(&#34;:&#34;)
+
+    return make_response(response[0], response[1])</code></pre>
+</details>
+</dd>
+<dt id="Application.enable_user"><code class="name flex">
+<span>def <span class="ident">enable_user</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@app.route(&#34;/admin/enable-user&#34;, methods=[&#34;PUT&#34;])
+def enable_user():
+
+    data = request.get_json()
+
+    # read data as input
+    username = data.get(&#34;username&#34;)
+    password = data.get(&#34;password&#34;)
+    user = data.get(&#34;user&#34;)
+
+    # check if all data are strings
+    list_of_str = [username, password, user]
+    for i in list_of_str:
+        if not isinstance(i, str):
+            raise TypeError
+
+    response = Help.admin_enable_disable_user(admin={&#34;username&#34;: username,
+                                                     &#34;password&#34;: password},
+                                              username=user,
+                                              state=True)
+
+    response = response.split(&#34;:&#34;)
+
+    return make_response(response[0], response[1])</code></pre>
+</details>
+</dd>
+<dt id="Application.get_user_change_history"><code class="name flex">
+<span>def <span class="ident">get_user_change_history</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@app.route(&#34;/admin/get-change-history&#34;, methods=[&#34;GET&#34;])
+def get_user_change_history():
+
+    data = request.get_json()
+
+    # get user input
+    username = data.get(&#34;username&#34;)
+    password = data.get(&#34;password&#34;)
+    user = data.get(&#34;user&#34;)
+
+    # check if items are strings
+    list_of_str = [username, password, user]
+    for i in list_of_str:
+        if not isinstance(i, str):
+            raise TypeError
+
+    response = Help.admin_get_user_loginorchange_history(
+        admin={&#34;username&#34;: username,
+               &#34;password&#34;: password},
+        username=user,
+        history_type=False)
+
+    # split with ; because it returns data which include :
+    response = response.split(&#34;;&#34;)
+    return make_response(response[0], response[1])</code></pre>
+</details>
+</dd>
+<dt id="Application.get_user_count"><code class="name flex">
+<span>def <span class="ident">get_user_count</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@app.route(&#34;/admin/get-user-count&#34;, methods=[&#34;GET&#34;])
+def get_user_count():
+
+    data = request.get_json()
+
+    # get input
+    username = data.get(&#34;username&#34;)
+    password = data.get(&#34;password&#34;)
+
+    # check if list items are strings
+    list_of_str = [username, password]
+    for i in list_of_str:
+        if not isinstance(i, str):
+            raise TypeError
+
+    response = Help.admin_get_user_count(
+        admin={&#34;username&#34;: username,
+               &#34;password&#34;: password})
+
+    response = response.split(&#34;:&#34;)
+
+    return make_response(response[0], response[1])</code></pre>
+</details>
+</dd>
+<dt id="Application.get_user_data"><code class="name flex">
+<span>def <span class="ident">get_user_data</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@app.route(&#34;/admin/get-user-data&#34;, methods=[&#34;GET&#34;])
+def get_user_data():
+
+    data = request.get_json()
+
+    # get input
+    username = data.get(&#34;username&#34;)
+    password = data.get(&#34;password&#34;)
+    user = data.get(&#34;user&#34;)
+
+    # check if list items are strings
+    list_of_str = [username, password, user]
+    for i in list_of_str:
+        if not isinstance(i, str):
+            raise TypeError
+
+    response = Help.admin_get_user_data(
+        admin={&#34;username&#34;: username,
+               &#34;password&#34;: password},
+        username=username)
+
+    response = response.split(&#34;;&#34;)
+    return make_response(response[0], response[1])</code></pre>
+</details>
+</dd>
+<dt id="Application.get_user_login_history"><code class="name flex">
+<span>def <span class="ident">get_user_login_history</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@app.route(&#34;/admin/get-login-history&#34;, methods=[&#34;GET&#34;])
+def get_user_login_history():
+
+    data = request.get_json()
+
+    # get user input
+    username = data.get(&#34;username&#34;)
+    password = data.get(&#34;password&#34;)
+    user = data.get(&#34;user&#34;)
+
+    # check if list items are strings
+    list_of_str = [username, password, user]
+    for i in list_of_str:
+        if not isinstance(i, str):
+            raise TypeError
+
+    response = Help.admin_get_user_loginorchange_history(
+        admin={&#34;username&#34;: username,
+               &#34;password&#34;: password},
+        username=user,
+        history_type=True)
+
+    # split with ; because it returns data which include :
+    response = response.split(&#34;;&#34;)
+
+    return make_response(response[0], response[1])</code></pre>
+</details>
+</dd>
+<dt id="Application.handling"><code class="name flex">
+<span>def <span class="ident">handling</span></span>(<span>e)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@app.errorhandler(FileNotFoundError)
+def handling(e):
+    return make_response(&#34;files missed!, all data resetted. Check for the original data on the cheat sheet&#34;, 500)</code></pre>
+</details>
+</dd>
+<dt id="Application.login"><code class="name flex">
+<span>def <span class="ident">login</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@app.route(&#34;/login&#34;, methods=[&#34;GET&#34;])
+def login():
+
+    data = request.get_json()
+
+    # get input
+    username = data.get(&#34;username&#34;)
+    password = data.get(&#34;password&#34;)
+
+    # check if items are strings
+    if not isinstance(username, str) or not isinstance(password, str):
+        raise TypeError
+
+    response = Help.login_user(
+        data={&#34;username&#34;: username,
+              &#34;password&#34;: password})
+
+    response = response.split(&#34;:&#34;)
+
+    return make_response(response[0], response[1])</code></pre>
+</details>
+</dd>
+<dt id="Application.reset_password"><code class="name flex">
+<span>def <span class="ident">reset_password</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@app.route(&#34;/admin/reset-user&#34;, methods=[&#34;PUT&#34;])
+def reset_password():
+
+    data = request.get_json()
+
+    # get input
+    username = data.get(&#34;username&#34;)
+    password = data.get(&#34;password&#34;)
+    user = data.get(&#34;user&#34;)
+
+    # check if input are strings
+    list_of_str = [username, password, user]
+    for i in list_of_str:
+        if not isinstance(i, str):
+            raise TypeError
+
+    response = Help.admin_reset_user_password(
+        admin={&#34;username&#34;: username,
+               &#34;password&#34;: password},
+        username=user)
+
+    response = response.split(&#34;:&#34;)
+
+    return make_response(response[0], response[1])</code></pre>
+</details>
+</dd>
+<dt id="Application.set_password_policy"><code class="name flex">
+<span>def <span class="ident">set_password_policy</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@app.route(&#34;/admin/set-password-policy&#34;, methods=[&#34;PUT&#34;])
+def set_password_policy():
+
+    data = request.get_json()
+
+    # get user data
+    username = data.get(&#34;username&#34;)
+    password = data.get(&#34;password&#34;)
+
+    # get policy data
+    minlength = data.get(&#34;minlength&#34;)
+    maxlength = data.get(&#34;maxlength&#34;)
+    upper = data.get(&#34;upper&#34;)
+    lower = data.get(&#34;lower&#34;)
+    numeric = data.get(&#34;numeric&#34;)
+    punctuation = data.get(&#34;punctuation&#34;)
+
+    list_of_str = [username, password]
+    list_of_int = [upper, lower, punctuation,
+                   numeric, maxlength, minlength]
+
+    # check if list items are strings
+    for i in list_of_str:
+        if not isinstance(i, str):
+            raise TypeError
+
+    # check if list items are integers
+    for i in list_of_int:
+        if not isinstance(i, int):
+            raise TypeError
+
+    response = Help.admin_set_policy(
+        admin={&#34;username&#34;: username,
+               &#34;password&#34;: password},
+        policy={&#34;minlength&#34;: minlength,
+                &#34;maxlength&#34;: maxlength,
+                &#34;upper&#34;: upper,
+                &#34;lower&#34;: lower,
+                &#34;punctuation&#34;: punctuation,
+                &#34;numeric&#34;: numeric},
+        policy_type=False)
+
+    response = response.split(&#34;:&#34;)
+
+    return make_response(response[0], response[1])</code></pre>
+</details>
+</dd>
+<dt id="Application.set_username_policy"><code class="name flex">
+<span>def <span class="ident">set_username_policy</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@app.route(&#34;/admin/set-username-policy&#34;, methods=[&#34;PUT&#34;])
+def set_username_policy():
+
+    data = request.get_json()
+
+    # login data
+    username = data.get(&#34;username&#34;)
+    password = data.get(&#34;password&#34;)
+
+    # policy data
+    minlength = data.get(&#34;minlength&#34;)
+    max_length = data.get(&#34;maxlength&#34;)
+    upper = data.get(&#34;upper&#34;)
+    lower = data.get(&#34;lower&#34;)
+    numeric = data.get(&#34;numeric&#34;)
+    punctuation = data.get(&#34;punctuation&#34;)
+
+    list_of_str = [username, password]
+    list_of_int = [upper, lower, punctuation,
+                   numeric, max_length, minlength]
+
+    # check if items are strings
+    for i in list_of_str:
+        if not isinstance(i, str):
+            raise TypeError
+
+    # check if items are integers
+    for i in list_of_int:
+        if not isinstance(i, int):
+            raise TypeError
+
+    response = Help.admin_set_policy(
+        admin={&#34;username&#34;: username,
+               &#34;password&#34;: password},
+        policy={&#34;minlength&#34;: minlength,
+                &#34;maxlength&#34;: max_length,
+                &#34;upper&#34;: upper,
+                &#34;lower&#34;: lower,
+                &#34;punctuation&#34;: punctuation,
+                &#34;numeric&#34;: numeric},
+        policy_type=True)
+
+    response = response.split(&#34;:&#34;)
+
+    return make_response(response[0], response[1])</code></pre>
+</details>
+</dd>
+<dt id="Application.signup"><code class="name flex">
+<span>def <span class="ident">signup</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@app.route(&#34;/signup&#34;, methods=[&#34;POST&#34;])
+def signup():
+
+    data = request.get_json()
+
+    admin_username = data.get(&#34;admin_username&#34;)
+    admin_password = data.get(&#34;admin_password&#34;)
+    username = data.get(&#34;username&#34;)
+    password = data.get(&#34;password&#34;)
+    status = data.get(&#34;status&#34;)
+    admin = data.get(&#34;admin&#34;)
+
+    list_of_str = [admin_username, admin_password, username, password]
+    list_of_bool = [status, admin]
+
+    for i in list_of_str:
+        if not isinstance(i, str):
+            raise TypeError
+
+    for i in list_of_bool:
+        if not isinstance(i, bool):
+            raise TypeError
+
+    response = Help.admin_signup_user(admin={&#34;username&#34;: admin_username,
+                                             &#34;password&#34;: admin_password},
+                                      user_data={&#34;username&#34;: username,
+                                                 &#34;password&#34;: password,
+                                                 &#34;enabled&#34;: status,
+                                                 &#34;admin&#34;: admin})
+
+    response = response.split(&#34;:&#34;)
+
+    return make_response(response[0], response[1])</code></pre>
+</details>
+</dd>
+<dt id="Application.user_generate_password"><code class="name flex">
+<span>def <span class="ident">user_generate_password</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@app.route(&#34;/generate-password&#34;, methods=[&#34;GET&#34;])
+def user_generate_password():
+
+    data = request.get_json()
+
+    # get input
+    username = data.get(&#34;username&#34;)
+    password = data.get(&#34;password&#34;)
+    length = data.get(&#34;length&#34;)
+
+    # check if items are strings
+    if not isinstance(username, str) or not isinstance(password, str):
+        raise TypeError
+
+    # check if item is integer
+    if not isinstance(length, int):
+        raise TypeError
+
+    response = Help.user_generate_password(
+        data={&#34;username&#34;: username,
+              &#34;password&#34;: password},
+        length=length)
+
+    response = response.split(&#34;:&#34;)
+
+    return make_response(response[0], response[1])</code></pre>
 </details>
 </dd>
 </dl>
@@ -133,8 +1179,22 @@ def register():
 <ul id="index">
 <li><h3><a href="#header-functions">Functions</a></h3>
 <ul class="">
-<li><code><a title="Application.login_user" href="#Application.login_user">login_user</a></code></li>
-<li><code><a title="Application.register" href="#Application.register">register</a></code></li>
+<li><code><a title="Application.delete_user" href="#Application.delete_user">delete_user</a></code></li>
+<li><code><a title="Application.disable_user" href="#Application.disable_user">disable_user</a></code></li>
+<li><code><a title="Application.edit_password" href="#Application.edit_password">edit_password</a></code></li>
+<li><code><a title="Application.edit_useranme" href="#Application.edit_useranme">edit_useranme</a></code></li>
+<li><code><a title="Application.enable_user" href="#Application.enable_user">enable_user</a></code></li>
+<li><code><a title="Application.get_user_change_history" href="#Application.get_user_change_history">get_user_change_history</a></code></li>
+<li><code><a title="Application.get_user_count" href="#Application.get_user_count">get_user_count</a></code></li>
+<li><code><a title="Application.get_user_data" href="#Application.get_user_data">get_user_data</a></code></li>
+<li><code><a title="Application.get_user_login_history" href="#Application.get_user_login_history">get_user_login_history</a></code></li>
+<li><code><a title="Application.handling" href="#Application.handling">handling</a></code></li>
+<li><code><a title="Application.login" href="#Application.login">login</a></code></li>
+<li><code><a title="Application.reset_password" href="#Application.reset_password">reset_password</a></code></li>
+<li><code><a title="Application.set_password_policy" href="#Application.set_password_policy">set_password_policy</a></code></li>
+<li><code><a title="Application.set_username_policy" href="#Application.set_username_policy">set_username_policy</a></code></li>
+<li><code><a title="Application.signup" href="#Application.signup">signup</a></code></li>
+<li><code><a title="Application.user_generate_password" href="#Application.user_generate_password">user_generate_password</a></code></li>
 </ul>
 </li>
 </ul>
