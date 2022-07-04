@@ -1,63 +1,64 @@
-
 class ClassCreationError(Exception):
-    def __init__(self,
-                 message="Failed to build an object, check the input!:500") -> None:
+    def __init__(
+        self, message="Failed to build an object, check the input!:500"
+    ) -> None:
 
         self.message = message
         super().__init__(self.message)
 
 
 class UserDoesNotExistError(Exception):
-    def __init__(self,
-                 message="User is not in the database, please enter an existing user!:401") -> None:
+    def __init__(
+        self, message="User is not in the database, please enter an existing user!:401"
+    ) -> None:
 
         self.message = message
         super().__init__(self.message)
 
 
 class UserisNotAdminError(Exception):
-    def __init__(self,
-                 message="User has no admin privileges!:405") -> None:
+    def __init__(self, message="User has no admin privileges!:405") -> None:
 
         self.message = message
         super().__init__(self.message)
 
 
 class AdminIsNotMasterError(Exception):
-    def __init__(self,
-                 message="Admin has no master privileges!:405") -> None:
+    def __init__(self, message="Admin has no master privileges!:405") -> None:
 
         self.message = message
         super().__init__(self.message)
 
 
 class ChangeYourUsernameError(Exception):
-    def __init__(self,
-                 message="Username doesn't match with policy, change it!:403") -> None:
+    def __init__(
+        self, message="Username doesn't match with policy, change it!:403"
+    ) -> None:
 
         self.message = message
         super().__init__(self.message)
 
 
 class ChangeYourPasswordError(Exception):
-    def __init__(self,
-                 message="Password is not valid any more, change it!:403") -> None:
+    def __init__(
+        self, message="Password is not valid any more, change it!:403"
+    ) -> None:
 
         self.message = message
         super().__init__(self.message)
 
 
 class PasswordIsPwnedError(Exception):
-    def __init__(self,
-                 message="this password is already leaked!:400") -> None:
+    def __init__(self, message="this password is already leaked!:400") -> None:
 
         self.message = message
         super().__init__(self.message)
 
 
 class UserExistsAlreadyError(Exception):
-    def __init__(self,
-                 message="User exists already, try with another one!:400") -> None:
+    def __init__(
+        self, message="User exists already, try with another one!:400"
+    ) -> None:
 
         self.message = message
         super().__init__(self.message)
