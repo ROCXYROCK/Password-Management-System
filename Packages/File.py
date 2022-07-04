@@ -34,7 +34,7 @@ def read_file(file: str) -> Union[dict, bool]:
         FileNotFoundError: will be raised when file doesn't exists at this place.
     """
     try:
-        with open(file, "r", encoding='UTF-8') as f:
+        with open(file, "r", encoding="UTF-8") as f:
             read = f.read()
 
         return read
@@ -45,7 +45,7 @@ def read_file(file: str) -> Union[dict, bool]:
         return False
 
 
-def write_file(file: str, data: dict) -> Union[dict, bool]:
+def write_file(file: str, data: dict) -> bool:
     """This function is a general function to write json data in files.
 
     Args:
@@ -60,7 +60,7 @@ def write_file(file: str, data: dict) -> Union[dict, bool]:
         AttributeError: will be raised, if methods of other types are used.
     """
     try:
-        with open(file, "w", encoding='UTF-8') as f:
+        with open(file, "w", encoding="UTF-8") as f:
             json.dump(data, f, indent=2)
 
         return True
@@ -76,12 +76,16 @@ def filenotfoundwriter() -> bool:
         True: All files already written
         False: Files couldn't be wrought
     """
-    data = {"Amino1": {"hash": "$2b$12$e.pj8zLRRX1exJFPTnRBoOwXfK0eVXLbJqd3B8mwMTUpgrh37EbgW",
+    data = {
+        "Amino1": {
+            "hash": "$2b$12$e.pj8zLRRX1exJFPTnRBoOwXfK0eVXLbJqd3B8mwMTUpgrh37EbgW",
             "enabled": True,
-                       "admin": True,
-                       "expiration": "2022-09-21 00:59:00.268556",
-                       "lastlogin": "2022-06-30 16:32:10.458613",
-                       "lastchange": "2022-06-16 15:30:54.359203"}}
+            "admin": True,
+            "expiration": "2022-09-21 00:59:00.268556",
+            "lastlogin": "2022-06-30 16:32:10.458613",
+            "lastchange": "2022-06-16 15:30:54.359203",
+        }
+    }
 
     policy = {
         "password": {
@@ -91,7 +95,7 @@ def filenotfoundwriter() -> bool:
             "lower": 1,
             "punctuation": 1,
             "numeric": 2,
-            "lastchange": "2022-06-17 23:02:31.468827"
+            "lastchange": "2022-06-17 23:02:31.468827",
         },
         "username": {
             "minlength": 4,
@@ -100,15 +104,17 @@ def filenotfoundwriter() -> bool:
             "lower": 1,
             "punctuation": 0,
             "numeric": 1,
-            "lastchange": "2022-06-17 22:47:02.195846"
-        }
+            "lastchange": "2022-06-17 22:47:02.195846",
+        },
     }
 
     history = {
         "password": {
             "Amino1": [
                 "$2b$12$bZklyhqIvlBxDhW/Mw8wQuLoJihOsuRjN/0TSwmRPvpCVZjz7wPcu",
-                "$2b$12$j0qdeJtDARVzq0Go2h7z3.6vxDbNU5pDcRwARMOhmbvqDIa6F96a6"]},
+                "$2b$12$j0qdeJtDARVzq0Go2h7z3.6vxDbNU5pDcRwARMOhmbvqDIa6F96a6",
+            ]
+        },
         "login": {
             "Amino1": [
                 "2022-06-30 15:46:10.091938",
@@ -117,12 +123,17 @@ def filenotfoundwriter() -> bool:
                 "2022-06-30 15:48:48.050426",
                 "2022-06-30 15:51:34.097386",
                 "2022-06-30 15:51:59.604746",
-                "2022-06-30 15:52:39.113701"]},
-            "change": {
-                "Amino1": [
-                    "2022-06-11 17:14:35.321194",
-                    "2022-06-11 17:14:35.321194",
-                    "2022-06-16 15:25:17.779154"]}}
+                "2022-06-30 15:52:39.113701",
+            ]
+        },
+        "change": {
+            "Amino1": [
+                "2022-06-11 17:14:35.321194",
+                "2022-06-11 17:14:35.321194",
+                "2022-06-16 15:25:17.779154",
+            ]
+        },
+    }
 
     key = {"key": "Amino1"}
 
@@ -360,7 +371,7 @@ def update_history_with_type(username: str, data: str, data_type: str) -> bool:
 
         # checks if length is more than 15, then it removes the first entry of the list
         if length > 15:
-            for _ in range(length-15):
+            for _ in range(length - 15):
                 data_list.pop(0)
 
         # data will added after handling to the history var and try to store data again
