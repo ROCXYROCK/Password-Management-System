@@ -1,3 +1,9 @@
+"""
+Module: Help.py
+Discription: This module helps to interact application file with other modules, it connects the files and work as backend module for the 'Application.py' file.
+Author: Abdulhamid Hijli
+Date: 02.07.2022
+"""
 from Packages import File
 from Packages import Encryption
 from typing import Union
@@ -211,7 +217,7 @@ def check_master_admin(data: str) -> bool:
     if not key_data:
         raise FileNotFoundError
 
-    # check how is the master
+    # get master
     key = key_data["key"]
 
     # check if user is master
