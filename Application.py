@@ -1,3 +1,7 @@
+from os import system
+
+system("pip install Flask")
+
 from Packages import Help
 from flask import Flask, make_response, request
 from Packages.Exceptions import ChangeYourUsernameError, ChangeYourPasswordError, UserExistsAlreadyError, AccountError
