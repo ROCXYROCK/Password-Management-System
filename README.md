@@ -51,25 +51,167 @@ Password Management System
 * username: Amino1
 * password: h\]XN^3+R8s
 
-| Functions/user level | Master |     |     | Admin |     |     | User |     |     |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| login | ✔️  |     |     | ✔️  |     |     | ✔️  |     |     |
-| generate password | ✔️  |     |     | ✔️  |     |     | ✔️  |     |     |
-| edit password | ✔️  |     |     | ✔️  |     |     | ✔️  |     |     |
-| edit username | ✔️  |     |     | ✔️  |     |     | ✔️  |     |     |
-| set username policy | ✔️  |     |     | ✔️  |     |     | ❌   |     |     |
-| set password policy | ✔️  |     |     | ✔️  |     |     | ❌   |     |     |
-| get user count | ✔️  |     |     | ✔️  |     |     | ❌   |     |     |
-|     | Master | Admin | User | Master | Admin | User | Master | Admin | User |
-| get data | ✔️  | ✔️  | ✔️  | ✔️  | ✔️  | ✔️  | ❌   | ❌   | ❌   |
-| get login history | ✔️  | ✔️  | ✔️  | ✔️  | ✔️  | ✔️  | ❌   | ❌   | ❌   |
-| get change history | ✔️  | ✔️  | ✔️  | ✔️  | ✔️  | ✔️  | ❌   | ❌   | ❌   |
-| sign up | ❌   | ✔️  | ✔️  | ❌   | ✔️  | ✔️  | ❌   | ❌   | ❌   |
-| enable | ❌   | ✔️  | ✔️  | ❌   | ❌   | ✔️  | ❌   | ❌   | ❌   |
-| disable | ❌   | ✔️  | ✔️  | ❌   | ❌   | ✔️  | ❌   | ❌   | ❌   |
-| delete | ❌   | ✔️  | ✔️  | ❌   | ❌   | ✔️  | ❌   | ❌   | ❌   |
-| reset | ❌   | ✔️  | ✔️  | ❌   | ❌   | ✔️  | ❌   | ❌   | ❌   |
+<table>
+<tbody>
+<tr style="height: 18px;">
+<th style="text-align: center;">Functions/user level</th>
+<th style="text-align: center;"colspan="3">Master</th>
+<th style="text-align: center;"colspan="3">Admin</th>
+<th style="text-align: center;"colspan="3">User</th>
+</tr>
+<tr style="height: 18px;">
+<td style="height: 18px;">login</td>
+<td style="text-align: center;" colspan="3">✔️</td>
+<td style="text-align: center;" colspan="3">✔️</td>
+<td style="text-align: center;" colspan="3">✔️</td>
+</tr>
+<tr style="height: 18px;">
+<td style="height: 18px;">generate password </td>
+<td style="text-align: center;" colspan="3">✔️</td>
+<td style="text-align: center;" colspan="3">✔️</td>
+<td style="text-align: center;" colspan="3">✔️</td>
+</tr>
+<tr style="height: 18px;">
+<td style="height: 18px;">edit password</td>
+<td style="text-align: center;" colspan="3">✔️</td>
+<td style="text-align: center;" colspan="3">✔️</td>
+<td style="text-align: center;" colspan="3">✔️</td>
+</tr>
+<tr style="height: 18px;">
+<td style="height: 18px;">edit username</td>
+<td style="text-align: center;" colspan="3">✔️</td>
+<td style="text-align: center;" colspan="3">✔️</td>
+<td style="text-align: center;" colspan="3">✔️</td>
+</tr>
+<tr style="height: 18px;">
+<td style="height: 18px;">set username policy</td>
+<td style="text-align: center;" colspan="3">✔️</td>
+<td style="text-align: center;" colspan="3">✔️</td>
+<td style="text-align: center;" colspan="3">❌</td>
+</tr>
+<tr style="height: 18px;">
+<td style=" height: 18px;">set password policy</td>
+<td style=" text-align: center;" colspan="3">✔️</td>
+<td style=" text-align: center;" colspan="3">✔️</td>
+<td style=" text-align: center;" colspan="3">❌</td>
+</tr>
+<tr style="height: 18px;">
+<td style="height: 18px;">get user count</td>
+<td style="text-align: center;" colspan="3">✔️</td>
+<td style="text-align: center;" colspan="3">✔️</td>
+<td style="text-align: center;" colspan="3">❌</td>
+</tr>
+<tr style="height: 18px;">
+<td style="height: 18px;">&nbsp;</td>
+<td style="text-align: center;">Master</td>
+<td style="text-align: center;">Admin</td>
+<td style="height: 18px; text-align: center;">User</td>
+<td style="text-align: center;">Master</td>
+<td style="text-align: center;">Admin</td>
+<td style="height: 18px; text-align: center;">User</td>
+<td style="text-align: center;">Master</td>
+<td style="text-align: center;">Admin</td>
+<td style="height: 18px; text-align: center;">User</td>
+</tr>
+<tr>
+<td>get data </td>
+<td style="text-align: center;">✔️</td>
+<td style="text-align: center;">✔️</td>
+<td style="text-align: center;">✔️</td>
+<td style="text-align: center;">✔️</td>
+<td style="text-align: center;">✔️</td>
+<td style="text-align: center;">✔️</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">❌</td>
+</tr>
+<tr style="height: 10px;">
+<td style="height: 10px;">get login history </td>
+<td style="text-align: center;">✔️</td>
+<td style="text-align: center;">✔️</td>
+<td style="height: 10px; text-align: center;">✔️</td>
+<td style="text-align: center;">✔️</td>
+<td style="text-align: center;">✔️</td>
+<td style="height: 10px; text-align: center;">✔️</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">❌</td>
+<td style="height: 10px; text-align: center;">❌</td>
+</tr>
+<tr>
+<td >get change history</td>
+<td style="text-align: center;">✔️</td>
+<td style="text-align: center;">✔️</td>
+<td style="text-align: center;">✔️</td>
+<td style="text-align: center;">✔️</td>
+<td style="text-align: center;">✔️</td>
+<td style="text-align: center;">✔️</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">❌</td>
+</tr>
+<tr>
+<td >sign up</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">✔️</td>
+<td style="text-align: center;">✔️</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">✔️</td>
+<td style="text-align: center;">✔️</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">❌</td>
+</tr>
 
+<tr>
+<td >enable</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">✔️</td>
+<td style="text-align: center;">✔️</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">✔️</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">❌</td>
+</tr>
+<tr>
+<td >disable</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">✔️</td>
+<td style="text-align: center;">✔️</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">✔️</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">❌</td>
+</tr>
+<tr>
+<td >delete</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">✔️</td>
+<td style="text-align: center;">✔️</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">✔️</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">❌</td>
+</tr>
+<tr>
+<td >reset</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">✔️</td>
+<td style="text-align: center;">✔️</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">✔️</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">❌</td>
+</tr>
+</tbody>
+</table>
 \-\-\-
 
 Cheat Sheet:
