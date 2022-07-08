@@ -7,10 +7,10 @@ Password Management System
 
 * install python3 on your pc.
 * open the command line and go to the password-management-system directory.
-* write "pip install flask" to install the flask library
-* write "pip install -r Requirements.txt" to install needed libraries to run the API
-* write "python3 Application.py" to run the application.
-* write "python3 Unittest/Unittest.py" to run the 78 unit tests.
+* write `pip install flask` to install the flask library
+* write `pip install -r Requirements.txt` to install needed libraries to run the API
+* write `python3 Application.py` to run the application.
+* write `python3 Unittest/Unittest.py` to run the 78 unit tests.
 
 ##### Rules:
 
