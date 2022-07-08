@@ -21,7 +21,7 @@ Password Management System
 * only english letters and punctuations are allowed
 * username policy:
     
-    
+    | Type | count |
     | --- | --- |
     | **minimum length** | 4   |
     | **maximum length** | 15  |
@@ -32,7 +32,7 @@ Password Management System
     
 * password policy:
     
-    
+    | Type | count |
     | --- | --- |
     | **minimum length** | 8   |
     | **maximum length** | 60  |
